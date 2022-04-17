@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="269dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/image_login" />
+
+    <LinearLayout
+        android:layout_width="875px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_box_rounded_red"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/notop_sans_regular"
+            android:text="@string/dang_nhap_uppercase"
+            android:textColor="@color/white"
+            android:textSize="28dp" />
+
+        <EditText
+            android:layout_width="752px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_edit_text_rouded"
+            android:hint="@string/hint_username"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textSize="48px" />
+
+        <EditText
+            android:layout_width="752px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_edit_text_rouded"
+            android:hint="@string/hint_pasword"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textSize="48px" />
+
+        <Button
+            android:layout_width="752px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_button_main_function"
+            android:fontFamily="@font/notop_sans_regular"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="@string/dang_nhap"
+            android:textColor="@color/white"
+            android:textSize="48px" />
+
+        <Button
+            android:layout_width="752px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/bg_button_sub_function"
+            android:fontFamily="@font/notop_sans_regular"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="@string/dang_ky"
+            android:textColor="@color/white"
+            android:textSize="48px" />
+    </LinearLayout>
+</LinearLayout>

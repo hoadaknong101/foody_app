@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/home_icon"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_saved"
+        android:icon="@drawable/saved_icon"
+        android:title="Đã lưu" />
+
+    <item
+        android:id="@+id/navigation_chat"
+        android:icon="@drawable/chat_icon"
+        android:title="Tin nhắn" />
+
+    <item
+        android:id="@+id/navigation_notify"
+        android:icon="@drawable/notify_icon"
+        android:title="Thông báo" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/person_icon"
+        android:title="Thông tin" />
+</menu>

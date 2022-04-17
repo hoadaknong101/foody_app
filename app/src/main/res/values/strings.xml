@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Foody App</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="dang_nhap_uppercase">ĐĂNG NHẬP</string>
+    <string name="dang_ky_uppercase">ĐĂNG KÝ</string>
+    <string name="hint_username">Tên tài khoản</string>
+    <string name="hint_pasword">Mật khẩu</string>
+    <string name="dang_nhap">Đăng nhập</string>
+    <string name="dang_ky">Đăng ký</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password_confirm_hint">Xác thực mật khẩu</string>
+    <string name="search_hint">Tìm kiếm...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

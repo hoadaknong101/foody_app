@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_box_rounded_red.xml" value="0.3675" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_button_main_function.xml" value="0.248" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_button_sub_function.xml" value="0.3675" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_cake.xml" value="0.3675" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_edit_text_rouded.xml" value="0.3675" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_function.xml" value="0.248" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_function_profile.xml" value="0.248" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_ice_cream.xml" value="0.3675" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_milktea.xml" value="0.3675" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_noodle.xml" value="0.3675" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_rice.xml" value="0.3675" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_search_view.xml" value="0.3675" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/activity_home.xml" value="0.33" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/fragment_chat.xml" value="0.2" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/fragment_home.xml" value="0.23641304347826086" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/fragment_notify.xml" value="0.23641304347826086" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/fragment_profile.xml" value="0.33707865168539325" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/fragment_saved.xml" value="0.33" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/menu/navigation.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
