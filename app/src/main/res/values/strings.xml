@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Foody App</string>
+    <string name="content_description_image">FOOD</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -12,12 +13,25 @@
     <string name="dang_nhap_uppercase">ĐĂNG NHẬP</string>
     <string name="dang_ky_uppercase">ĐĂNG KÝ</string>
     <string name="hint_username">Tên tài khoản</string>
-    <string name="hint_pasword">Mật khẩu</string>
+    <string name="hint_password">Mật khẩu</string>
     <string name="dang_nhap">Đăng nhập</string>
     <string name="dang_ky">Đăng ký</string>
     <string name="e_mail">E-mail</string>
     <string name="password_confirm_hint">Xác thực mật khẩu</string>
-    <string name="search_hint">Tìm kiếm...</string>
+    <string name="search_hint">Tìm kiếm…</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="rice">Cơm sườn</string>
+    <string name="hamburger">Bánh mì kẹp</string>
+    <string name="milk_tea">Trà sữa</string>
+    <string name="water_food">Món nước</string>
+    <string name="ice_cream">Kem</string>
+    <string name="cake">Bánh ngọt</string>
+
+    <string name="check">ĐƠN HÀNG</string>
+    <string name="check_coming">Đang đến</string>
+    <string name="history">Lịch sử</string>
+    <string name="scratch_check">Đơn nháp</string>
+    <string name="notify">THÔNG BÁO</string>
 </resources>

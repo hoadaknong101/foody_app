@@ -12,36 +12,39 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="61px"
-            android:layout_height="50px"
+            android:contentDescription="@string/app_name"
+            android:layout_width="28sp"
+            android:layout_height="20sp"
             android:src="@drawable/triple_line"
-            android:layout_marginTop="92px"
-            android:layout_marginLeft="69px"/>
+            android:layout_marginTop="32sp"
+            android:layout_marginStart="28sp"/>
         <ImageView
-            android:layout_width="372px"
-            android:layout_height="213px"
+            android:contentDescription="@string/app_name"
+            android:layout_width="140sp"
+            android:layout_height="80sp"
             android:src="@drawable/logo"
-            android:layout_marginTop="10px"
-            android:layout_marginLeft="230px"/>
+            android:layout_marginTop="5sp"
+            android:layout_marginStart="90sp"/>
     </LinearLayout>
     <SearchView
-        android:layout_width="951px"
+        android:id="@+id/search_bar"
+        android:layout_width="360sp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:background="@drawable/bg_search_view"/>
     <LinearLayout
-        android:layout_width="951px"
+        android:layout_width="360sp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:background="@drawable/bg_box_rounded_red"
         android:layout_marginTop="10dp"
         android:elevation="5dp">
-
         <ImageView
+            android:contentDescription="@string/app_name"
             android:layout_width="match_parent"
-            android:layout_height="343px"
+            android:layout_height="140sp"
             android:src="@drawable/banner_rice"/>
     </LinearLayout>
     <HorizontalScrollView
@@ -49,20 +52,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageView
-                android:layout_width="477px"
-                android:layout_height="340px"
+                android:contentDescription="@string/content_description_image"
+                android:layout_width="180sp"
+                android:layout_height="128sp"
                 android:src="@drawable/slider_1"/>
             <ImageView
-                android:layout_width="477px"
-                android:layout_height="340px"
+                android:contentDescription="@string/content_description_image"
+                android:layout_width="180sp"
+                android:layout_height="128sp"
                 android:src="@drawable/slider_2"/>
             <ImageView
-                android:layout_width="477px"
-                android:layout_height="340px"
+                android:contentDescription="@string/content_description_image"
+                android:layout_width="180sp"
+                android:layout_height="128sp"
                 android:src="@drawable/slider_3"/>
         </LinearLayout>
     </HorizontalScrollView>
@@ -80,81 +86,87 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="28dp"
+                android:layout_marginStart="28dp"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="447px"
-                    android:layout_height="340px"
+                    android:id="@+id/layoutHamburger"
+                    android:layout_width="168sp"
+                    android:layout_height="128sp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/bg_box_rounded_red"
                     android:elevation="5dp"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="225px"
-                        android:layout_height="178px"
+                        android:contentDescription="@string/content_description_image"
+                        android:layout_width="90sp"
+                        android:layout_height="69sp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="25px"
+                        android:layout_marginTop="10sp"
                         android:src="@drawable/berger" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="20px"
+                        android:layout_marginTop="8sp"
                         android:fontFamily="@font/notop_sans_regular"
-                        android:text="Humberger"
+                        android:text="@string/hamburger"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="447px"
-                    android:layout_height="340px"
+                    android:id="@+id/layoutIceCream"
+                    android:layout_width="168sp"
+                    android:layout_height="128sp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/bg_ice_cream"
                     android:elevation="5dp"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="225px"
-                        android:layout_height="178px"
+                        android:contentDescription="@string/content_description_image"
+                        android:layout_width="90sp"
+                        android:layout_height="69sp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="25px"
+                        android:layout_marginTop="10sp"
                         android:src="@drawable/ice_cream" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="20px"
+                        android:layout_marginTop="8sp"
                         android:fontFamily="@font/notop_sans_regular"
-                        android:text="Kem"
+                        android:text="@string/ice_cream"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="447px"
-                    android:layout_height="340px"
+                    android:id="@+id/layoutCake"
+                    android:layout_width="168sp"
+                    android:layout_height="128sp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/bg_cake"
                     android:elevation="5dp"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="225px"
-                        android:layout_height="178px"
+                        android:contentDescription="@string/content_description_image"
+                        android:layout_width="90sp"
+                        android:layout_height="69sp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="25px"
+                        android:layout_marginTop="10sp"
                         android:src="@drawable/cake" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="20px"
+                        android:layout_marginTop="8sp"
                         android:fontFamily="@font/notop_sans_regular"
-                        android:text="Bánh ngọt"
+                        android:text="@string/cake"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -163,81 +175,87 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="447px"
-                    android:layout_height="340px"
+                    android:id="@+id/layoutMilkTea"
+                    android:layout_width="168sp"
+                    android:layout_height="128sp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/bg_milktea"
                     android:elevation="5dp"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="225px"
-                        android:layout_height="178px"
+                        android:contentDescription="@string/content_description_image"
+                        android:layout_width="90sp"
+                        android:layout_height="69sp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="25px"
+                        android:layout_marginTop="10sp"
                         android:src="@drawable/milk_tea" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="20px"
+                        android:layout_marginTop="8sp"
                         android:fontFamily="@font/notop_sans_regular"
-                        android:text="Trả sữa"
+                        android:text="@string/milk_tea"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="447px"
-                    android:layout_height="340px"
+                    android:id="@+id/layoutRice"
+                    android:layout_width="168sp"
+                    android:layout_height="128sp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/bg_rice"
                     android:elevation="5dp"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="225px"
-                        android:layout_height="178px"
+                        android:contentDescription="@string/content_description_image"
+                        android:layout_width="90sp"
+                        android:layout_height="69sp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="25px"
+                        android:layout_marginTop="10sp"
                         android:src="@drawable/rice" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="20px"
+                        android:layout_marginTop="8sp"
                         android:fontFamily="@font/notop_sans_regular"
-                        android:text="Cơm sườn"
+                        android:text="@string/rice"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="447px"
-                    android:layout_height="340px"
+                    android:id="@+id/layoutWaterFood"
+                    android:layout_width="168sp"
+                    android:layout_height="128sp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/bg_noodle"
                     android:elevation="5dp"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="225px"
-                        android:layout_height="178px"
+                        android:contentDescription="@string/content_description_image"
+                        android:layout_width="90sp"
+                        android:layout_height="69sp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="25px"
+                        android:layout_marginTop="10sp"
                         android:src="@drawable/noodle" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="20px"
+                        android:layout_marginTop="8sp"
                         android:fontFamily="@font/notop_sans_regular"
-                        android:text="Món nước"
+                        android:text="@string/water_food"
                         android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>

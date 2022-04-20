@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,63 +7,79 @@
     tools:context=".RegisterActivity">
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:layout_width="match_parent"
         android:layout_height="213dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/image_register" />
+    
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="875px"
+        android:layout_width="350sp"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_box_rounded_red"
         android:layout_gravity="center"
         android:layout_marginTop="30dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dang_ky_uppercase"
             android:fontFamily="@font/notop_sans_regular"
             android:textColor="@color/white"
-            android:textSize="28dp"
+            android:textSize="24sp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"/>
+        
         <EditText
-            android:layout_width="752px"
+            android:id="@+id/editText_username_signup"
+            android:autofillHints="emailAddress"
+            android:layout_width="285sp"
             android:layout_height="wrap_content"
             android:hint="@string/e_mail"
-            android:background="@drawable/bg_edit_text_rouded"
-            android:paddingLeft="10dp"
+            android:background="@drawable/bg_edit_text_rounded"
+            android:inputType="textEmailAddress"
+            android:paddingStart="10dp"
+            android:paddingEnd="0dp"
             android:paddingBottom="15dp"
             android:paddingTop="15dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:textSize="48px"/>
+            android:textSize="18sp"/>
         <EditText
-            android:layout_width="752px"
+            android:id="@+id/editText_password_signup"
+            android:autofillHints="password"
+            android:layout_width="285sp"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_pasword"
-            android:background="@drawable/bg_edit_text_rouded"
-            android:paddingLeft="10dp"
+            android:hint="@string/hint_password"
+            android:background="@drawable/bg_edit_text_rounded"
+            android:paddingStart="10dp"
+            android:paddingEnd="0dp"
             android:paddingBottom="15dp"
             android:paddingTop="15dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:textSize="48px"
+            android:textSize="18sp"
             android:inputType="textPassword"/>
         <EditText
-            android:layout_width="752px"
+            android:id="@+id/editText_password_signup_confirm"
+            android:autofillHints="password"
+            android:layout_width="285sp"
             android:layout_height="wrap_content"
             android:hint="@string/password_confirm_hint"
-            android:background="@drawable/bg_edit_text_rouded"
-            android:paddingLeft="10dp"
+            android:background="@drawable/bg_edit_text_rounded"
+            android:paddingStart="10dp"
+            android:paddingEnd="0dp"
             android:paddingBottom="15dp"
             android:paddingTop="15dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:textSize="48px"
+            android:textSize="18sp"
             android:inputType="textPassword"/>
+
         <Button
-            android:layout_width="752px"
+            android:id="@+id/button_signup_signup"
+            android:layout_width="285sp"
             android:layout_height="wrap_content"
             android:text="@string/dang_ky"
             android:layout_gravity="center"
@@ -74,9 +89,11 @@
             android:textColor="@color/white"
             android:fontFamily="@font/notop_sans_regular"
             android:layout_marginTop="20dp"
-            android:textSize="48px"/>
+            android:textSize="18sp"/>
+
         <Button
-            android:layout_width="752px"
+            android:id="@+id/button_login_signup"
+            android:layout_width="285sp"
             android:layout_height="wrap_content"
             android:text="@string/dang_nhap"
             android:layout_gravity="center"
@@ -86,7 +103,7 @@
             android:textColor="@color/white"
             android:fontFamily="@font/notop_sans_regular"
             android:layout_marginTop="20dp"
-            android:textSize="48px"
+            android:textSize="18sp"
             android:layout_marginBottom="45dp"/>
     </LinearLayout>
 </LinearLayout>
