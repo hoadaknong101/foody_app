@@ -11,6 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments.ChatFragment;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments.HomeFragment;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments.NotifyFragment;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments.ProfileFragment;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments.SavedFragment;
+
 public class HomeActivity extends AppCompatActivity {
 
     @Override
@@ -59,11 +65,14 @@ public class HomeActivity extends AppCompatActivity {
             return false;
         }
     };
-    private void loadFragment(Fragment fragment) {
+
+    public void loadFragment(Fragment fragment) {
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
+
 }
