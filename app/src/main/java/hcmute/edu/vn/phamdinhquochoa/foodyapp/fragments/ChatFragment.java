@@ -1,11 +1,19 @@
 package hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.PaymentActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
 
 /**
@@ -15,28 +23,20 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
  */
 public class ChatFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private View view;
+    private LinearLayout cartContainer, btnDangDen, btnLichSu, btnGioHang;
+    private Button btnThanhToan;
+    private TextView tvGioHang, tvDangDen, tvLichSu;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public ChatFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ChatFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ChatFragment newInstance(String param1, String param2) {
         ChatFragment fragment = new ChatFragment();
         Bundle args = new Bundle();
@@ -55,10 +55,72 @@ public class ChatFragment extends Fragment {
         }
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chat, container, false);
+        view = inflater.inflate(R.layout.fragment_chat, container, false);
+        cartContainer = view.findViewById(R.id.cartContainer);
+        btnGioHang = view.findViewById(R.id.btnGioHang);
+        btnDangDen = view.findViewById(R.id.btnDangDen);
+        btnLichSu = view.findViewById(R.id.btnLichSu);
+        tvGioHang = view.findViewById(R.id.tvGioHang);
+        tvDangDen = view.findViewById(R.id.tvDangDen);
+        tvLichSu = view.findViewById(R.id.tvLichSu);
+        btnThanhToan = view.findViewById(R.id.btnThanhToan);
+
+        btnThanhToan.setOnClickListener(view ->{
+            startActivity(new Intent(getActivity(), PaymentActivity.class));
+        });
+
+
+        btnGioHang.setOnClickListener(view ->{
+            resetAttribute();
+            btnGioHang.setBackground(ContextCompat.getDrawable(getContext(),R.color.main_color));
+            tvGioHang.setTextColor(Color.WHITE);
+
+            //Function here
+
+
+
+        });
+
+        btnDangDen.setOnClickListener(view->{
+            resetAttribute();
+            btnDangDen.setBackground(ContextCompat.getDrawable(getContext(),R.color.main_color));
+            tvDangDen.setTextColor(Color.WHITE);
+
+            //Function here
+
+
+
+
+
+        });
+
+        btnLichSu.setOnClickListener(view -> {
+            resetAttribute();
+            btnLichSu.setBackground(ContextCompat.getDrawable(getContext(),R.color.main_color));
+            tvLichSu.setTextColor(Color.WHITE);
+
+            //Function here
+
+
+
+        });
+
+
+        return view;
+    }
+
+    private void resetAttribute(){
+        btnGioHang.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.bg_white));
+        btnDangDen.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.bg_white));
+        btnLichSu.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.bg_white));
+        tvGioHang.setTextColor(Color.BLACK);
+        tvLichSu.setTextColor(Color.BLACK);
+        tvDangDen.setTextColor(Color.BLACK);
     }
 }

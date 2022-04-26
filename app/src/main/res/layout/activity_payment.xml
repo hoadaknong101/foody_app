@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PaymentActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="47sp"
+        android:background="@color/main_color"
+        android:layout_marginBottom="20sp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="THANH TOÁN"
+            android:textColor="@color/white"
+            android:fontFamily="@font/notop_sans_regular"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10sp"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Họ và tên"
+            android:textColor="#202020"
+            android:fontFamily="@font/notop_sans_regular"
+            android:layout_gravity="left"
+            android:gravity="center"/>
+        <EditText
+            android:layout_width="350sp"
+            android:layout_height="50sp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Nguyễn Văn A"
+            android:paddingStart="10sp"
+            android:layout_marginTop="2sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10sp"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số điện thoại"
+            android:textColor="#202020"
+            android:fontFamily="@font/notop_sans_regular"
+            android:layout_gravity="left"
+            android:gravity="center"/>
+        <EditText
+            android:layout_width="350sp"
+            android:layout_height="50sp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="0984 349 xxx"
+            android:paddingStart="10sp"
+            android:layout_marginTop="2sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10sp"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Địa chỉ"
+            android:textColor="#202020"
+            android:fontFamily="@font/notop_sans_regular"
+            android:layout_gravity="left"
+            android:gravity="center"/>
+        <EditText
+            android:layout_width="350sp"
+            android:layout_height="50sp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Số 01 Võ Văn Ngân, Phường Linh Chiểu,..."
+            android:paddingStart="10sp"
+            android:layout_marginTop="2sp"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnThanhToanThanhToan"
+        android:layout_marginTop="17sp"
+        android:layout_width="350sp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_box_rounded_red"
+        android:textColor="@color/white"
+        android:text="Thanh toán"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -5,19 +5,20 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="138dp"
-        android:layout_height="127dp"
+        android:layout_width="115dp"
+        android:layout_height="109dp"
         android:layout_marginStart="10sp"
+        android:layout_marginTop="10sp"
         android:background="@drawable/bg_box_rounded_red"
-        android:orientation="vertical"
-        android:elevation="6sp">
+        android:elevation="10sp"
+        android:orientation="vertical">
 
         <ImageView
-
             android:id="@+id/imageCategory"
-            android:layout_width="92dp"
-            android:layout_height="86dp"
+            android:layout_width="72dp"
+            android:layout_height="61dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="9sp"
             android:src="@drawable/noodle" />
 
         <TextView
@@ -25,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="2sp"
             android:text="Món nước"
             android:textColor="@color/white"
             android:textSize="18dp" />

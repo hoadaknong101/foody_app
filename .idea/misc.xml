@@ -7,6 +7,7 @@
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_button_main_function.xml" value="0.248" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_button_sub_function.xml" value="0.3675" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_cake.xml" value="0.3675" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_edit_text.xml" value="0.2795" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_edit_text_rouded.xml" value="0.3675" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_function.xml" value="0.248" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_function_profile.xml" value="0.248" />
@@ -15,20 +16,24 @@
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_noodle.xml" value="0.3675" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_rice.xml" value="0.3675" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_search_view.xml" value="0.3675" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bg_white.xml" value="0.2795" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/bottom_add_to_cart.xml" value="0.2795" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/size_box_price.xml" value="0.2795" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/size_box_price_dark.xml" value="0.2795" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/drawable/size_box_red.xml" value="0.2795" />
-        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/activity_category.xml" value="0.3087719298245614" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/activity_category.xml" value="0.5" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/activity_food_details.xml" value="0.3048245614035088" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/activity_payment.xml" value="0.33" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/cart_card.xml" value="0.22" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/category_card.xml" value="0.75" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/category_cart.xml" value="0.5" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/food_cart.xml" value="0.5" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/fragment_category_food.xml" value="0.22" />
-        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/fragment_chat.xml" value="0.33" />
+        <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/fragment_chat.xml" value="0.25" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/fragment_food_details.xml" value="0.33" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/fragment_home.xml" value="0.18" />
         <entry key="..\:/MOBILE_PROGRAMMING/Projects/foody_app/app/src/main/res/layout/fragment_notify.xml" value="0.23641304347826086" />

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_box_rounded_red"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:elevation="10sp">
+        <ImageView
+            android:id="@+id/imageCartFood"
+            android:layout_width="0sp"
+            android:layout_height="77sp"
+            android:src="@drawable/slider_1"
+            android:layout_weight="2"
+            android:layout_marginStart="10sp"
+            />
+        <TextView
+            android:id="@+id/tvFoodNameCart"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:text="Bánh mì trứng"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="15sp"
+            android:layout_weight="4"/>
+        <TextView
+            android:id="@+id/tvFoodPrice"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:text="13.000 VNĐ"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="25sp"
+            android:layout_weight="3"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

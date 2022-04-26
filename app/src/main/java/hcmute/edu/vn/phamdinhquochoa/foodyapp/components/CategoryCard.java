@@ -9,18 +9,18 @@ import android.widget.TextView;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Category;
 
-public class CategoryCart extends LinearLayout {
+public class CategoryCard extends LinearLayout {
 
     private ImageView image;
     private TextView tvName;
     private Category category;
 
-    public CategoryCart(Context context) {
+    public CategoryCard(Context context) {
         super(context);
         initControl(context);
     }
 
-    public CategoryCart(Context context, Category category){
+    public CategoryCard(Context context, Category category){
         super(context);
         this.category = category;
         initControl(context);
@@ -28,7 +28,7 @@ public class CategoryCart extends LinearLayout {
 
     private void initControl(Context context){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.category_cart, this);
+        inflater.inflate(R.layout.category_card, this);
 
         image = findViewById(R.id.imageCategory);
         tvName = findViewById(R.id.tvCategoryName);
