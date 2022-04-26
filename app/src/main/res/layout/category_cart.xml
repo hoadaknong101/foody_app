@@ -3,25 +3,31 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="138dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="10sp"
+        android:background="@drawable/bg_box_rounded_red"
         android:orientation="vertical"
-        android:background="@drawable/bg_box_rounded_red">
+        android:elevation="6sp">
+
         <ImageView
+
             android:id="@+id/imageCategory"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/noodle"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_width="92dp"
+            android:layout_height="86dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/noodle" />
+
         <TextView
             android:id="@+id/tvCategoryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Món nước"
-            android:textSize="18dp"
             android:layout_gravity="center"
-            android:textColor="@color/white"/>
+            android:text="Món nước"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
     </LinearLayout>
 
 </LinearLayout>

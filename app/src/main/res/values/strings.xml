@@ -32,6 +32,6 @@
     <string name="check">ĐƠN HÀNG</string>
     <string name="check_coming">Đang đến</string>
     <string name="history">Lịch sử</string>
-    <string name="scratch_check">Đơn nháp</string>
+    <string name="cart">Giỏ hàng</string>
     <string name="notify">THÔNG BÁO</string>
 </resources>

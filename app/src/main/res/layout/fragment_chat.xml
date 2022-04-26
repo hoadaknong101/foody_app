@@ -42,8 +42,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/check_coming"
+                    android:text="@string/cart"
                     android:textColor="@color/white"
+                    android:fontFamily="@font/notop_sans_regular"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="120sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/check_coming"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/notop_sans_regular"
                     android:layout_gravity="center"
                     android:gravity="center"/>
@@ -62,20 +76,6 @@
                     android:layout_gravity="center"
                     android:gravity="center"/>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="120sp"
-                android:layout_height="40sp"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/scratch_check"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/notop_sans_regular"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <FrameLayout
@@ -88,12 +88,7 @@
         android:background="@drawable/bg_function"
         android:elevation="6dp">
 
-        <ImageView
-            android:contentDescription="@string/app_name"
-            android:layout_width="231dp"
-            android:layout_height="309dp"
-            android:layout_gravity="center"
-            android:src="@drawable/null_info" />
+
     </FrameLayout>
 
 </LinearLayout>

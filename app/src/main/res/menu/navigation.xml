@@ -12,8 +12,8 @@
 
     <item
         android:id="@+id/navigation_chat"
-        android:icon="@drawable/chat_icon"
-        android:title="Tin nhắn" />
+        android:icon="@drawable/cart_icon"
+        android:title="Giỏ hàng" />
 
     <item
         android:id="@+id/navigation_notify"

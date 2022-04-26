@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.CategoryActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.FoodDetailsActivity;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.HomeActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
 
 /**
@@ -69,20 +70,33 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
+
         LinearLayout linearLayout = view.findViewById(R.id.layoutHamburger);
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), CategoryActivity.class));
-            }
-        });
+        linearLayout.setOnClickListener(view -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
+
+        LinearLayout linearLayout1 = view.findViewById(R.id.layoutCake);
+        linearLayout1.setOnClickListener(view -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
+
+        LinearLayout linearLayout2 = view.findViewById(R.id.layoutRice);
+        linearLayout2.setOnClickListener(view -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
+
+        LinearLayout linearLayout3 = view.findViewById(R.id.layoutMilkTea);
+        linearLayout3.setOnClickListener(view -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
+
+        LinearLayout linearLayout4 = view.findViewById(R.id.layoutIceCream);
+        linearLayout4.setOnClickListener(view -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
+
+        LinearLayout linearLayout5 = view.findViewById(R.id.layoutWaterFood);
+        linearLayout5.setOnClickListener(view -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
 
         ImageView imageBanhMi = view.findViewById(R.id.imageBanhMi);
-        imageBanhMi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), FoodDetailsActivity.class));
-            }
+        imageBanhMi.setOnClickListener(view -> startActivity(new Intent(getActivity(), FoodDetailsActivity.class)));
+
+        ImageView imageCart = view.findViewById(R.id.imageCart);
+        imageCart.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getActivity(),HomeActivity.class);
+            intent.putExtra("isCartClick",true);
+            startActivity(intent);
         });
 
         return view;

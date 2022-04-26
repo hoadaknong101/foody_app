@@ -1,5 +1,6 @@
 package hcmute.edu.vn.phamdinhquochoa.foodyapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -26,9 +27,19 @@ public class HomeActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        Fragment fragment = new HomeFragment();
-        loadFragment(fragment);
+        Intent intent  = getIntent();
+        Boolean isCartClick = intent.getBooleanExtra("isCartClick",false);
+        if(isCartClick){
+            Fragment fragment = new ChatFragment();
+            loadFragment(fragment);
+            navigation.getMenu().getItem(2).setChecked(true);
+        }else{
+            Fragment fragment = new HomeFragment();
+            loadFragment(fragment);
+        }
+
     }
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -39,27 +50,22 @@ public class HomeActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     fragment = new HomeFragment();
                     loadFragment(fragment);
-                    Toast.makeText(HomeActivity.this,"Trang chu", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_saved:
                     fragment = new SavedFragment();
                     loadFragment(fragment);
-                    Toast.makeText(HomeActivity.this,"Da luu", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_chat:
                     fragment = new ChatFragment();
                     loadFragment(fragment);
-                    Toast.makeText(HomeActivity.this,"Tin nhan", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_notify:
                     fragment = new NotifyFragment();
                     loadFragment(fragment);
-                    Toast.makeText(HomeActivity.this,"Thong bao", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_profile:
                     fragment = new ProfileFragment();
                     loadFragment(fragment);
-                    Toast.makeText(HomeActivity.this,"Thong tin ca nhan", Toast.LENGTH_SHORT).show();
                     return true;
             }
             return false;
