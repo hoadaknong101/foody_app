@@ -7,24 +7,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Category;
 
 public class CategoryCard extends LinearLayout {
 
     private ImageView image;
     private TextView tvName;
-    private Category category;
+//    private Category category;
 
     public CategoryCard(Context context) {
         super(context);
         initControl(context);
     }
 
-    public CategoryCard(Context context, Category category){
-        super(context);
-        this.category = category;
-        initControl(context);
-    }
+//    public CategoryCard(Context context, Category category){
+//        super(context);
+//        this.category = category;
+//        initControl(context);
+//    }
 
     private void initControl(Context context){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -34,6 +33,6 @@ public class CategoryCard extends LinearLayout {
         tvName = findViewById(R.id.tvCategoryName);
 
         // Set name for category cart
-        tvName.setText(category.getName());
+//        tvName.setText(category.getName());
     }
 }

@@ -1,43 +1,36 @@
 package hcmute.edu.vn.phamdinhquochoa.foodyapp.beans;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class Food implements Serializable {
 
     private Integer id;
     private String name;
-    private Double price;
-    private Double rate;
+    private String type;
+    private byte[] image;
     private String description;
 
     public Food(){
 
     }
 
-    public Food(Integer id, String name, Double price, Double rate, String description) {
+    public Food(Integer id, String name, String type, byte[] image, String description) {
         this.id = id;
         this.name = name;
-        this.price = price;
-        this.rate = rate;
+        this.type = type;
+        this.image = image;
         this.description = description;
     }
 
-    public Food(Integer id, String name, Double price, Double rate) {
+    public Food(Integer id, String name, String type, String description) {
         this.id = id;
         this.name = name;
-        this.price = price;
-        this.rate = rate;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
+        this.type = type;
         this.description = description;
     }
-
-
 
     public Integer getId() {
         return id;
@@ -55,20 +48,28 @@ public class Food implements Serializable {
         this.name = name;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getType() {
+        return type;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Double getRate() {
-        return rate;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setRate(Double rate) {
-        this.rate = rate;
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -76,8 +77,9 @@ public class Food implements Serializable {
         return "Food{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", price=" + price +
-                ", rate=" + rate +
+                ", type='" + type + '\'' +
+                ", image=" + Arrays.toString(image) +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

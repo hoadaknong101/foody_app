@@ -6,22 +6,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Cart;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.OrderDetail;
 
 public class CartCard extends LinearLayout {
 
     private ImageView image;
     private TextView tvName, tvPrice;
-    private Cart cart;
+    private OrderDetail cart;
 
     public CartCard(Context context) {
         super(context);
     }
 
-    public CartCard(Context context, Cart cart) {
+    public CartCard(Context context, OrderDetail cart) {
         super(context);
         this.cart = cart;
         initControl(context);

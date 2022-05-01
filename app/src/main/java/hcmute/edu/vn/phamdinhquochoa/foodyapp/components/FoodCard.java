@@ -40,7 +40,7 @@ public class FoodCard extends LinearLayout {
         tvName.setText(food.getName());
 
         // Set price for food cart
-        tvPrice.setText(food.getPrice() + " VNĐ");
+//        tvPrice.setText(food.getPrice() + " VNĐ");
 
     }
 }

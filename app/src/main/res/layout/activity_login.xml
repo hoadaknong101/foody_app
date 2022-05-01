@@ -27,41 +27,42 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/notop_sans_regular"
-            android:textStyle="bold"
             android:text="@string/dang_nhap_uppercase"
             android:textColor="@color/white"
-            android:textSize="28sp" />
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editText_username_login"
-            android:autofillHints="name"
             android:layout_width="285sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:autofillHints="name"
             android:background="@drawable/bg_edit_text_rounded"
             android:hint="@string/hint_username"
+            android:inputType="text"
+            android:maxLines="1"
             android:paddingStart="10dp"
-            android:paddingEnd="0sp"
             android:paddingTop="15dp"
+            android:paddingEnd="0sp"
             android:paddingBottom="15dp"
             android:textSize="18sp"
-            android:inputType="text"
-            android:maxLines="1" />
+            tools:ignore="TextContrastCheck" />
 
         <EditText
             android:id="@+id/editText_password_login"
-            android:autofillHints="password"
             android:layout_width="285sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:autofillHints="password"
             android:background="@drawable/bg_edit_text_rounded"
             android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:paddingStart="10dp"
-            android:paddingEnd="0sp"
             android:paddingTop="15dp"
+            android:paddingEnd="0sp"
             android:paddingBottom="15dp"
             android:textSize="18sp" />
 

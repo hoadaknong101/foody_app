@@ -1,12 +1,13 @@
 package hcmute.edu.vn.phamdinhquochoa.foodyapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Category;
+import android.support.v7.app.AppCompatActivity;
+
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Food;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.CategoryCard;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.FoodCard;
@@ -19,12 +20,12 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category);
 
         // Add category cart to layout container
-        LinearLayout categoryCartContainer = (LinearLayout) findViewById(R.id.categoryCartContainer);
-        categoryCartContainer.addView(new CategoryCard(this, new Category(1,"Món nước","Hình ảnh","Mô tả")));
-        categoryCartContainer.addView(new CategoryCard(this, new Category(2,"Humberger","Hình ảnh","Mô tả")));
-        categoryCartContainer.addView(new CategoryCard(this, new Category(3,"Pizza","Hình ảnh","Mô tả")));
-        categoryCartContainer.addView(new CategoryCard(this, new Category(4,"Món gỏi","Hình ảnh","Mô tả")));
-        categoryCartContainer.addView(new CategoryCard(this, new Category(5,"Mì cay","Hình ảnh","Mô tả")));
+//        LinearLayout categoryCartContainer = (LinearLayout) findViewById(R.id.categoryCartContainer);
+//        categoryCartContainer.addView(new CategoryCard(this, new Category(1,"Món nước","Hình ảnh","Mô tả")));
+//        categoryCartContainer.addView(new CategoryCard(this, new Category(2,"Humberger","Hình ảnh","Mô tả")));
+//        categoryCartContainer.addView(new CategoryCard(this, new Category(3,"Pizza","Hình ảnh","Mô tả")));
+//        categoryCartContainer.addView(new CategoryCard(this, new Category(4,"Món gỏi","Hình ảnh","Mô tả")));
+//        categoryCartContainer.addView(new CategoryCard(this, new Category(5,"Mì cay","Hình ảnh","Mô tả")));
 
         ImageView image = findViewById(R.id.imageCartC);
         image.setOnClickListener(view -> {
@@ -40,7 +41,7 @@ public class CategoryActivity extends AppCompatActivity {
                 "chứa nhiều chất đạm, chất xơ," +
                 " tốt cho cơ thể.";
 
-        Food f1 = new Food(1,"Bánh mì thịt",15000.0,5.0,description);
+        Food f1 = new Food();
         FoodCard fc1 = new FoodCard(this,f1);
         fc1.setOnClickListener(view -> {
             Intent intent = new Intent(CategoryActivity.this,FoodDetailsActivity.class);
@@ -49,7 +50,7 @@ public class CategoryActivity extends AppCompatActivity {
         });
         foodCartContainer.addView(fc1);
 
-        Food f2 = new Food(1,"Bánh mì chả",18000.0,5.0,description);
+        Food f2 = new Food();
         FoodCard fc2 = new FoodCard(this,f2);
         fc2.setOnClickListener(view -> {
             Intent intent = new Intent(CategoryActivity.this,FoodDetailsActivity.class);
@@ -59,7 +60,7 @@ public class CategoryActivity extends AppCompatActivity {
         foodCartContainer.addView(fc2);
 
 
-        Food f3 = new Food(1,"Bánh mì chả ngon",15000.0,5.0,description);
+        Food f3 = new Food();
         FoodCard fc3 = new FoodCard(this,f3);
         fc3.setOnClickListener(view -> {
             Intent intent = new Intent(CategoryActivity.this,FoodDetailsActivity.class);
@@ -68,7 +69,7 @@ public class CategoryActivity extends AppCompatActivity {
         });
         foodCartContainer.addView(fc3);
 
-        Food f4 = new Food(1,"Bánh mì thập cẩm",25000.0,5.0,description);
+        Food f4 = new Food();
         FoodCard fc4 = new FoodCard(this,f4);
         fc4.setOnClickListener(view -> {
             Intent intent = new Intent(CategoryActivity.this,FoodDetailsActivity.class);
@@ -78,7 +79,7 @@ public class CategoryActivity extends AppCompatActivity {
         foodCartContainer.addView(fc4);
 
 
-        Food f5 = new Food(1,"Bánh mì trứng chả",30000.0,5.0,description);
+        Food f5 = new Food();
         FoodCard fc5 = new FoodCard(this,f5);
         fc5.setOnClickListener(view -> {
             Intent intent = new Intent(CategoryActivity.this,FoodDetailsActivity.class);

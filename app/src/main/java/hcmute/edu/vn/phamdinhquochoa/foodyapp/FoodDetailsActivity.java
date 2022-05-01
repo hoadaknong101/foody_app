@@ -26,9 +26,9 @@ public class FoodDetailsActivity extends AppCompatActivity {
         Food food = (Food) intent.getSerializableExtra("food");
 
         if(food!= null){
-            tvName.setText(food.getName());
-            tvPrice.setText(food.getPrice() + " VNĐ");
-            tvDescription.setText(food.getDescription());
+//            tvName.setText(food.getName());
+//            tvPrice.setText(food.getPrice() + " VNĐ");
+//            tvDescription.setText(food.getDescription());
         }
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
