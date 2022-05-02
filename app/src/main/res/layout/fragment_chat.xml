@@ -100,17 +100,11 @@
             android:orientation="vertical">
 
             <include layout="@layout/cart_card" />
-
             <include layout="@layout/cart_card" />
-
             <include layout="@layout/cart_card" />
-
             <include layout="@layout/cart_card" />
-
             <include layout="@layout/cart_card" />
-
             <include layout="@layout/cart_card" />
-
             <include layout="@layout/cart_card" />
 
         </LinearLayout>
@@ -119,7 +113,7 @@
         android:id="@+id/btnThanhToan"
         android:layout_width="360sp"
         android:layout_height="wrap_content"
-        android:text="Thanh toán"
+        android:text="@string/payment"
         android:layout_gravity="center"
         android:layout_marginTop="10sp"
         android:background="@drawable/bg_box_rounded_red"

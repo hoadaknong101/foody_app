@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="THANH TOÁN"
+            android:text="@string/payment"
             android:textColor="@color/white"
             android:fontFamily="@font/notop_sans_regular"
             android:layout_gravity="center"
@@ -31,17 +30,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Họ và tên"
+            android:text="@string/full_name"
             android:textColor="#202020"
             android:fontFamily="@font/notop_sans_regular"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:gravity="center"/>
         <EditText
+            android:id="@+id/editText_payment_name"
+            android:autofillHints="name"
+            android:inputType="text"
             android:layout_width="350sp"
             android:layout_height="50sp"
+            android:maxLines="1"
             android:background="@drawable/bg_edit_text"
-            android:hint="Nguyễn Văn A"
+            android:hint="@string/example_full_name"
             android:paddingStart="10sp"
+            android:paddingEnd="0sp"
             android:layout_marginTop="2sp"/>
     </LinearLayout>
     <LinearLayout
@@ -53,18 +57,24 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Số điện thoại"
+            android:text="@string/number_phone"
             android:textColor="#202020"
             android:fontFamily="@font/notop_sans_regular"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:gravity="center"/>
         <EditText
+            android:id="@+id/editText_payment_phone"
+            android:inputType="number"
+            android:autofillHints="phone"
             android:layout_width="350sp"
             android:layout_height="50sp"
+            android:maxLines="1"
             android:background="@drawable/bg_edit_text"
-            android:hint="0984 349 xxx"
+            android:hint="@string/hint_phone"
             android:paddingStart="10sp"
-            android:layout_marginTop="2sp"/>
+            android:paddingEnd="0sp"
+            android:layout_marginTop="2sp"
+            tools:ignore="TextFields" />
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="10sp"
@@ -75,17 +85,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Địa chỉ"
+            android:text="@string/address"
             android:textColor="#202020"
             android:fontFamily="@font/notop_sans_regular"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:gravity="center"/>
         <EditText
+            android:id="@+id/editText_payment_address"
+            android:autofillHints="postalAddress"
+            android:inputType="text"
             android:layout_width="350sp"
             android:layout_height="50sp"
+            android:maxLines="1"
             android:background="@drawable/bg_edit_text"
-            android:hint="Số 01 Võ Văn Ngân, Phường Linh Chiểu,..."
+            android:hint="@string/example_address"
             android:paddingStart="10sp"
+            android:paddingEnd="0sp"
             android:layout_marginTop="2sp"/>
     </LinearLayout>
     <Button
@@ -95,6 +110,6 @@
         android:layout_gravity="center"
         android:background="@drawable/bg_box_rounded_red"
         android:textColor="@color/white"
-        android:text="Thanh toán"
+        android:text="@string/payment"
         android:layout_height="wrap_content"/>
 </LinearLayout>

@@ -9,19 +9,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="5sp">
+        android:layout_marginBottom="11sp"
+        android:layout_marginTop="5sp"
+        tools:ignore="UseCompoundDrawables">
         <ImageView
             android:id="@+id/btnBack"
+            android:contentDescription="@string/back"
             android:layout_width="50dp"
             android:layout_height="40dp"
             android:src="@drawable/back_icon"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Loại món"
+            android:text="@string/food_type"
             android:textStyle="bold"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textColor="#FF4646"
             android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
@@ -30,6 +32,7 @@
 
     <ImageView
         android:id="@+id/image"
+        android:contentDescription="@string/content_description_image"
         android:layout_width="wrap_content"
         android:layout_height="237dp"
         android:src="@drawable/slider_1"/>
@@ -37,20 +40,22 @@
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bánh mì kẹp thịt"
+        android:text="@string/meat_banh_mi"
         android:textStyle="bold"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textColor="#FF4646"
         android:gravity="center_vertical"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginStart="11sp"
+        android:layout_marginEnd="0dp"/>
     <LinearLayout
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <LinearLayout
-            android:layout_marginLeft="10dp"
+            android:id="@+id/layout_size_S"
+            android:layout_marginStart="11sp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/size_box_red"
@@ -62,30 +67,30 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:text="S"
+                android:text="@string/size_s"
                 android:textColor="@color/white"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="0dp"
-                android:text="Small size"
+                android:text="@string/size_s_describe"
                 android:textColor="@color/white"
-                android:textSize="10dp"/>
+                android:textSize="11sp"/>
             <LinearLayout
                 android:layout_marginTop="3dp"
                 android:layout_gravity="center"
                 android:layout_width="70dp"
-                android:layout_height="30dp"
+                android:layout_height="30sp"
                 android:background="@drawable/size_box_price"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10dp"
-                    android:text="13.000 VNĐ"
+                    android:textSize="11sp"
+                    android:text="@string/money_text"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:layout_marginTop="8dp"
@@ -93,7 +98,8 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
-            android:layout_marginLeft="35dp"
+            android:id="@+id/layout_size_M"
+            android:layout_marginStart="35dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/size_box_red"
@@ -105,30 +111,30 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:text="M"
+                android:text="@string/size_m"
                 android:textColor="@color/white"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="0dp"
-                android:text="Medium size"
+                android:text="@string/size_m_describe"
                 android:textColor="@color/white"
-                android:textSize="10dp"/>
+                android:textSize="11sp"/>
             <LinearLayout
                 android:layout_marginTop="3dp"
                 android:layout_gravity="center"
                 android:layout_width="70dp"
-                android:layout_height="30dp"
+                android:layout_height="30sp"
                 android:background="@drawable/size_box_price"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10dp"
-                    android:text="13.000 VNĐ"
+                    android:textSize="11sp"
+                    android:text="@string/money_text"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:layout_marginTop="8dp"
@@ -136,7 +142,8 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
-            android:layout_marginLeft="35dp"
+            android:id="@+id/layout_size_L"
+            android:layout_marginStart="35dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/size_box_red"
@@ -148,30 +155,30 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:text="L"
+                android:text="@string/size_l"
                 android:textColor="@color/white"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="0dp"
-                android:text="Large size"
+                android:text="@string/size_l_describe"
                 android:textColor="@color/white"
-                android:textSize="10dp"/>
+                android:textSize="11sp"/>
             <LinearLayout
                 android:layout_marginTop="3dp"
                 android:layout_gravity="center"
                 android:layout_width="70dp"
-                android:layout_height="30dp"
+                android:layout_height="30sp"
                 android:background="@drawable/size_box_price"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10dp"
-                    android:text="13.000 VNĐ"
+                    android:textSize="11sp"
+                    android:text="@string/money_text"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:layout_marginTop="8dp"
@@ -182,27 +189,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="170sp"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="Mô tả"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="11sp"
+            android:text="@string/describe"
             android:textColor="@color/main_color"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="303dp"
             android:layout_height="91dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="2dp"
-            android:text="Pizza bao gồm nhiều chất dinh dưỡng chứa nhiều chất xơ và chất đạm thơm ngon mời bạn ăn nha"
+            android:text="@string/example_food_describe"
             android:textColor="@color/main_color"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -217,30 +223,31 @@
                 android:id="@+id/tvPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:text="13.000 VNĐ"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="11sp"
+                android:text="@string/money_text"
                 android:textColor="@color/white"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
-                android:text="Tổng cộng"
+                android:layout_marginStart="20dp"
+                android:text="@string/total"
                 android:textColor="@color/white"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
         </LinearLayout>
         <Button
+            android:id="@+id/btnAddToCart"
             android:layout_width="160dp"
             android:layout_height="60dp"
-            android:text="Thêm vào giỏ hàng"
-            android:textSize="13dp"
+            android:text="@string/add_to_cart"
+            android:textSize="13sp"
             android:textColor="@color/white"
             android:layout_gravity="center_vertical"
             android:background="@drawable/button_rounded_add_to_cart"
-            android:layout_marginLeft="28dp"/>
+            android:layout_marginStart="28dp"/>
 
     </LinearLayout>
 

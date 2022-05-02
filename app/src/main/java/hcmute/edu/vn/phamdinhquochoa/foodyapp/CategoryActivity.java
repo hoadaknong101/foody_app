@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.support.v7.app.AppCompatActivity;
 
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Food;
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.CategoryCard;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.FoodCard;
 
 public class CategoryActivity extends AppCompatActivity {

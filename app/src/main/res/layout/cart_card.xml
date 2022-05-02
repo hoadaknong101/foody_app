@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -12,20 +13,21 @@
         android:background="@drawable/bg_box_rounded_red"
         android:orientation="horizontal"
         android:weightSum="10"
-        android:elevation="10sp">
+        android:elevation="10sp"
+        tools:ignore="UselessParent">
         <ImageView
             android:id="@+id/imageCartFood"
+            android:contentDescription="@string/content_description_image"
             android:layout_width="0sp"
             android:layout_height="77sp"
             android:src="@drawable/slider_1"
             android:layout_weight="2"
-            android:layout_marginStart="10sp"
-            />
+            android:layout_marginStart="10sp" />
         <TextView
             android:id="@+id/tvFoodNameCart"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:text="Bánh mì trứng"
+            android:text="@string/egg_banh_mi"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_gravity="center_vertical"
@@ -35,13 +37,12 @@
             android:id="@+id/tvFoodPrice"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:text="13.000 VNĐ"
+            android:text="@string/money_text"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="25sp"
             android:layout_weight="3"/>
-
 
     </LinearLayout>
 

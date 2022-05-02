@@ -3,24 +3,24 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/home_icon"
-        android:title="Home" />
+        android:title="@string/home" />
 
     <item
         android:id="@+id/navigation_saved"
         android:icon="@drawable/saved_icon"
-        android:title="Đã lưu" />
+        android:title="@string/saved_lower" />
 
     <item
         android:id="@+id/navigation_chat"
         android:icon="@drawable/cart_icon"
-        android:title="Giỏ hàng" />
+        android:title="@string/cart" />
 
     <item
         android:id="@+id/navigation_notify"
         android:icon="@drawable/notify_icon"
-        android:title="Thông báo" />
+        android:title="@string/notify_lower" />
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/person_icon"
-        android:title="Thông tin" />
+        android:title="@string/information" />
 </menu>

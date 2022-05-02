@@ -8,8 +8,8 @@
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:layout_width="951px"
-        android:layout_height="230px"
+        android:layout_width="360sp"
+        android:layout_height="87sp"
         android:layout_gravity="center"
         android:orientation="vertical"
         android:layout_marginTop="10dp"
@@ -18,12 +18,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="115px"
+            android:layout_height="47sp"
             android:background="@color/main_color">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="ĐÃ LƯU"
+                android:text="@string/saved"
                 android:textColor="@color/white"
                 android:fontFamily="@font/notop_sans_regular"
                 android:layout_gravity="center"
@@ -31,32 +31,32 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="115px"
+            android:layout_height="40sp"
             android:orientation="horizontal">
             <LinearLayout
-                android:layout_width="477px"
-                android:layout_height="115px"
+                android:layout_width="180sp"
+                android:layout_height="40sp"
                 android:layout_gravity="center"
                 android:orientation="vertical"
                 android:background="@color/main_color">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Món ăn"
+                    android:text="@string/food"
                     android:textColor="@color/white"
                     android:fontFamily="@font/notop_sans_regular"
                     android:layout_gravity="center"
                     android:gravity="center"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="477px"
-                android:layout_height="115px"
+                android:layout_width="180sp"
+                android:layout_height="40sp"
                 android:layout_gravity="center"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Quán ăn"
+                    android:text="@string/restaurants"
                     android:textColor="@color/black"
                     android:fontFamily="@font/notop_sans_regular"
                     android:layout_gravity="center"
@@ -65,8 +65,9 @@
         </LinearLayout>
     </LinearLayout>
     <FrameLayout
-        android:layout_width="951px"
-        android:layout_height="1500px"
+        android:id="@+id/layout_saved"
+        android:layout_width="360sp"
+        android:layout_height="540sp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
@@ -74,6 +75,7 @@
         android:elevation="6dp">
 
         <ImageView
+            android:contentDescription="@string/content_description_image"
             android:layout_width="231dp"
             android:layout_height="309dp"
             android:layout_gravity="center"

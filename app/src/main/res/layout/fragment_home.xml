@@ -64,16 +64,19 @@
             <ImageView
                 android:id="@+id/imageBanhMi"
                 android:contentDescription="@string/content_description_image"
+                android:scaleType="fitXY"
                 android:layout_width="180sp"
                 android:layout_height="128sp"
                 android:src="@drawable/slider_1"/>
             <ImageView
                 android:contentDescription="@string/content_description_image"
+                android:scaleType="fitXY"
                 android:layout_width="180sp"
                 android:layout_height="128sp"
                 android:src="@drawable/slider_2"/>
             <ImageView
                 android:contentDescription="@string/content_description_image"
+                android:scaleType="fitXY"
                 android:layout_width="180sp"
                 android:layout_height="128sp"
                 android:src="@drawable/slider_3"/>

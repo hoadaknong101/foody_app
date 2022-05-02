@@ -1,7 +1,5 @@
 package hcmute.edu.vn.phamdinhquochoa.foodyapp.beans;
 
-import android.graphics.Bitmap;
-
 import java.io.Serializable;
 import java.util.Arrays;
 

@@ -14,11 +14,14 @@
     <string name="dang_ky_uppercase">ĐĂNG KÝ</string>
     <string name="hint_username">Tên tài khoản</string>
     <string name="hint_password">Mật khẩu</string>
+    <string name="hint_phone">0984 349 xxx</string>
+    <string name="address">Địa chỉ</string>
     <string name="dang_nhap">Đăng nhập</string>
     <string name="dang_ky">Đăng ký</string>
     <string name="e_mail">E-mail</string>
     <string name="password_confirm_hint">Xác thực mật khẩu</string>
     <string name="search_hint">Tìm kiếm…</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -28,10 +31,50 @@
     <string name="water_food">Món nước</string>
     <string name="ice_cream">Kem</string>
     <string name="cake">Bánh ngọt</string>
+    <string name="meat_banh_mi">Bánh mì kẹp thịt</string>
+    <string name="egg_banh_mi">Bánh mì trứng</string>
+    <string name="money_text">13.000 VNĐ</string>
+    <string name="example_food_describe">Pizza bao gồm nhiều chất dinh dưỡng chứa nhiều chất xơ và chất đạm thơm ngon mời bạn ăn nha!</string>
+    <string name="example_full_name">Nguyễn Văn A</string>
+    <string name="example_address">Số 01 Võ Văn Ngân, Phường Linh Chiểu,…</string>
+    <string name="example_user_name">Võ Nhật Phi</string>
 
+    <string name="describe">Mô tả</string>
     <string name="check">ĐƠN HÀNG</string>
     <string name="check_coming">Đang đến</string>
     <string name="history">Lịch sử</string>
     <string name="cart">Giỏ hàng</string>
     <string name="notify">THÔNG BÁO</string>
+    <string name="account">TÀI KHOẢN</string>
+    <string name="news">Tin mới</string>
+    <string name="my">Của tôi</string>
+    <string name="back">Trở về</string>
+    <string name="size_s">S</string>
+    <string name="size_s_describe">Small size</string>
+    <string name="size_m">M</string>
+    <string name="size_m_describe">Medium size</string>
+    <string name="size_l">L</string>
+    <string name="size_l_describe">Large size</string>
+    <string name="add_to_cart">Thêm vào giỏ hàng</string>
+    <string name="total">Tổng cộng</string>
+    <string name="food_type">Loại món ăn</string>
+    <string name="food">Món ăn</string>
+    <string name="saved">ĐÃ LƯU</string>
+    <string name="restaurants">Quán ăn</string>
+    <string name="payment">THANH TOÁN</string>
+    <string name="payment_lower">Thanh toán</string>
+    <string name="full_name">Họ và tên</string>
+    <string name="number_phone">Số điện thoại</string>
+    <string name="bill_lower">Hóa đơn</string>
+    <string name="bonus_money">Tiền thưởng</string>
+    <string name="voucher">Ví voucher</string>
+    <string name="invite_friend">Mời bạn bè</string>
+    <string name="hint">Gợi ý</string>
+    <string name="policy_and_secure">Chính sách và bảo mật</string>
+    <string name="logout">Đăng xuất</string>
+
+    <string name="home">Trang chủ</string>
+    <string name="saved_lower">Đã lưu</string>
+    <string name="notify_lower">Thông báo</string>
+    <string name="information">Thông tin</string>
 </resources>

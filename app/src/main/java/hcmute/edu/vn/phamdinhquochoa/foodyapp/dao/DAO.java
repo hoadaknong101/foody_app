@@ -31,7 +31,7 @@ public class DAO {
                 order.getTotalValue() + ",'" +
                 order.getStatus() + "')";
         dbHelper.queryData(query);
-        System.out.println("Inserted ORDER " + order.toString());
+        System.out.println("Inserted ORDER " + order);
     }
 
     public void addOrderDetail(OrderDetail od) {
@@ -41,7 +41,7 @@ public class DAO {
                 od.getSize() + "," +
                 od.getPrice() + ")";
         dbHelper.queryData(query);
-        System.out.println("Inserted ORDER_DETAIL " + od.toString());
+        System.out.println("Inserted ORDER_DETAIL " + od);
     }
 
     public void deletaOrderDetailByOrderIdAndFoodId(Integer orderId, Integer foodId) {
@@ -57,7 +57,7 @@ public class DAO {
                 n.getContent() + "','" +
                 n.getDateMake() + "')";
         dbHelper.queryData(query);
-        System.out.println("INSERTED NOTIFY " + n.toString());
+        System.out.println("INSERTED NOTIFY " + n);
     }
 
     public void addNotifyToUser(Integer userId, Integer notifyId) {
@@ -77,7 +77,7 @@ public class DAO {
                 user.getUsername() + "','" +
                 user.getPassword() + "')";
         dbHelper.queryData(query);
-        System.out.println("INSERTED USER " + user.toString());
+        System.out.println("INSERTED USER " + user);
     }
 
     public void updateUser(User user){
@@ -105,7 +105,7 @@ public class DAO {
             user.setPhone(cursor.getString(4));
             user.setUsername(cursor.getString(5));
             user.setPassword(cursor.getString(6));
-            System.out.println("USER FOUND " + user.toString());
+            System.out.println("USER FOUND " + user);
             return user;
         }
         System.out.println("USER NOT FOUND");
@@ -126,7 +126,7 @@ public class DAO {
             user.setPhone(cursor.getString(4));
             user.setUsername(cursor.getString(5));
             user.setPassword(cursor.getString(6));
-            System.out.println("USER FOUND " + user.toString());
+            System.out.println("USER FOUND " + user);
             return user;
         }
         System.out.println("USER NOT FOUND!");
@@ -146,7 +146,7 @@ public class DAO {
             user.setPhone(cursor.getString(4));
             user.setUsername(cursor.getString(5));
             user.setPassword(cursor.getString(6));
-            System.out.println("USER FOUND " + user.toString());
+            System.out.println("USER FOUND " + user);
             return user;
         }
         System.out.println("USER NOT FOUND!");
@@ -166,10 +166,7 @@ public class DAO {
 
     public boolean signIn(User user){
         User existedUser = getUserByUsernameAndPassword(user.getUsername(), user.getPassword());
-        if(existedUser != null){
-            return true;
-        }
-        return false;
+        return existedUser != null;
     }
 
     public void addFood(Food food){
