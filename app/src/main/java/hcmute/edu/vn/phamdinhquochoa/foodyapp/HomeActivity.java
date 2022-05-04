@@ -41,36 +41,32 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment;
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    fragment = new HomeFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.navigation_saved:
-                    fragment = new SavedFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.navigation_chat:
-                    fragment = new ChatFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.navigation_notify:
-                    fragment = new NotifyFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.navigation_profile:
-                    fragment = new ProfileFragment();
-                    loadFragment(fragment);
-                    return true;
-            }
-            return false;
-        }
-    };
+            = item -> {
+                Fragment fragment;
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        fragment = new HomeFragment();
+                        loadFragment(fragment);
+                        return true;
+                    case R.id.navigation_saved:
+                        fragment = new SavedFragment();
+                        loadFragment(fragment);
+                        return true;
+                    case R.id.navigation_chat:
+                        fragment = new ChatFragment();
+                        loadFragment(fragment);
+                        return true;
+                    case R.id.navigation_notify:
+                        fragment = new NotifyFragment();
+                        loadFragment(fragment);
+                        return true;
+                    case R.id.navigation_profile:
+                        fragment = new ProfileFragment();
+                        loadFragment(fragment);
+                        return true;
+                }
+                return false;
+            };
 
     public void loadFragment(Fragment fragment) {
         // load fragment

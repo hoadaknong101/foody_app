@@ -17,6 +17,7 @@
         <ImageView
             android:id="@+id/imageFood"
             android:contentDescription="@string/content_description_image"
+            android:scaleType="fitXY"
             android:layout_width="161dp"
             android:layout_height="match_parent"
             android:src="@drawable/slider_1" />

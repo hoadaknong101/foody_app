@@ -23,13 +23,6 @@ public class Food implements Serializable {
         this.description = description;
     }
 
-    public Food(Integer id, String name, String type, String description) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-        this.description = description;
-    }
-
     public Integer getId() {
         return id;
     }

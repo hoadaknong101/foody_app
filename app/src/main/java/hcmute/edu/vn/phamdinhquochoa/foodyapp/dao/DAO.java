@@ -6,11 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Food;
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Notify;
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Order;
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.OrderDetail;
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.User;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.*;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.dbcontext.DatabaseHandler;
 
 public class DAO {
@@ -44,7 +40,7 @@ public class DAO {
         System.out.println("Inserted ORDER_DETAIL " + od);
     }
 
-    public void deletaOrderDetailByOrderIdAndFoodId(Integer orderId, Integer foodId) {
+    public void deleteOrderDetailByOrderIdAndFoodId(Integer orderId, Integer foodId) {
         String query = "DELETE FROM tblOrderDetail WHERE food_id=" +
                 foodId + " and order_id=" + orderId;
         dbHelper.queryData(query);
@@ -60,10 +56,10 @@ public class DAO {
         System.out.println("INSERTED NOTIFY " + n);
     }
 
-    public void addNotifyToUser(Integer userId, Integer notifyId) {
+    public void addNotifyToUser(NotifyToUser notifyToUser) {
         String query = "INSERT INTO tblNotifyToUser VALUES(" +
-                userId + "," +
-                notifyId + ")";
+                notifyToUser.getNotifyId() + "," +
+                notifyToUser.getUserId() + ")";
         dbHelper.queryData(query);
         System.out.println("NOTIFIED TO USER");
     }
@@ -108,8 +104,16 @@ public class DAO {
             System.out.println("USER FOUND " + user);
             return user;
         }
+
         System.out.println("USER NOT FOUND");
         return null;
+    }
+
+    public boolean UserExited(String username) {
+        User user = new User();
+        String query = "SELECT * FROM tblUser WHERE username='" + username + "'";
+        Cursor cursor = dbHelper.getData(query);
+        return cursor != null;
     }
 
     public User getUserByUsername(String username){
@@ -146,9 +150,10 @@ public class DAO {
             user.setPhone(cursor.getString(4));
             user.setUsername(cursor.getString(5));
             user.setPassword(cursor.getString(6));
-            System.out.println("USER FOUND " + user);
+//            System.out.println("USER FOUND " + user);
             return user;
         }
+
         System.out.println("USER NOT FOUND!");
         return null;
     }
