@@ -10,17 +10,17 @@ public class Food implements Serializable {
     private String type;
     private byte[] image;
     private String description;
+    private Integer restaurantId;
 
-    public Food(){
+    public Food() {}
 
-    }
-
-    public Food(Integer id, String name, String type, byte[] image, String description) {
+    public Food(Integer id, String name, String type, byte[] image, String description, Integer restaurantId) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.image = image;
         this.description = description;
+        this.restaurantId = restaurantId;
     }
 
     public Integer getId() {
@@ -72,5 +72,13 @@ public class Food implements Serializable {
                 ", image=" + Arrays.toString(image) +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    public Integer getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(Integer restaurantId) {
+        this.restaurantId = restaurantId;
     }
 }

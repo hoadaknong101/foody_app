@@ -20,7 +20,6 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private EditText txtUsername, txtPassword;
     private Button btnLogin, btnSignup;
-    private Intent intent;
     private DAO dao;
 
     @Override
@@ -60,8 +59,10 @@ public class LoginActivity extends AppCompatActivity {
                 editor.apply();
 
                 Integer userId = sharedPreferences.getInt("UserID", DEFAULT_USER_ID);
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                User user = userExist;
+                intent.putExtra("user", user);
+                startActivity(intent);
             } else{
                 Toast.makeText(this, "Sai thông tin đăng nhập", Toast.LENGTH_SHORT).show();
             }
@@ -69,17 +70,17 @@ public class LoginActivity extends AppCompatActivity {
 
         btnSignup = findViewById(R.id.button_signup_login);
         btnSignup.setOnClickListener(view -> {
-            intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivityForResult(intent, 123);
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivityForResult(intent, 0);
         });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == resultCode && data!= null) {
-            txtUsername.setText(intent.getStringExtra("username"));
-            txtPassword.setText(intent.getStringExtra("password"));
+        if(data != null) {
+            txtUsername.setText(data.getStringExtra("username"));
+            txtPassword.setText(data.getStringExtra("password"));
         }
     }
 }

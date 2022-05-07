@@ -40,6 +40,10 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(this, "Vui lòng điền đủ thông tin!", Toast.LENGTH_SHORT).show();
                 return;
             }
+            if(!confirm.equals(password)){
+                Toast.makeText(this, "Mật khẩu xác nhận không hợp lệ!", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             if(dao.UserExited(username)){
                 Toast.makeText(this, "Người dùng đã tồn tại!", Toast.LENGTH_SHORT).show();
@@ -49,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("username", username);
                 intent.putExtra("password", password);
-                setResult(123, intent);
+                setResult(0, intent);
                 finish();
             }
         });

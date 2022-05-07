@@ -2,10 +2,16 @@ package hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.HomeActivity;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.MainActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
 
 /**
@@ -23,6 +29,11 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private View mainView;
+    // Components
+    private LinearLayout payment, history, check, hint, policy, logout;
+    private TextView txtUser_name;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -58,7 +69,27 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        mainView = inflater.inflate(R.layout.fragment_profile, container, false);
+        referenceComponent();
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return mainView;
+    }
+
+    private void referenceComponent(){
+        payment = mainView.findViewById(R.id.account_btn_layout_payment);
+        history = mainView.findViewById(R.id.account_btn_layout_history);
+        check = mainView.findViewById(R.id.account_btn_layout_check);
+        hint = mainView.findViewById(R.id.account_btn_layout_hint);
+        policy = mainView.findViewById(R.id.account_btn_layout_policy);
+        logout = mainView.findViewById(R.id.account_btn_layout_logout);
+        logout.setOnClickListener(view -> {
+            Toast.makeText(this.getActivity(),
+                    "Đã đăng xuất khỏi hệ thống!",
+                    Toast.LENGTH_SHORT).show();
+            getActivity().finish();
+        });
+
+        txtUser_name = mainView.findViewById(R.id.account_user_name);
+        txtUser_name.setText(HomeActivity.user.getName());
     }
 }
