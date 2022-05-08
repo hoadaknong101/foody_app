@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.CategoryActivity;
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.FoodDetailsActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.HomeActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
 
@@ -20,9 +19,9 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-
-
-
+    private Intent intent;
+    View mainView;
+    
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,8 +30,6 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private View view;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -69,36 +66,62 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_home, container, false);
+        if(mainView == null){
+            mainView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        LinearLayout linearLayout = view.findViewById(R.id.layoutHamburger);
-        linearLayout.setOnClickListener(view -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
+            LinearLayout layoutHamburger = mainView.findViewById(R.id.layoutHamburger);
+            layoutHamburger.setOnClickListener(view -> {
+                intent = new Intent(getActivity(), CategoryActivity.class);
+                intent.putExtra("typeFood", "Bánh mì");
+                startActivity(intent);
+            });
 
-        LinearLayout linearLayout1 = view.findViewById(R.id.layoutCake);
-        linearLayout1.setOnClickListener(view -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
+            LinearLayout layoutCake = mainView.findViewById(R.id.layoutCake);
+            layoutCake.setOnClickListener(view -> {
+                intent = new Intent(getActivity(), CategoryActivity.class);
+                intent.putExtra("typeFood", "Bánh ngọt");
+                startActivity(intent);
+            });
 
-        LinearLayout linearLayout2 = view.findViewById(R.id.layoutRice);
-        linearLayout2.setOnClickListener(view -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
+            LinearLayout layoutRice = mainView.findViewById(R.id.layoutRice);
+            layoutRice.setOnClickListener(view -> {
+                intent = new Intent(getActivity(), CategoryActivity.class);
+                intent.putExtra("typeFood", "Cơm sườn");
+                startActivity(intent);
+            });
 
-        LinearLayout linearLayout3 = view.findViewById(R.id.layoutMilkTea);
-        linearLayout3.setOnClickListener(view -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
+            LinearLayout layoutMilkTea = mainView.findViewById(R.id.layoutMilkTea);
+            layoutMilkTea.setOnClickListener(view -> {
+                intent = new Intent(getActivity(), CategoryActivity.class);
+                intent.putExtra("typeFood", "Trà sữa");
+                startActivity(intent);
+            });
 
-        LinearLayout linearLayout4 = view.findViewById(R.id.layoutIceCream);
-        linearLayout4.setOnClickListener(view -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
+            LinearLayout layoutIceCream = mainView.findViewById(R.id.layoutIceCream);
+            layoutIceCream.setOnClickListener(view -> {
+                intent = new Intent(getActivity(), CategoryActivity.class);
+                intent.putExtra("typeFood", "Kem");
+                startActivity(intent);
+            });
 
-        LinearLayout linearLayout5 = view.findViewById(R.id.layoutWaterFood);
-        linearLayout5.setOnClickListener(view -> startActivity(new Intent(getActivity(), CategoryActivity.class)));
+            LinearLayout layoutWaterFood = mainView.findViewById(R.id.layoutWaterFood);
+            layoutWaterFood.setOnClickListener(view -> {
+                intent = new Intent(getActivity(), CategoryActivity.class);
+                intent.putExtra("typeFood", "Món nước");
+                startActivity(intent);
+            });
 
-        ImageView imageBanhMi = view.findViewById(R.id.imageBanhMi);
-        imageBanhMi.setOnClickListener(view -> startActivity(new Intent(getActivity(), FoodDetailsActivity.class)));
+            ImageView imageCart = mainView.findViewById(R.id.imageCart);
+            imageCart.setOnClickListener(view1 -> {
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                intent.putExtra("request", "cart");
+                startActivity(intent);
+            });
+        }
 
-        ImageView imageCart = view.findViewById(R.id.imageCart);
-        imageCart.setOnClickListener(view1 -> {
-            Intent intent = new Intent(getActivity(),HomeActivity.class);
-            intent.putExtra("isCartClick",true);
-            startActivity(intent);
-        });
+//        ImageView imageBanhMi = mainView.findViewById(R.id.imageBanhMi);
+//        imageBanhMi.setOnClickListener(view -> startActivity(new Intent(getActivity(), FoodDetailsActivity.class)));
 
-        return view;
+        return mainView;
     }
 }

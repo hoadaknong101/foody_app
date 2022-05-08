@@ -17,6 +17,7 @@
         <ImageView
             android:id="@+id/imageFood"
             android:contentDescription="@string/content_description_image"
+            android:padding="5sp"
             android:scaleType="fitXY"
             android:layout_width="161dp"
             android:layout_height="match_parent"
@@ -46,6 +47,16 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvFoodRestaurantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:text="@string/address"
+                android:textColor="@color/white"
+                android:textSize="11sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

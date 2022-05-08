@@ -18,31 +18,56 @@
         <ImageView
             android:id="@+id/imageCartFood"
             android:contentDescription="@string/content_description_image"
+            android:scaleType="fitXY"
+            android:paddingTop="10sp"
+            android:paddingBottom="10sp"
             android:layout_width="0sp"
             android:layout_height="77sp"
             android:src="@drawable/slider_1"
             android:layout_weight="2"
             android:layout_marginStart="10sp" />
-        <TextView
-            android:id="@+id/tvFoodNameCart"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:text="@string/egg_banh_mi"
-            android:textStyle="bold"
-            android:textColor="@color/white"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="15sp"
-            android:layout_weight="4"/>
-        <TextView
-            android:id="@+id/tvFoodPrice"
+            android:layout_weight="6">
+            <TextView
+                android:id="@+id/tvFoodNameCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/egg_banh_mi"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15sp" />
+            <TextView
+                android:id="@+id/tvFoodPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/money_text"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="25sp" />
+            <TextView
+                android:id="@+id/tvFoodRestaurantAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                android:textColor="@color/white"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15sp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnDeleteCartItem"
             android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:text="@string/money_text"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="25sp"
-            android:layout_weight="3"/>
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_box_rounded_red"
+            android:scaleType="fitXY"
+            android:layout_weight="2"
+            android:src="@drawable/delete"/>
 
     </LinearLayout>
 

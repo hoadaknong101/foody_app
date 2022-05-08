@@ -8,8 +8,13 @@ import android.widget.LinearLayout;
 
 import android.support.v7.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Food;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.FoodSize;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Restaurant;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.FoodCard;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.dao.DAO;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -18,13 +23,6 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        // Add category cart to layout container
-//        LinearLayout categoryCartContainer = (LinearLayout) findViewById(R.id.categoryCartContainer);
-//        categoryCartContainer.addView(new CategoryCard(this, new Category(1,"Món nước","Hình ảnh","Mô tả")));
-//        categoryCartContainer.addView(new CategoryCard(this, new Category(2,"Humberger","Hình ảnh","Mô tả")));
-//        categoryCartContainer.addView(new CategoryCard(this, new Category(3,"Pizza","Hình ảnh","Mô tả")));
-//        categoryCartContainer.addView(new CategoryCard(this, new Category(4,"Món gỏi","Hình ảnh","Mô tả")));
-//        categoryCartContainer.addView(new CategoryCard(this, new Category(5,"Mì cay","Hình ảnh","Mô tả")));
 
         ImageView image = findViewById(R.id.imageCartC);
         image.setOnClickListener(view -> {
@@ -36,55 +34,41 @@ public class CategoryActivity extends AppCompatActivity {
 
         // Add food cart to layout container
         LinearLayout foodCartContainer = (LinearLayout) findViewById(R.id.foodCartContainer);
-        String description = "Thức ăn bổ dưỡng tốt cho sức khỏe, " +
-                "chứa nhiều chất đạm, chất xơ," +
-                " tốt cho cơ thể.";
+        Intent intent_get_data = getIntent();
+        DAO dao = new DAO(this);
+        ArrayList<Food> foodArrayList = dao.getFoodByType(intent_get_data.getStringExtra("typeFood"));
 
-        Food f1 = new Food();
-        FoodCard fc1 = new FoodCard(this,f1);
-        fc1.setOnClickListener(view -> {
-            Intent intent = new Intent(CategoryActivity.this,FoodDetailsActivity.class);
-            intent.putExtra("food",f1);
-            startActivity(intent);
-        });
-        foodCartContainer.addView(fc1);
+        for(Food food : foodArrayList){
+            Restaurant restaurant = dao.getRestaurantInformation(food.getRestaurantId());
+            Double defaultPrice = dao.getFoodDefaultPrice(food.getId());
+            FoodCard foodCard = new FoodCard(this, food, defaultPrice);
+            foodCard.setOnClickListener(view -> {
+                Intent intent = new Intent(this, FoodDetailsActivity.class);
+                ArrayList<FoodSize> foodSizeArrayList = dao.getAllFoodSize(food.getId());
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("food", food);
+                bundle.putSerializable("restaurant", restaurant);
+                bundle.putSerializable("foodSizeS", foodSizeArrayList.get(0));
 
-        Food f2 = new Food();
-        FoodCard fc2 = new FoodCard(this,f2);
-        fc2.setOnClickListener(view -> {
-            Intent intent = new Intent(CategoryActivity.this,FoodDetailsActivity.class);
-            intent.putExtra("food",f2);
-            startActivity(intent);
-        });
-        foodCartContainer.addView(fc2);
+                if(foodSizeArrayList.size() < 3){
+                    bundle.putSerializable("foodSizeM", foodSizeArrayList.get(1));
+                }
+                if(foodSizeArrayList.size() == 3) {
+                    bundle.putSerializable("foodSizeM", foodSizeArrayList.get(1));
+                    bundle.putSerializable("foodSizeL", foodSizeArrayList.get(2));
+                }
 
+                bundle.putDouble("defaultPrice", defaultPrice);
 
-        Food f3 = new Food();
-        FoodCard fc3 = new FoodCard(this,f3);
-        fc3.setOnClickListener(view -> {
-            Intent intent = new Intent(CategoryActivity.this,FoodDetailsActivity.class);
-            intent.putExtra("food",f3);
-            startActivity(intent);
-        });
-        foodCartContainer.addView(fc3);
+                intent.putExtra("foodDetail", bundle);
+                try {
+                    startActivity(intent);
+                } catch (Exception e){
 
-        Food f4 = new Food();
-        FoodCard fc4 = new FoodCard(this,f4);
-        fc4.setOnClickListener(view -> {
-            Intent intent = new Intent(CategoryActivity.this,FoodDetailsActivity.class);
-            intent.putExtra("food",f4);
-            startActivity(intent);
-        });
-        foodCartContainer.addView(fc4);
+                }
+            });
+            foodCartContainer.addView(foodCard);
+        }
 
-
-        Food f5 = new Food();
-        FoodCard fc5 = new FoodCard(this,f5);
-        fc5.setOnClickListener(view -> {
-            Intent intent = new Intent(CategoryActivity.this,FoodDetailsActivity.class);
-            intent.putExtra("food",f5);
-            startActivity(intent);
-        });
-        foodCartContainer.addView(fc5);
     }
 }

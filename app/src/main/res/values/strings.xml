@@ -21,6 +21,8 @@
     <string name="e_mail">E-mail</string>
     <string name="password_confirm_hint">Xác thực mật khẩu</string>
     <string name="search_hint">Tìm kiếm…</string>
+    <string name="change">THAY ĐỔI</string>
+    <string name="cancel">HỦY</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -40,6 +42,17 @@
     <string name="example_user_name">Võ Nhật Phi</string>
 
     <string name="describe">Mô tả</string>
+    <string name="your_information">THÔNG TIN CÁ NHÂN</string>
+    <string name="gender">Giới tính</string>
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="date_of_birth">Ngày sinh</string>
+    <string name="DoB_hint">Nhấn để chọn ngày</string>
+    <string name="restaurant_information">Thông tin cửa hàng</string>
     <string name="check">ĐƠN HÀNG</string>
     <string name="check_coming">Đang đến</string>
     <string name="history">Lịch sử</string>

@@ -8,16 +8,18 @@ import android.widget.TextView;
 
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Food;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.dbcontext.DatabaseHandler;
 
 public class FoodCard extends LinearLayout {
 
     private ImageView image;
-    private TextView tvName, tvPrice;
     private Food food;
+    private Double defaultPrice;
 
-    public FoodCard(Context context, Food food){
+    public FoodCard(Context context, Food food, Double defaultPrice){
         super(context);
         this.food = food;
+        this.defaultPrice = defaultPrice;
         initControl(context);
     }
 
@@ -31,16 +33,12 @@ public class FoodCard extends LinearLayout {
         inflater.inflate(R.layout.food_card, this);
 
         image = findViewById(R.id.imageFood);
-        tvName = findViewById(R.id.tvNameFood);
-        tvPrice = findViewById(R.id.tvPriceFood);
+        TextView tvName = findViewById(R.id.tvNameFood);
+        TextView tvPrice = findViewById(R.id.tvPriceFood);
 
-        // Set image for food cart
-
-        // Set name for food cart
+        // Set information for food cart
+        image.setImageBitmap(DatabaseHandler.convertByteArrayToBitmap(food.getImage()));
         tvName.setText(food.getName());
-
-        // Set price for food cart
-//        tvPrice.setText(food.getPrice() + " VNĐ");
-
+        tvPrice.setText(String.format("%s VNĐ", Math.round(defaultPrice)));
     }
 }

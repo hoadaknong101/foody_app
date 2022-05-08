@@ -16,10 +16,9 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.dao.DAO;
 public class LoginActivity extends AppCompatActivity {
 
     public static final String PREFERENCES = "store_info" ;
-    public static final Integer DEFAULT_USER_ID = 1;
+//    public static final Integer DEFAULT_USER_ID = 1;
     private SharedPreferences sharedPreferences;
     private EditText txtUsername, txtPassword;
-    private Button btnLogin, btnSignup;
     private DAO dao;
 
     @Override
@@ -29,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
 
         referenceComponent();
         sharedPreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+        txtUsername.setText(sharedPreferences.getString("username", ""));
+        txtPassword.setText(sharedPreferences.getString("password", ""));
         dao = new DAO(this);
     }
 
@@ -36,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.editText_password_login);
         txtUsername = findViewById(R.id.editText_username_login);
 
-        btnLogin = findViewById(R.id.button_login_login);
+        Button btnLogin = findViewById(R.id.button_login_login);
         btnLogin.setOnClickListener(view -> {
             String username = txtUsername.getText().toString().trim();
             String password = txtPassword.getText().toString().trim();
@@ -55,20 +56,20 @@ public class LoginActivity extends AppCompatActivity {
             }
             if(isRightAuthentication){
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt("UserID", userExist.getId());
+                editor.putString("username", userExist.getUsername());
+                editor.putString("password", userExist.getPassword());
                 editor.apply();
 
-                Integer userId = sharedPreferences.getInt("UserID", DEFAULT_USER_ID);
+//                Integer userId = sharedPreferences.getInt("UserID", DEFAULT_USER_ID);
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                User user = userExist;
-                intent.putExtra("user", user);
+                HomeActivity.user = userExist;
                 startActivity(intent);
             } else{
                 Toast.makeText(this, "Sai thông tin đăng nhập", Toast.LENGTH_SHORT).show();
             }
         });
 
-        btnSignup = findViewById(R.id.button_signup_login);
+        Button btnSignup = findViewById(R.id.button_signup_login);
         btnSignup.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivityForResult(intent, 0);

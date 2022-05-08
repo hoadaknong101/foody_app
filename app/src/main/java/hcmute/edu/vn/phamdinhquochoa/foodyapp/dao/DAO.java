@@ -3,9 +3,7 @@ package hcmute.edu.vn.phamdinhquochoa.foodyapp.dao;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
 
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.*;
@@ -16,16 +14,18 @@ public class DAO {
     DatabaseHandler dbHelper;
     SQLiteDatabase db ;
 
-//    private static DAO instance;
-//
-//    public static DAO getInstance() {
-//        return instance;
-//    }
-
     public DAO(Context context){
         dbHelper = new DatabaseHandler(context);
         db = dbHelper.getReadableDatabase();
     }
+
+    // region Restaurant
+    public Restaurant getRestaurantInformation(Integer restaurantId){
+        String query = "SELECT * FROM tblRestaurant WHERE id=" + restaurantId;
+        Cursor cursor = dbHelper.getDataRow(query);
+        return new Restaurant(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+    }
+    // endregion
 
     // region Order
     public void addOrder(Order order) {
@@ -37,6 +37,21 @@ public class DAO {
                 order.getStatus() + "')";
         dbHelper.queryData(query);
         System.out.println("Inserted ORDER " + order);
+    }
+
+    public ArrayList<Order> findAllOrderOfUser(Integer userId){
+        ArrayList<Order> orderList = new ArrayList<>();
+        String query = "SELECT * FROM tblOrder WHERE user_id=" + userId;
+        Cursor cursor = dbHelper.getData(query);
+        while (cursor.moveToNext()){
+            orderList.add(new Order(cursor.getInt(0),
+                    cursor.getInt(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getDouble(4),
+                    cursor.getString(5)));
+        }
+        return orderList;
     }
     // endregion
 
@@ -125,39 +140,8 @@ public class DAO {
     public boolean UserExited(String username) {
         String query = "SELECT * FROM tblUser WHERE username='" + username + "'";
         Cursor cursor = dbHelper.getData(query);
-        System.out.println(cursor);
         return cursor.moveToNext();
     }
-
-//    public User getUserByUsername(String username){
-//        User user = new User();
-//        String query = "SELECT * FROM tblUser WHERE username='" + username+"'";
-//        Cursor cursor = dbHelper.getData(query);
-//
-//        if(cursor != null){
-//            cursor.moveToFirst();
-//            user.setId(cursor.getInt(0));
-//            user.setName(cursor.getString(1));
-//            user.setGender(cursor.getString(2));
-//            user.setDateOfBirth(cursor.getString(3));
-//            user.setPhone(cursor.getString(4));
-//            user.setUsername(cursor.getString(5));
-//            user.setPassword(cursor.getString(6));
-//            System.out.println("USER FOUND " + user);
-//            return user;
-//        }
-//        System.out.println("USER NOT FOUND!");
-//        return null;
-//    }
-//    public boolean signUp(User user){
-//        User existedUser = getUserByUsername(user.getUsername());
-//        if(existedUser != null){
-//            addUser(user);
-//            return true;
-//        }
-//        System.out.println("USER EXISTED!");
-//        return false;
-//    }
 
     public User getUserByUsernameAndPassword(String username, String password) {
         User user = new User();
@@ -174,8 +158,6 @@ public class DAO {
             user.setPassword(cursor.getString(6));
             return user;
         }
-
-        System.out.println("USER NOT FOUND!");
         return null;
     }
 
@@ -192,6 +174,56 @@ public class DAO {
 
     public void addFoodSize(FoodSize foodSize){
 
+    }
+
+    public Double getFoodDefaultPrice(Integer foodId){
+        String sql = "SELECT * FROM tblFoodSize WHERE food_id=" + foodId;
+        Cursor cursor = dbHelper.getDataRow(sql);
+        if (cursor == null)
+            return 0d;
+        return cursor.getDouble(2); //FoodSize.getPrice();
+    }
+
+    public ArrayList<FoodSize> getAllFoodSize(Integer foodId){
+        ArrayList<FoodSize> foodSizeList = new ArrayList<>();
+        String sql = "SELECT * FROM tblFoodSize WHERE food_id=" + foodId;
+        Cursor cursor = dbHelper.getData(sql);
+        while (cursor.moveToNext()){
+            foodSizeList.add(new FoodSize(cursor.getInt(0), cursor.getInt(1), cursor.getDouble(2)));
+        }
+        return foodSizeList;
+    }
+
+    public ArrayList<Food> getFoodByKeyWord(String keyword){
+        ArrayList<Food> listFood = new ArrayList<>();
+        String query = "SELECT * FROM tblFood WHERE name LIKE '%" + keyword + "%'";
+        Cursor cursor = dbHelper.getData(query);
+        while(cursor.moveToNext()){
+            listFood.add(new Food(cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getBlob(3),
+                    cursor.getString(4),
+                    cursor.getInt(5))
+            );
+        }
+        return listFood;
+    }
+
+    public ArrayList<Food> getFoodByType(String type){
+        ArrayList<Food> listFood = new ArrayList<>();
+        String query = "SELECT * FROM tblFood WHERE type='" + type + "'";
+        Cursor cursor = dbHelper.getData(query);
+        while(cursor.moveToNext()){
+            listFood.add(new Food(cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getBlob(3),
+                    cursor.getString(4),
+                    cursor.getInt(5))
+            );
+        }
+        return listFood;
     }
 
     public ArrayList<Food> getAllFood(){

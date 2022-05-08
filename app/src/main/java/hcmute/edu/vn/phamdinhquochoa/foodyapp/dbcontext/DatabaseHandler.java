@@ -92,7 +92,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return stream.toByteArray();
     }
 
-    public Bitmap convertByteArrayToBitmap(byte[] image){
+    public static Bitmap convertByteArrayToBitmap(byte[] image){
         return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
 
@@ -167,7 +167,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // endregion
         // region Banh ngot
         foodList.add(new Food(1, "Bánh đậu xanh cốt dừa", "Bánh ngọt",
-                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.banh_dauxanh_cotdua, null)),
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.banhdauxanh_cotdua, null)),
                 "Cảm nhận sự ngọt ngào của những chiếc bánh ngon!", 4));
         foodList.add(new Food(1, "Bánh matcha", "Bánh ngọt",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.banh_matcha, null)),
@@ -192,8 +192,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 "Cảm nhận sự ngọt ngào của những chiếc bánh ngon!", 4));
         // endregion
         // region Com suon
-        foodList.add(new Food(1, "Cơm sườn bì", "Cơm sườn",
-                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_bi, null)),
+        foodList.add(new Food(1, "Cơm sườn trứng", "Cơm sườn",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_trung, null)),
                 "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 1));
         foodList.add(new Food(1, "Cơm sườn bì chả", "Cơm sườn",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_bi_cha, null)),
@@ -214,7 +214,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_ram, null)),
                 "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 3));
         foodList.add(new Food(1, "Cơm sườn xào chua ngọt", "Cơm sườn",
-                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_xaochuangot, null)),
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_chuangot, null)),
                 "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 1));
         // endregion
         // region Mon nuoc
@@ -222,7 +222,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.banhcanh, null)),
                 "Thức ăn mang hương vị truyền thống của những làng quê!", 1));
         foodList.add(new Food(1, "Bún mắm", "Món nước",
-                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.bun_mam, null)),
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.bunmam, null)),
                 "Vừa lạ vừa quen!", 1));
         foodList.add(new Food(1, "Bún thái", "Món nước",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.bun_thai, null)),
@@ -325,7 +325,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SampleData();
 
         // Add restaurant
-        for(Restaurant restaurant : restaurantList){
+        for (Restaurant restaurant : restaurantList) {
             String sql = "INSERT INTO tblRestaurant VALUES(null, ?, ?)";
             SQLiteStatement statement = db.compileStatement(sql);
             statement.clearBindings();
@@ -344,9 +344,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         for (Food food : foodList) {
             String sql = "INSERT INTO tblFood VALUES (null, ?, ?, ?, ?, ?)";
             SQLiteStatement statement = db.compileStatement(sql);
-            statement.clearBindings ();
-            statement.bindString (1, food.getName());
-            statement.bindString (2, food.getType());
+            statement.clearBindings();
+            statement.bindString(1, food.getName());
+            statement.bindString(2, food.getType());
             statement.bindBlob(3, food.getImage());
             statement.bindString(4, food.getDescription());
             statement.bindLong(5, food.getRestaurantId());
@@ -365,7 +365,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
         // Add food saved
-        for (FoodSaved foodSaved : foodSavedList){
+        for (FoodSaved foodSaved : foodSavedList) {
             String sql = "INSERT INTO tblFoodSaved VALUES(?, ?, ?)";
             SQLiteStatement statement = db.compileStatement(sql);
             statement.clearBindings();
@@ -402,11 +402,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
         // Add order detail
-        for (OrderDetail orderDetail: orderDetailList) {
+        for (OrderDetail orderDetail : orderDetailList) {
             db.execSQL("INSERT INTO tblOrderDetail VALUES(" + orderDetail.getOrderId() + ", " +
                     orderDetail.getFoodId() + ", " +
                     orderDetail.getSize() + ", " +
-                    orderDetail.getPrice()+ ")");
+                    orderDetail.getPrice() + ")");
+        }
+
+        Random random = new Random();
+        for (int i = 1; i <= 3; i++) {
+            db.execSQL("DELETE FROM tblFoodSize WHERE food_id=" + random.nextInt(45) + " AND size=3");
         }
     }
 

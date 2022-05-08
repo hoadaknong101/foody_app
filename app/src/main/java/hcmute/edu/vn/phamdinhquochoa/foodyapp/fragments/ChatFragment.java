@@ -26,7 +26,7 @@ public class ChatFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private View view;
+    private View mainView;
     private LinearLayout cartContainer, btnDangDen, btnLichSu, btnGioHang;
     private Button btnThanhToan;
     private TextView tvGioHang, tvDangDen, tvLichSu;
@@ -55,22 +55,28 @@ public class ChatFragment extends Fragment {
         }
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_chat, container, false);
-        cartContainer = view.findViewById(R.id.cartContainer);
-        btnGioHang = view.findViewById(R.id.btnGioHang);
-        btnDangDen = view.findViewById(R.id.btnDangDen);
-        btnLichSu = view.findViewById(R.id.btnLichSu);
-        tvGioHang = view.findViewById(R.id.tvGioHang);
-        tvDangDen = view.findViewById(R.id.tvDangDen);
-        tvLichSu = view.findViewById(R.id.tvLichSu);
-        btnThanhToan = view.findViewById(R.id.btnThanhToan);
+        mainView = inflater.inflate(R.layout.fragment_chat, container, false);
 
+        cartContainer = mainView.findViewById(R.id.cartContainer);
+
+        btnGioHang = mainView.findViewById(R.id.btnGioHang);
+
+
+        btnDangDen = mainView.findViewById(R.id.btnDangDen);
+
+
+        btnLichSu = mainView.findViewById(R.id.btnLichSu);
+
+
+        tvGioHang = mainView.findViewById(R.id.tvGioHang);
+        tvDangDen = mainView.findViewById(R.id.tvDangDen);
+        tvLichSu = mainView.findViewById(R.id.tvLichSu);
+
+        btnThanhToan = mainView.findViewById(R.id.btnThanhToan);
         btnThanhToan.setOnClickListener(view ->{
             startActivity(new Intent(getActivity(), PaymentActivity.class));
         });
@@ -105,14 +111,10 @@ public class ChatFragment extends Fragment {
             btnLichSu.setBackground(ContextCompat.getDrawable(getContext(),R.color.main_color));
             tvLichSu.setTextColor(Color.WHITE);
 
-            //Function here
-
-
-
         });
 
 
-        return view;
+        return mainView;
     }
 
     private void resetAttribute(){
