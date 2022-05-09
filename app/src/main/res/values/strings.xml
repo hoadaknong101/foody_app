@@ -40,6 +40,8 @@
     <string name="example_full_name">Nguyễn Văn A</string>
     <string name="example_address">Số 01 Võ Văn Ngân, Phường Linh Chiểu,…</string>
     <string name="example_user_name">Võ Nhật Phi</string>
+    <string name="example_date">9/5/2022</string>
+    <string name="example_size">Size S</string>
 
     <string name="describe">Mô tả</string>
     <string name="your_information">THÔNG TIN CÁ NHÂN</string>
@@ -59,7 +61,7 @@
     <string name="cart">Giỏ hàng</string>
     <string name="notify">THÔNG BÁO</string>
     <string name="account">TÀI KHOẢN</string>
-    <string name="news">Tin mới</string>
+    <string name="apps">Ứng dụng</string>
     <string name="my">Của tôi</string>
     <string name="back">Trở về</string>
     <string name="size_s">S</string>
@@ -68,6 +70,7 @@
     <string name="size_m_describe">Medium size</string>
     <string name="size_l">L</string>
     <string name="size_l_describe">Large size</string>
+    <string name="add_to_saved">Lưu thông tin</string>
     <string name="add_to_cart">Thêm vào giỏ hàng</string>
     <string name="total">Tổng cộng</string>
     <string name="food_type">Loại món ăn</string>
@@ -85,6 +88,8 @@
     <string name="hint">Gợi ý</string>
     <string name="policy_and_secure">Chính sách và bảo mật</string>
     <string name="logout">Đăng xuất</string>
+    <string name="title">Tiêu đề</string>
+    <string name="content">Nội dung</string>
 
     <string name="home">Trang chủ</string>
     <string name="saved_lower">Đã lưu</string>

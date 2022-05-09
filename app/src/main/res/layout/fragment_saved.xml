@@ -34,12 +34,14 @@
             android:layout_height="40sp"
             android:orientation="horizontal">
             <LinearLayout
+                android:id="@+id/btn_saved_food"
                 android:layout_width="180sp"
                 android:layout_height="40sp"
                 android:layout_gravity="center"
                 android:orientation="vertical"
                 android:background="@color/main_color">
                 <TextView
+                    android:id="@+id/tv_saved_food"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/food"
@@ -49,11 +51,13 @@
                     android:gravity="center"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/btn_saved_restaurant"
                 android:layout_width="180sp"
                 android:layout_height="40sp"
                 android:layout_gravity="center"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/tv_saved_restaurant"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/restaurants"
@@ -64,21 +68,20 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <FrameLayout
-        android:id="@+id/layout_saved"
+
+    <ScrollView
         android:layout_width="360sp"
         android:layout_height="540sp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:background="@drawable/bg_function"
+        android:background="@color/white"
         android:elevation="6dp">
-
-        <ImageView
-            android:contentDescription="@string/content_description_image"
-            android:layout_width="231dp"
-            android:layout_height="309dp"
-            android:layout_gravity="center"
-            android:src="@drawable/null_info" />
-    </FrameLayout>
+        <LinearLayout
+            android:id="@+id/layout_saved"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

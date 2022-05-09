@@ -1,5 +1,6 @@
 package hcmute.edu.vn.phamdinhquochoa.foodyapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -10,13 +11,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.User;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.dao.DAO;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments.*;
 
 public class HomeActivity extends AppCompatActivity {
 
     private static int clickToLogout;
+    private static boolean singleStatus;
+    public static DAO dao;
     public static User user;
     private Fragment homeFragment, savedFragment, chatFragment, notifyFragment, profileFragment;
+    private BottomNavigationView navigation;
 
     private void referenceFragment(){
         homeFragment = new HomeFragment();
@@ -30,84 +35,96 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        clickToLogout = 0;
+        dao = new DAO(this);
 
+        CategoryActivity.user = HomeActivity.user;
+        FoodDetailsActivity.user = HomeActivity.user;
+
+        singleStatus = true;
+        clickToLogout = 0;
         referenceFragment();
 
         Intent intent = getIntent();
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         String request = intent.getStringExtra("request");
         if(request != null) {
+            singleStatus = false;
             switch (request) {
                 case "payment":
                 case "history":
                 case "check":
                 case "cart":
-                    loadFragment(chatFragment);
-                    navigation.getMenu().getItem(2).setChecked(true);
+                    loadFragment(chatFragment, 2);
                     break;
                 case "hint":
-                    loadFragment(notifyFragment);
-                    navigation.getMenu().getItem(2).setChecked(true);
+                    loadFragment(notifyFragment, 3);
                     break;
                 default:
-                    loadFragment(homeFragment);
+                    loadFragment(homeFragment, 0);
                     break;
             }
         } else {
-            loadFragment(homeFragment);
+            loadFragment(homeFragment, 0);
         }
     }
 
     @Override
     public void onBackPressed() {
-        clickToLogout++;
+        if(singleStatus){
+            clickToLogout++;
 
-        if(clickToLogout > 1)
-            finish();
-        else {
-            Toast.makeText(this, "Click thêm lần nữa để đăng xuất!", Toast.LENGTH_SHORT).show();
+            if(clickToLogout > 1)
+                finish();
+            else {
+                Toast.makeText(this, "Click thêm lần nữa để đăng xuất!", Toast.LENGTH_SHORT).show();
+            }
+
+            new CountDownTimer(3000, 1000) {
+                @Override
+                public void onTick(long l) {
+
+                }
+
+                @Override
+                public void onFinish() {
+                    clickToLogout = 0;
+                }
+            }.start();
+        } else {
+            singleStatus = true;
+            super.onBackPressed();
         }
-
-        new CountDownTimer(3000, 1000) {
-            @Override
-            public void onTick(long l) {
-
-            }
-
-            @Override
-            public void onFinish() {
-                clickToLogout = 0;
-            }
-        }.start();
     }
 
+    @SuppressLint("NonConstantResourceId")
     private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        loadFragment(homeFragment);
+                        loadFragment(homeFragment, 0);
                         return true;
                     case R.id.navigation_saved:
-                        loadFragment(savedFragment);
+                        loadFragment(savedFragment, 1);
                         return true;
                     case R.id.navigation_chat:
-                        loadFragment(chatFragment);
+                        loadFragment(chatFragment, 2);
                         return true;
                     case R.id.navigation_notify:
-                        loadFragment(notifyFragment);
+                        loadFragment(notifyFragment, 3);
                         return true;
                     case R.id.navigation_profile:
-                        loadFragment(profileFragment);
+                        loadFragment(profileFragment, 4);
                         return true;
                 }
                 return false;
             };
 
-    private void loadFragment(Fragment fragment) {
+    private void loadFragment(Fragment fragment, int indexItem) {
+        navigation.getMenu().getItem(indexItem).setChecked(true);
+
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);

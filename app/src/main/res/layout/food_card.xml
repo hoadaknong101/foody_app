@@ -30,13 +30,23 @@
             android:layout_gravity="center_vertical">
 
             <TextView
+                android:id="@+id/tvSizeFood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/example_size"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <TextView
                 android:id="@+id/tvNameFood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textStyle="bold"
                 android:text="@string/meat_banh_mi"
                 android:textColor="@color/white"
-                android:textSize="11sp" />
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/tvPriceFood"
@@ -53,8 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:text="@string/address"
+                android:text="@string/app_name"
                 android:textColor="@color/white"
                 android:textSize="11sp" />
         </LinearLayout>

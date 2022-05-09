@@ -2,12 +2,14 @@ package hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.CategoryActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.HomeActivity;
@@ -20,16 +22,12 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
  */
 public class HomeFragment extends Fragment {
     private Intent intent;
-    View mainView;
+    private View mainView;
     
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -57,18 +55,20 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            // TODO: Rename and change types of parameters
+            String mParam1 = getArguments().getString(ARG_PARAM1);
+            String mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         if(mainView == null){
             mainView = inflater.inflate(R.layout.fragment_home, container, false);
 
+            // region layout TypeFood
             LinearLayout layoutHamburger = mainView.findViewById(R.id.layoutHamburger);
             layoutHamburger.setOnClickListener(view -> {
                 intent = new Intent(getActivity(), CategoryActivity.class);
@@ -110,6 +110,7 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("typeFood", "Món nước");
                 startActivity(intent);
             });
+            // endregion
 
             ImageView imageCart = mainView.findViewById(R.id.imageCart);
             imageCart.setOnClickListener(view1 -> {
@@ -117,10 +118,24 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("request", "cart");
                 startActivity(intent);
             });
-        }
 
-//        ImageView imageBanhMi = mainView.findViewById(R.id.imageBanhMi);
-//        imageBanhMi.setOnClickListener(view -> startActivity(new Intent(getActivity(), FoodDetailsActivity.class)));
+            SearchView searchBar = mainView.findViewById(R.id.search_bar);
+            searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    String textSearch = searchBar.getQuery().toString();
+                    intent = new Intent(getActivity(), CategoryActivity.class);
+                    intent.putExtra("nameFood", textSearch);
+                    startActivity(intent);
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    return false;
+                }
+            });
+        }
 
         return mainView;
     }

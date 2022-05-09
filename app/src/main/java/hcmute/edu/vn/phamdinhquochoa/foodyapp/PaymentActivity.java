@@ -52,5 +52,8 @@ public class PaymentActivity extends AppCompatActivity {
             Order order = new Order(1, HomeActivity.user.getId(), address, dateOfOrder,  0d, "Prepared");
             startActivity(new Intent(PaymentActivity.this, HomeActivity.class));
         });
+
+        Button btnCancel = findViewById(R.id.btnThanhToanTroLai);
+        btnCancel.setOnClickListener(view -> finish());
     }
 }

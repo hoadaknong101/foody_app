@@ -71,6 +71,7 @@
             android:maxLines="1"
             android:background="@drawable/bg_edit_text"
             android:hint="@string/hint_phone"
+            android:maxLength="10"
             android:paddingStart="10sp"
             android:paddingEnd="0sp"
             android:layout_marginTop="2sp"
@@ -111,5 +112,14 @@
         android:background="@drawable/bg_box_rounded_red"
         android:textColor="@color/white"
         android:text="@string/payment"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btnThanhToanTroLai"
+        android:layout_marginTop="17sp"
+        android:layout_width="350sp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_box_rounded_red"
+        android:textColor="@color/white"
+        android:text="@string/cancel"
         android:layout_height="wrap_content"/>
 </LinearLayout>

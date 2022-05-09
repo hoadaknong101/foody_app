@@ -33,26 +33,30 @@
             android:layout_height="40sp"
             android:orientation="horizontal">
             <LinearLayout
+                android:id="@+id/btn_notify_apps"
                 android:layout_width="180sp"
                 android:layout_height="40sp"
                 android:layout_gravity="center"
                 android:orientation="vertical"
                 android:background="@color/main_color">
                 <TextView
+                    android:id="@+id/tv_notify_apps"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/news"
+                    android:text="@string/apps"
                     android:textColor="@color/white"
                     android:fontFamily="@font/notop_sans_regular"
                     android:layout_gravity="center"
                     android:gravity="center"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/btn_notify_user"
                 android:layout_width="180sp"
                 android:layout_height="40sp"
                 android:layout_gravity="center"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/tv_notify_user"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/my"
@@ -63,22 +67,21 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <FrameLayout
-        android:id="@+id/layout_notify"
+
+    <ScrollView
         android:layout_width="360sp"
         android:layout_height="540sp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:orientation="vertical"
         android:background="@drawable/bg_function"
         android:elevation="6dp">
 
-        <ImageView
-            android:contentDescription="@string/content_description_image"
-            android:layout_width="231dp"
-            android:layout_height="309dp"
-            android:layout_gravity="center"
-            android:src="@drawable/null_info" />
-    </FrameLayout>
+        <LinearLayout
+            android:id="@+id/layout_notify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </LinearLayout>

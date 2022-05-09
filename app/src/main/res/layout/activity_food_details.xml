@@ -251,7 +251,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:background="@drawable/bottom_add_to_cart">
+        android:background="@color/main_color"
+        android:baselineAligned="false">
         <LinearLayout
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -276,18 +277,37 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"/>
         </LinearLayout>
-        <Button
+        <LinearLayout
             android:layout_weight="1"
-            android:id="@+id/btnAddToCart"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/add_to_cart"
-            android:layout_gravity="center_vertical"
-            android:textSize="13sp"
-            android:textColor="@color/white"
-            android:background="@drawable/button_rounded_add_to_cart"
-            android:layout_marginStart="28dp"/>
-
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btnSavedFood"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/add_to_saved"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_rounded_add_to_cart" />
+            <Button
+                android:id="@+id/btnAddToCart"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/add_to_cart"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_rounded_add_to_cart" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
