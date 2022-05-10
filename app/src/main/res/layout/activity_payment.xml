@@ -11,14 +11,16 @@
         android:layout_height="47sp"
         android:background="@color/main_color"
         android:layout_marginBottom="20sp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/payment"
-            android:textColor="@color/white"
-            android:fontFamily="@font/notop_sans_regular"
             android:layout_gravity="center"
-            android:gravity="center"/>
+            android:fontFamily="@font/notop_sans_regular"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/payment"
+            android:textColor="@color/white" />
 
     </LinearLayout>
     <LinearLayout
@@ -91,18 +93,20 @@
             android:fontFamily="@font/notop_sans_regular"
             android:layout_gravity="start"
             android:gravity="center"/>
+
         <EditText
             android:id="@+id/editText_payment_address"
-            android:autofillHints="postalAddress"
-            android:inputType="text"
             android:layout_width="350sp"
             android:layout_height="50sp"
-            android:maxLines="1"
+            android:layout_marginTop="2sp"
+            android:autofillHints="postalAddress"
             android:background="@drawable/bg_edit_text"
             android:hint="@string/example_address"
+            android:inputType="text"
+            android:maxLines="1"
             android:paddingStart="10sp"
             android:paddingEnd="0sp"
-            android:layout_marginTop="2sp"/>
+            android:textColorHint="#78909C" />
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="10sp"
@@ -130,22 +134,25 @@
             android:paddingEnd="0sp"
             android:layout_marginTop="2sp"/>
     </LinearLayout>
+
     <Button
         android:id="@+id/btnThanhToanThanhToan"
-        android:layout_marginTop="17sp"
         android:layout_width="350sp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="17sp"
         android:background="@drawable/bg_box_rounded_red"
-        android:textColor="@color/white"
         android:text="@string/payment"
-        android:layout_height="wrap_content"/>
+        android:textColor="@color/white"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
     <Button
         android:id="@+id/btnThanhToanTroLai"
-        android:layout_marginTop="17sp"
         android:layout_width="350sp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="17sp"
         android:background="@drawable/bg_box_rounded_red"
-        android:textColor="@color/white"
         android:text="@string/cancel"
-        android:layout_height="wrap_content"/>
+        android:textColor="@color/white" />
 </LinearLayout>

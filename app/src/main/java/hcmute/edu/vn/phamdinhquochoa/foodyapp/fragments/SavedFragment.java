@@ -123,8 +123,6 @@ public class SavedFragment extends Fragment {
                     saved_container.addView(new SavedCard(getContext(), food, restaurant.getAddress(), foodSize));
                 }
             }
-        } else {
-
         }
     }
 }

@@ -1,14 +1,12 @@
 package hcmute.edu.vn.phamdinhquochoa.foodyapp;
 
 import android.content.Intent;
-import android.database.Cursor;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.Calendar;
 
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Notify;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.NotifyToUser;
@@ -18,7 +16,6 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.dao.DAO;
 public class RegisterActivity extends AppCompatActivity {
     private EditText txtUsername, txtPassword, txtPasswordConfirm;
     private String username, password, confirm;
-    private Button btnSignup, btnLogin;
     public DAO dao;
 
     @Override
@@ -35,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.editText_password_signup);
         txtPasswordConfirm = findViewById(R.id.editText_password_signup_confirm);
 
-        btnSignup = findViewById(R.id.button_signup_signup);
+        Button btnSignup = findViewById(R.id.button_signup_signup);
         btnSignup.setOnClickListener(view -> {
             username = txtUsername.getText().toString().trim();
             password = txtPassword.getText().toString().trim();
@@ -71,9 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        btnLogin = findViewById(R.id.button_login_signup);
-        btnLogin.setOnClickListener(view -> {
-            finish();
-        });
+        Button btnLogin = findViewById(R.id.button_login_signup);
+        btnLogin.setOnClickListener(view -> finish());
     }
 }

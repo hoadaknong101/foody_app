@@ -132,47 +132,53 @@ public class ChatFragment extends Fragment {
         status = type;
         cartContainer.removeAllViews();
 
-        if(type.equals("craft")){
-            Cursor cursor = HomeActivity.dao.getCart(HomeActivity.user.getId());
-            if(!cursor.moveToFirst())
-                return;
-            cursor.moveToFirst();
-            ArrayList<OrderDetail> orderDetailArrayList = HomeActivity.dao.getCartDetailList(cursor.getInt(0));
-            if(orderDetailArrayList.size() > 0){
-                Food food;
-                Restaurant restaurant;
-                for(OrderDetail orderDetail : orderDetailArrayList){
-                    food = HomeActivity.dao.getFoodById(orderDetail.getFoodId());
-                    restaurant = HomeActivity.dao.getRestaurantInformation(food.getRestaurantId());
-                    CartCard card = new CartCard(getContext(), food, restaurant.getAddress(), orderDetail);
-                    cartContainer.addView(card);
+        switch (type) {
+            case "craft":
+                Cursor cursor = HomeActivity.dao.getCart(HomeActivity.user.getId());
+                if (!cursor.moveToFirst())
+                    return;
+                cursor.moveToFirst();
+                ArrayList<OrderDetail> orderDetailArrayList = HomeActivity.dao.getCartDetailList(cursor.getInt(0));
+                if (orderDetailArrayList.size() > 0) {
+                    Food food;
+                    Restaurant restaurant;
+                    for (OrderDetail orderDetail : orderDetailArrayList) {
+                        food = HomeActivity.dao.getFoodById(orderDetail.getFoodId());
+                        restaurant = HomeActivity.dao.getRestaurantInformation(food.getRestaurantId());
+                        CartCard card = new CartCard(getContext(), food, restaurant.getAddress(), orderDetail);
+                        cartContainer.addView(card);
+                    }
                 }
+                break;
+            case "coming": {
+                ArrayList<Order> orderArrayList = HomeActivity.dao.getOrderOfUser(HomeActivity.user.getId(), "Coming");
+                if (orderArrayList.size() > 0) {
+                    for (Order order : orderArrayList) {
+                        OrderCard card = new OrderCard(getContext(), order);
+                        card.setOnClickListener(view -> {
+                            Intent intent = new Intent(getContext(), ViewOrderActivity.class);
+                            intent.putExtra("order", order);
+                            startActivity(intent);
+                        });
+                        cartContainer.addView(card);
+                    }
+                }
+                break;
             }
-        } else if (type.equals("coming")) {
-            ArrayList<Order> orderArrayList = HomeActivity.dao.getOrderOfUser(HomeActivity.user.getId(), "Coming");
-            if(orderArrayList.size() > 0){
-                for(Order order : orderArrayList){
-                    OrderCard card = new OrderCard(getContext(), order);
-                    card.setOnClickListener(view -> {
-                        Intent intent = new Intent(getContext(), ViewOrderActivity.class);
-                        intent.putExtra("order", order);
-                        startActivity(intent);
-                    });
-                    cartContainer.addView(card);
+            case "history": {
+                ArrayList<Order> orderArrayList = HomeActivity.dao.getOrderOfUser(HomeActivity.user.getId(), "Delivered");
+                if (orderArrayList.size() > 0) {
+                    for (Order order : orderArrayList) {
+                        OrderCard card = new OrderCard(getContext(), order);
+                        card.setOnClickListener(view -> {
+                            Intent intent = new Intent(getContext(), ViewOrderActivity.class);
+                            intent.putExtra("order", order);
+                            startActivity(intent);
+                        });
+                        cartContainer.addView(card);
+                    }
                 }
-            }
-        } else {
-            ArrayList<Order> orderArrayList = HomeActivity.dao.getOrderOfUser(HomeActivity.user.getId(), "Delivered");
-            if(orderArrayList.size() > 0){
-                for(Order order : orderArrayList){
-                    OrderCard card = new OrderCard(getContext(), order);
-                    card.setOnClickListener(view -> {
-                        Intent intent = new Intent(getContext(), ViewOrderActivity.class);
-                        intent.putExtra("order", order);
-                        startActivity(intent);
-                    });
-                    cartContainer.addView(card);
-                }
+                break;
             }
         }
     }

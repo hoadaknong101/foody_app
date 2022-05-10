@@ -17,7 +17,7 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.HomeActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Notify;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.NotifyCard;
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.dao.DAO;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,8 +28,7 @@ public class NotifyFragment extends Fragment {
 
     private LinearLayout notifyContainer;
     private LinearLayout btnNotifyApps, btnNotifyUser;
-    private ArrayList<Notify> listNotify;
-    
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -104,6 +103,7 @@ public class NotifyFragment extends Fragment {
     
     private void LoadNotify(String type){
         notifyContainer.removeAllViews();
+        ArrayList<Notify> listNotify;
         if(type.equals("apps")){
             listNotify = HomeActivity.dao.getSystemNotify();
         } else {

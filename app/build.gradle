@@ -28,6 +28,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'hcmute.edu.vn.phamdinhquochoa.foodyapp'
 }
 
 dependencies {

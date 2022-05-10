@@ -2,7 +2,6 @@ package hcmute.edu.vn.phamdinhquochoa.foodyapp.components;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -11,7 +10,6 @@ import android.widget.Toast;
 
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.HomeActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.ViewOrderActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Notify;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.NotifyToUser;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Order;

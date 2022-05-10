@@ -50,18 +50,14 @@ public class DAO {
                 "', date_order='" + order.getDateOfOrder() +
                 "', total_value=" + order.getTotalValue() +
                 ", status='" + order.getStatus() +
-                "' WHERE id=" + order.getId();
-        dbHelper.queryData(query);
-    }
-
-    public void deleteOrder(Integer orderId){
-        String query = "DELETE FROM tblOrder WHERE id=" + orderId;
+                "' WHERE id=" + order.getId() +
+                " AND user_id=" + order.getUserId();
         dbHelper.queryData(query);
     }
 
     public ArrayList<Order> getOrderOfUser(Integer userId, String status){
         ArrayList<Order> orderList = new ArrayList<>();
-        String query = "SELECT * FROM tblOrder WHERE user_id=" + userId + " AND status='" + status + "'";
+        String query = "SELECT * FROM (SELECT * FROM tblOrder WHERE user_id=" + userId + ") WHERE status='" + status + "'";
         if(status.equals("Delivered")){
             query += " OR status='Canceled'";
         }
@@ -95,23 +91,12 @@ public class DAO {
     }
 
     public Cursor getCart(Integer userId){
-        Cursor cursor = dbHelper.getDataRow("SELECT id FROM tblOrder WHERE status='Craft' AND user_id=" + userId);
-        return cursor;
+        return dbHelper.getDataRow("SELECT id FROM tblOrder WHERE status='Craft' AND user_id=" + userId);
     }
 
     public ArrayList<OrderDetail> getCartDetailList(Integer orderId){
         ArrayList<OrderDetail> orderDetailArrayList = new ArrayList<>();
         String query = "SELECT * FROM tblOrderDetail WHERE order_id=" + orderId;
-        Cursor cursor = dbHelper.getData(query);
-        while(cursor.moveToNext()){
-            orderDetailArrayList.add(new OrderDetail(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getDouble(3)));
-        }
-        return orderDetailArrayList;
-    }
-
-    public ArrayList<OrderDetail> getOrderDetailList(Integer orderID){
-        ArrayList<OrderDetail> orderDetailArrayList = new ArrayList<>();
-        String query = "SELECT * FROM tblOrderDetail WHERE order_id=" + orderID;
         Cursor cursor = dbHelper.getData(query);
         while(cursor.moveToNext()){
             orderDetailArrayList.add(new OrderDetail(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getDouble(3)));
@@ -193,26 +178,6 @@ public class DAO {
         Cursor cursor = dbHelper.getData(query);
         cursor.moveToLast();
         return cursor.getInt(0);
-    }
-
-    public User getUserById(Integer id){
-        User user = new User();
-        String query = "SELECT * FROM tblUser WHERE id=" + id;
-        Cursor cursor = dbHelper.getData(query);
-
-        if(cursor != null){
-            cursor.moveToFirst();
-            user.setId(cursor.getInt(0));
-            user.setName(cursor.getString(1));
-            user.setGender(cursor.getString(2));
-            user.setDateOfBirth(cursor.getString(3));
-            user.setPhone(cursor.getString(4));
-            user.setUsername(cursor.getString(5));
-            user.setPassword(cursor.getString(6));
-            System.out.println("USER FOUND " + user);
-            return user;
-        }
-        return null;
     }
 
     public boolean UserExited(String username) {

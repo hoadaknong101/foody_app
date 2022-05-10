@@ -64,6 +64,7 @@
             android:paddingTop="15dp"
             android:paddingEnd="0sp"
             android:paddingBottom="15dp"
+            android:textColorHint="#78909C"
             android:textSize="18sp" />
 
         <Button

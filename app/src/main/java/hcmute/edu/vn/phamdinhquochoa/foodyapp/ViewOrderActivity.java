@@ -20,7 +20,6 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Restaurant;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.User;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.CartCard;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.dao.DAO;
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments.ChatFragment;
 
 public class ViewOrderActivity extends AppCompatActivity {
 
@@ -52,7 +51,7 @@ public class ViewOrderActivity extends AppCompatActivity {
         tvStatus = findViewById(R.id.tvOrderStatusView);
 
         Button btnDeleteOrder = findViewById(R.id.btnDeleteOrder);
-        if(order.getStatus().equals("Delivered")){
+        if(order.getStatus().equals("Delivered") || order.getStatus().equals("Canceled")){
             btnDeleteOrder.setEnabled(false);
         }
         btnDeleteOrder.setOnClickListener(view -> {
@@ -76,9 +75,7 @@ public class ViewOrderActivity extends AppCompatActivity {
         });
 
         Button btnCancel = findViewById(R.id.btnCancelOrderView);
-        btnCancel.setOnClickListener(view -> {
-            finish();
-        });
+        btnCancel.setOnClickListener(view -> finish());
     }
 
     private void LoadData(){
