@@ -31,7 +31,7 @@ public class CartCard extends LinearLayout {
         this.food = food;
         this.address = address;
         this.card = card;
-        this.activatedDelete = false;
+        this.activatedDelete = true;
         initControl(context);
     }
 

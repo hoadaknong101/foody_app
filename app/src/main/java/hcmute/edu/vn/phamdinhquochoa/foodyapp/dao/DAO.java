@@ -26,6 +26,22 @@ public class DAO {
         Cursor cursor = dbHelper.getDataRow(query);
         return new Restaurant(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
     }
+
+    public Restaurant getRestaurantByName(String restaurantName){
+        String query = "SELECT * FROM tblRestaurant WHERE name='" + restaurantName + "'";
+        Cursor cursor = dbHelper.getDataRow(query);
+        return new Restaurant(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+    }
+
+    public ArrayList<Restaurant> getRestaurantList(){
+        ArrayList<Restaurant> restaurantArrayList = new ArrayList<>();
+        String query = "SELECT * FROM tblRestaurant";
+        Cursor cursor = dbHelper.getData(query);
+        while (cursor.moveToNext()){
+            restaurantArrayList.add(new Restaurant(cursor.getInt(0), cursor.getString(1), cursor.getString(2)));
+        }
+        return restaurantArrayList;
+    }
     // endregion
 
     // region Order
@@ -75,13 +91,18 @@ public class DAO {
     // endregion
 
     // region OrderDetail
-    public void addOrderDetail(OrderDetail od) {
+    public boolean addOrderDetail(OrderDetail od) {
         String query = "INSERT INTO tblOrderDetail VALUES(" +
                 od.getOrderId() + "," +
                 od.getFoodId() + "," +
                 od.getSize() + "," +
                 od.getPrice() + ")";
-        dbHelper.queryData(query);
+        try {
+            dbHelper.queryData(query);
+            return true;
+        } catch (Exception err){
+            return false;
+        }
     }
 
     public void deleteOrderDetailByOrderIdAndFoodId(Integer orderId, Integer foodId) {
@@ -274,6 +295,22 @@ public class DAO {
         }
         return listFood;
     }
+
+    public ArrayList<Food> getFoodByRestaurant(Integer restaurantId){
+        ArrayList<Food> listFood = new ArrayList<>();
+        String query = "SELECT * FROM tblFood WHERE restaurant_id=" + restaurantId;
+        Cursor cursor = dbHelper.getData(query);
+        while(cursor.moveToNext()){
+            listFood.add(new Food(cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getBlob(3),
+                    cursor.getString(4),
+                    cursor.getInt(5))
+            );
+        }
+        return listFood;
+    }
     // endregion
 
     // region Food Saved
@@ -287,11 +324,16 @@ public class DAO {
         return foodSavedArrayList;
     }
 
-    public void addFoodSaved(FoodSaved foodSaved){
+    public boolean addFoodSaved(FoodSaved foodSaved){
         String query = "INSERT INTO tblFoodSaved VALUES(" + foodSaved.getFoodId() + ", "
                 + foodSaved.getSize() + ", "
                 + foodSaved.getUserId() + ")";
-        dbHelper.queryData(query);
+        try{
+            dbHelper.queryData(query);
+            return true;
+        } catch (Exception err){
+            return false;
+        }
     }
 
     public void deleteFoodSavedByFoodIdAndSize(Integer foodId, Integer size) {

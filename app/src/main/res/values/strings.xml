@@ -46,6 +46,12 @@
     <string name="example_user_name">Võ Nhật Phi</string>
     <string name="example_date">9/5/2022</string>
     <string name="example_size">Size S</string>
+    <string name="banh_mi_co_ba">Quán bánh mì cô Ba</string>
+    <string name="banh_ngot_le_van_viet">Quán bánh ngọt Lê Văn Việt</string>
+    <string name="quan_com_Phuc_Map">Quán cơm tấm Phúc Mạp</string>
+    <string name="quan_kem_co_hai">Quán kem cô Hai</string>
+    <string name="quan_tra_sua">Quán trà sữa Coffee House</string>
+    <string name="quan_pho_gia_truyen">Quán phở gia truyền</string>
 
     <string name="describe">Mô tả</string>
     <string name="your_information">THÔNG TIN CÁ NHÂN</string>

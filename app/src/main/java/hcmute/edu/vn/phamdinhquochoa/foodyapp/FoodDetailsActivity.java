@@ -71,16 +71,23 @@ public class FoodDetailsActivity extends AppCompatActivity {
 
             // add order detail
             cursor.moveToFirst();
-            dao.addOrderDetail(new OrderDetail(cursor.getInt(0),
-                    foodSize.getFoodId(), foodSize.getSize(), foodSize.getPrice()));
-
-            Toast.makeText(this, "Thêm món ăn vào giỏ hàng thành công!", Toast.LENGTH_SHORT).show();
+            boolean addOrderDetail = dao.addOrderDetail(new OrderDetail(cursor.getInt(0),
+                                    foodSize.getFoodId(), foodSize.getSize(), foodSize.getPrice()));
+            if(addOrderDetail){
+                Toast.makeText(this, "Thêm món ăn vào giỏ hàng thành công!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Bạn đã thêm món ăn này vào giỏ hàng rồi!", Toast.LENGTH_SHORT).show();
+            }
         });
 
         Button btnSavedFood = findViewById(R.id.btnSavedFood);
         btnSavedFood.setOnClickListener(view -> {
-            dao.addFoodSaved(new FoodSaved(foodSize.getFoodId(), foodSize.getSize(), user.getId()));
-            Toast.makeText(this, "Đã lưu thông tin món ăn!", Toast.LENGTH_SHORT).show();
+            boolean addFoodSaved = dao.addFoodSaved(new FoodSaved(foodSize.getFoodId(), foodSize.getSize(), user.getId()));
+            if(addFoodSaved){
+                Toast.makeText(this, "Đã lưu thông tin món ăn!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Thông tin món ăn đã lưu trước đó!", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

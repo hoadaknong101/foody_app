@@ -119,7 +119,7 @@
                         android:layout_height="69sp"
                         android:layout_gravity="center"
                         android:layout_marginTop="10sp"
-                        android:src="@drawable/berger" />
+                        android:src="@drawable/quan_banh_mi_co_ba" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -127,7 +127,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="8sp"
                         android:fontFamily="@font/notop_sans_regular"
-                        android:text="@string/hamburger"
+                        android:text="@string/banh_mi_co_ba"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -146,7 +146,7 @@
                         android:layout_height="69sp"
                         android:layout_gravity="center"
                         android:layout_marginTop="10sp"
-                        android:src="@drawable/ice_cream" />
+                        android:src="@drawable/quan_kem_co_hai" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -154,7 +154,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="8sp"
                         android:fontFamily="@font/notop_sans_regular"
-                        android:text="@string/ice_cream"
+                        android:text="@string/quan_kem_co_hai"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -173,7 +173,7 @@
                         android:layout_height="69sp"
                         android:layout_gravity="center"
                         android:layout_marginTop="10sp"
-                        android:src="@drawable/cake" />
+                        android:src="@drawable/quan_banh_ngot_le_van_viet" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -181,7 +181,8 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="8sp"
                         android:fontFamily="@font/notop_sans_regular"
-                        android:text="@string/cake"
+                        android:gravity="center"
+                        android:text="@string/banh_ngot_le_van_viet"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -208,7 +209,7 @@
                         android:layout_height="69sp"
                         android:layout_gravity="center"
                         android:layout_marginTop="10sp"
-                        android:src="@drawable/milk_tea" />
+                        android:src="@drawable/quan_tra_sua_coffe_house" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -216,7 +217,8 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="8sp"
                         android:fontFamily="@font/notop_sans_regular"
-                        android:text="@string/milk_tea"
+                        android:gravity="center"
+                        android:text="@string/quan_tra_sua"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -235,7 +237,7 @@
                         android:layout_height="69sp"
                         android:layout_gravity="center"
                         android:layout_marginTop="10sp"
-                        android:src="@drawable/rice" />
+                        android:src="@drawable/quan_com_tam_phuc_map" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -243,7 +245,8 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="8sp"
                         android:fontFamily="@font/notop_sans_regular"
-                        android:text="@string/rice"
+                        android:gravity="center"
+                        android:text="@string/quan_com_Phuc_Map"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -262,7 +265,7 @@
                         android:layout_height="69sp"
                         android:layout_gravity="center"
                         android:layout_marginTop="10sp"
-                        android:src="@drawable/noodle" />
+                        android:src="@drawable/quan_pho_gia_truyen" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -270,7 +273,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="8sp"
                         android:fontFamily="@font/notop_sans_regular"
-                        android:text="@string/water_food"
+                        android:text="@string/quan_pho_gia_truyen"
                         android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>

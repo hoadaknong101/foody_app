@@ -1,6 +1,7 @@
 package hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,10 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.FoodDetailsActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.HomeActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Food;
@@ -112,15 +115,41 @@ public class SavedFragment extends Fragment {
 
         if(type.equals("food")){
             ArrayList<FoodSaved> foodSavedArrayList = HomeActivity.dao.getFoodSaveList(HomeActivity.user.getId());
+
             if(foodSavedArrayList.size() > 0){
-                Food food;
-                FoodSize foodSize;
-                Restaurant restaurant;
                 for(FoodSaved foodSaved : foodSavedArrayList){
-                    food = HomeActivity.dao.getFoodById(foodSaved.getFoodId());
-                    restaurant = HomeActivity.dao.getRestaurantInformation(food.getRestaurantId());
-                    foodSize = HomeActivity.dao.getFoodSize(foodSaved.getFoodId(), foodSaved.getSize());
-                    saved_container.addView(new SavedCard(getContext(), food, restaurant.getAddress(), foodSize));
+                    Food food = HomeActivity.dao.getFoodById(foodSaved.getFoodId());
+                    Restaurant restaurant = HomeActivity.dao.getRestaurantInformation(food.getRestaurantId());
+                    FoodSize foodSize = HomeActivity.dao.getFoodSize(foodSaved.getFoodId(), foodSaved.getSize());
+
+                    SavedCard savedCard = new SavedCard(getContext(), food, restaurant.getAddress(), foodSize);
+                    savedCard.setOnClickListener(view -> {
+                        Intent intent = new Intent(getContext(), FoodDetailsActivity.class);
+                        ArrayList<FoodSize> foodSizeArrayList = HomeActivity.dao.getAllFoodSize(food.getId());
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("food", food);
+                        bundle.putSerializable("restaurant", restaurant);
+                        bundle.putSerializable("foodSizeS", foodSizeArrayList.get(0));
+
+                        if(foodSizeArrayList.size() < 3){
+                            bundle.putSerializable("foodSizeM", foodSizeArrayList.get(1));
+                        }
+                        if(foodSizeArrayList.size() == 3) {
+                            bundle.putSerializable("foodSizeM", foodSizeArrayList.get(1));
+                            bundle.putSerializable("foodSizeL", foodSizeArrayList.get(2));
+                        }
+
+                        bundle.putSerializable("defaultFoodSize", foodSize);
+
+                        intent.putExtra("foodDetail", bundle);
+                        try {
+                            startActivity(intent);
+                        } catch (Exception e){
+                            Toast.makeText(getContext(), "Không thể hiển thị thông tin!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    saved_container.addView(savedCard);
                 }
             }
         }

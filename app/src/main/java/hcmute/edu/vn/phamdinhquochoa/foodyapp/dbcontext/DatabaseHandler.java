@@ -107,10 +107,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // region Restaurant
         restaurantList = new ArrayList<>();
-        restaurantList.add(new Restaurant(1, "Quán cô Ba", "hẻm 68 Bùi Thị Xuân, quận Tân Bình, Thành phố Hồ Chí Minh"));
-        restaurantList.add(new Restaurant(2, "Trà sữa Ngày mai", "số 11 Võ Văn Ngân, Thành phố Thủ Đức"));
-        restaurantList.add(new Restaurant(3, "Quán ăn Thiện Style", "khu phố 6, quận 5, Thành phố Hồ Chí Minh"));
-        restaurantList.add(new Restaurant(4, "Tiệm bánh Công Tước Giấy", "ngã ba Tiền Đô"));
+        restaurantList.add(new Restaurant(1, "Quán bánh mì cô Ba", "hẻm 68 Bùi Thị Xuân, quận Tân Bình, Thành phố Hồ Chí Minh"));
+        restaurantList.add(new Restaurant(2, "Quán trà sữa Coffee House", "số 11 Võ Văn Ngân, Thành phố Thủ Đức"));
+        restaurantList.add(new Restaurant(3, "Quán cơm tấm Phúc Mạp", "khu phố 6, quận 5, Thành phố Hồ Chí Minh"));
+        restaurantList.add(new Restaurant(4, "Quán bánh ngọt Lê Văn Việt", "ngã ba Tiền Đô"));
+        restaurantList.add(new Restaurant(5, "Quán kem cô Hai", "Dưới chân cầu vượt Linh Xuân, Thủ Đức"));
+        restaurantList.add(new Restaurant(6, "Quán phở gia truyền", "Bên hông viện Sư phạm kỹ thuật, Quận 9"));
         // endregion
 
         // region Food
@@ -118,19 +120,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // region Kem
         foodList.add(new Food(1, "Kem hộp đậu đỏ", "Kem",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.kemhop_daudo, null)),
-                "Kem tươi mát ngon lắm bạn ơi!", 1));
+                "Kem tươi mát ngon lắm bạn ơi!", 5));
         foodList.add(new Food(1, "Kem hộp sữa dừa", "Kem",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.kemhop_suadua, null)),
-                "Kem tươi mát ngon lắm bạn ơi!", 1));
+                "Kem tươi mát ngon lắm bạn ơi!", 5));
         foodList.add(new Food(1, "Kem ốc quế vani", "Kem",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.kemocque_vani, null)),
-                "Kem tươi mát ngon lắm bạn ơi!", 1));
+                "Kem tươi mát ngon lắm bạn ơi!", 5));
         foodList.add(new Food(1, "Kem ôc quế dâu", "Kem",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.kemocque_dau, null)),
-                "Kem tươi mát ngon lắm bạn ơi!", 1));
+                "Kem tươi mát ngon lắm bạn ơi!", 5));
         foodList.add(new Food(1, "Kem ốc quế socola", "Kem",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.kemocque_socola, null)),
-                "Kem tươi mát ngon lắm bạn ơi!", 1));
+                "Kem tươi mát ngon lắm bạn ơi!", 5));
+        foodList.add(new Food(1, "Kem ôc quế dâu", "Kem",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.kemocque_dau, null)),
+                "Kem tươi mát ngon lắm bạn ơi!", 4));
+        foodList.add(new Food(1, "Kem ốc quế socola", "Kem",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.kemocque_socola, null)),
+                "Kem tươi mát ngon lắm bạn ơi!", 4));
         // endregion
         // region Banh mi
         foodList.add(new Food(1, "Bánh mì bò kho", "Bánh mì",
@@ -160,10 +168,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         foodList.add(new Food(1, "Hamburger heo", "Bánh mì",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.burger_heo, null)),
                 "Bữa ăn đơn giản cho người đơn giản!", 1));
+        foodList.add(new Food(1, "Hamburger bò", "Bánh mì",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.burger_bo, null)),
+                "Bữa ăn đơn giản cho người đơn giản!", 6));
+        foodList.add(new Food(1, "Hamburger heo", "Bánh mì",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.burger_heo, null)),
+                "Bữa ăn đơn giản cho người đơn giản!", 6));
         foodList.add(new Food(1, "Hamburger gà", "Bánh mì",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.burger_ga, null)),
-                "Bữa ăn đơn giản cho người đơn giản!", 1));
-
+                "Bữa ăn đơn giản cho người đơn giản!", 5));
         // endregion
         // region Banh ngot
         foodList.add(new Food(1, "Bánh đậu xanh cốt dừa", "Bánh ngọt",
@@ -178,6 +191,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         foodList.add(new Food(1, "Bánh bông lan cuộn", "Bánh ngọt",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.banhbonglan_cuon, null)),
                 "Cảm nhận sự ngọt ngào của những chiếc bánh ngon!", 4));
+        foodList.add(new Food(1, "Bánh sầu riêng", "Bánh ngọt",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.banh_saurieng, null)),
+                "Cảm nhận sự ngọt ngào của những chiếc bánh ngon!", 2));
+        foodList.add(new Food(1, "Bánh bông lan cuộn", "Bánh ngọt",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.banhbonglan_cuon, null)),
+                "Cảm nhận sự ngọt ngào của những chiếc bánh ngon!", 2));
         foodList.add(new Food(1, "Bánh bông lan socola", "Bánh ngọt",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.banhbonglan_socola, null)),
                 "Cảm nhận sự ngọt ngào của những chiếc bánh ngon!", 4));
@@ -194,16 +213,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // region Com suon
         foodList.add(new Food(1, "Cơm sườn trứng", "Cơm sườn",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_trung, null)),
-                "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 1));
-        foodList.add(new Food(1, "Cơm sườn bì chả", "Cơm sườn",
-                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_bi_cha, null)),
-                "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 1));
-        foodList.add(new Food(1, "Cơm sườn nướng", "Cơm sườn",
-                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_nuong, null)),
-                "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 1));
-        foodList.add(new Food(1, "Cơm sườn ram", "Cơm sườn",
-                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_ram, null)),
-                "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 1));
+                "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 3));
         foodList.add(new Food(1, "Cơm sườn bì chả", "Cơm sườn",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_bi_cha, null)),
                 "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 3));
@@ -213,41 +223,62 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         foodList.add(new Food(1, "Cơm sườn ram", "Cơm sườn",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_ram, null)),
                 "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 3));
+        foodList.add(new Food(1, "Cơm sườn bì chả", "Cơm sườn",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_bi_cha, null)),
+                "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 6));
+        foodList.add(new Food(1, "Cơm sườn nướng", "Cơm sườn",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_nuong, null)),
+                "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 6));
+        foodList.add(new Food(1, "Cơm sườn ram", "Cơm sườn",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_ram, null)),
+                "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 6));
         foodList.add(new Food(1, "Cơm sườn xào chua ngọt", "Cơm sườn",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.comsuon_chuangot, null)),
-                "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 1));
+                "Món ăn bình dân truyền thống nhưng không thể thiếu hằng ngày!", 3));
         // endregion
         // region Mon nuoc
         foodList.add(new Food(1, "Bánh canh", "Món nước",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.banhcanh, null)),
-                "Thức ăn mang hương vị truyền thống của những làng quê!", 1));
+                "Thức ăn mang hương vị truyền thống của những làng quê!", 6));
         foodList.add(new Food(1, "Bún mắm", "Món nước",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.bunmam, null)),
-                "Vừa lạ vừa quen!", 1));
+                "Vừa lạ vừa quen!", 6));
         foodList.add(new Food(1, "Bún thái", "Món nước",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.bun_thai, null)),
-                "Chua chua, cay cay, ngon ngon, không thể cưỡng lại!", 1));
+                "Chua chua, cay cay, ngon ngon, không thể cưỡng lại!", 6));
         foodList.add(new Food(1, "Hoành thánh", "Món nước",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.hoanhthanh, null)),
-                "Cảm nhận sự thơm ngon bên trong cùng sự dẻo dai của lớp vỏ!", 1));
+                "Cảm nhận sự thơm ngon bên trong cùng sự dẻo dai của lớp vỏ!", 6));
         foodList.add(new Food(1, "Hủ tiếu bò kho", "Món nước",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.hutieu_bokho, null)),
                 "Hủ tiếu truyền thống kết hợp với sự cay nồng của món bò kho, bùng cháy vị giác!", 1));
         foodList.add(new Food(1, "Hủ tiếu nam vang", "Món nước",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.hutieu_namvang, null)),
-                "Món ăn đặc trưng của người Việt!", 1));
+                "Món ăn đặc trưng của người Việt!", 6));
+        foodList.add(new Food(1, "Bún thái", "Món nước",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.bun_thai, null)),
+                "Chua chua, cay cay, ngon ngon, không thể cưỡng lại!", 6));
+        foodList.add(new Food(1, "Hoành thánh", "Món nước",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.hoanhthanh, null)),
+                "Cảm nhận sự thơm ngon bên trong cùng sự dẻo dai của lớp vỏ!", 3));
+        foodList.add(new Food(1, "Hủ tiếu bò kho", "Món nước",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.hutieu_bokho, null)),
+                "Hủ tiếu truyền thống kết hợp với sự cay nồng của món bò kho, bùng cháy vị giác!", 3));
+        foodList.add(new Food(1, "Hủ tiếu nam vang", "Món nước",
+                convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.hutieu_namvang, null)),
+                "Món ăn đặc trưng của người Việt!", 3));
         foodList.add(new Food(1, "Mì vằn thắn", "Món nước",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.mi_vanthan, null)),
-                "Phong cách ăn mì của người sành ăn!", 1));
+                "Phong cách ăn mì của người sành ăn!", 6));
         foodList.add(new Food(1, "Mì xá xíu", "Món nước",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.mi_xaxiu, null)),
-                "Món ăn vừa ngon vừa lạ miệng!", 1));
+                "Món ăn vừa ngon vừa lạ miệng!", 6));
         foodList.add(new Food(1, "Nui", "Món nước",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.nui, null)),
-                "Từng cọng nui to vàng đang ngập tràn trong nước súp nóng hổi!", 1));
+                "Từng cọng nui to vàng đang ngập tràn trong nước súp nóng hổi!", 6));
         foodList.add(new Food(1, "Phở bò", "Món nước",
                 convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.phobo, null)),
-                "Nước súp đậm đà, trứ danh món Việt!", 1));
+                "Nước súp đậm đà, trứ danh món Việt!", 6));
         // endregion
         // region Tra sua
         foodList.add(new Food(1, "Trà sữa dâu", "Trà sữa",
@@ -268,7 +299,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // region foodSize
         foodSizeList = new ArrayList<>();
         Random random = new Random();
-        for(int i = 1; i<= 45; i++){
+        for(int i = 1; i<= 55; i++){
             foodSizeList.add(new FoodSize(i, 1, (random.nextInt(20) + 1) * 1000d));
             foodSizeList.add(new FoodSize(i, 2, (random.nextInt(20) + 21) * 1000d));
             foodSizeList.add(new FoodSize(i, 3, (random.nextInt(20) + 41) * 1000d));
@@ -278,6 +309,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // region foodSaved
         foodSavedList = new ArrayList<>();
         foodSavedList.add(new FoodSaved(1, 3, 1));
+        foodSavedList.add(new FoodSaved(36, 3, 2));
+        foodSavedList.add(new FoodSaved(3, 3, 2));
+        foodSavedList.add(new FoodSaved(42, 3, 2));
+        foodSavedList.add(new FoodSaved(11, 3, 1));
+        foodSavedList.add(new FoodSaved(28, 1, 4));
         foodSavedList.add(new FoodSaved(40, 3, 3));
         foodSavedList.add(new FoodSaved(3, 3, 3));
         foodSavedList.add(new FoodSaved(42, 3, 3));
