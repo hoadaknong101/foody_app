@@ -20,10 +20,13 @@ import java.util.Objects;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.HomeActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.PaymentActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.ViewOrderActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Food;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Order;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.OrderDetail;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Restaurant;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.CartCard;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.OrderCard;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,12 +41,11 @@ public class ChatFragment extends Fragment {
     private View mainView;
     @SuppressLint("StaticFieldLeak")
     public static LinearLayout cartContainer;
+    private static String status;
     private LinearLayout btnDangDen, btnLichSu, btnGioHang;
     private TextView tvGioHang, tvDangDen, tvLichSu;
-    private ArrayList<OrderDetail> orderDetailArrayList;
 
-    public ChatFragment() {
-    }
+    public ChatFragment() { }
 
     public static ChatFragment newInstance(String param1, String param2) {
         ChatFragment fragment = new ChatFragment();
@@ -73,6 +75,8 @@ public class ChatFragment extends Fragment {
 
         referencesComponent();
         LoadOrder("craft");
+        status = "craft";
+
         return mainView;
     }
 
@@ -110,18 +114,30 @@ public class ChatFragment extends Fragment {
 
         Button btnThanhToan = mainView.findViewById(R.id.btnThanhToan);
         btnThanhToan.setOnClickListener(view ->{
-            startActivity(new Intent(getActivity(), PaymentActivity.class));
+            if(!status.equals("craft"))
+                return;
+
+            Cursor cursor = HomeActivity.dao.getCart(HomeActivity.user.getId());
+            if(!cursor.moveToFirst())
+                return;
+
+            PaymentActivity.user = HomeActivity.user;
+            Intent intent = new Intent(getActivity(), PaymentActivity.class);
+            intent.putExtra("orderId", cursor.getInt(0));
+            startActivity(intent);
         });
     }
 
     private void LoadOrder(String type){
+        status = type;
         cartContainer.removeAllViews();
+
         if(type.equals("craft")){
             Cursor cursor = HomeActivity.dao.getCart(HomeActivity.user.getId());
             if(!cursor.moveToFirst())
                 return;
             cursor.moveToFirst();
-            orderDetailArrayList = HomeActivity.dao.getCartDetailList(cursor.getInt(0));
+            ArrayList<OrderDetail> orderDetailArrayList = HomeActivity.dao.getCartDetailList(cursor.getInt(0));
             if(orderDetailArrayList.size() > 0){
                 Food food;
                 Restaurant restaurant;
@@ -133,9 +149,31 @@ public class ChatFragment extends Fragment {
                 }
             }
         } else if (type.equals("coming")) {
-
+            ArrayList<Order> orderArrayList = HomeActivity.dao.getOrderOfUser(HomeActivity.user.getId(), "Coming");
+            if(orderArrayList.size() > 0){
+                for(Order order : orderArrayList){
+                    OrderCard card = new OrderCard(getContext(), order);
+                    card.setOnClickListener(view -> {
+                        Intent intent = new Intent(getContext(), ViewOrderActivity.class);
+                        intent.putExtra("order", order);
+                        startActivity(intent);
+                    });
+                    cartContainer.addView(card);
+                }
+            }
         } else {
-
+            ArrayList<Order> orderArrayList = HomeActivity.dao.getOrderOfUser(HomeActivity.user.getId(), "Delivered");
+            if(orderArrayList.size() > 0){
+                for(Order order : orderArrayList){
+                    OrderCard card = new OrderCard(getContext(), order);
+                    card.setOnClickListener(view -> {
+                        Intent intent = new Intent(getContext(), ViewOrderActivity.class);
+                        intent.putExtra("order", order);
+                        startActivity(intent);
+                    });
+                    cartContainer.addView(card);
+                }
+            }
         }
     }
 

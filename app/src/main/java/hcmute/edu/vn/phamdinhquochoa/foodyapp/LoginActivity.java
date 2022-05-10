@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
 
             boolean isRightAuthentication = false;
             if(userExist != null){
-//                System.out.println(userExist);
                 isRightAuthentication = dao.signIn(userExist);
             }
             if(isRightAuthentication){

@@ -15,6 +15,8 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Notify;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.NotifyToUser;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.User;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.dao.DAO;
 
@@ -89,6 +91,11 @@ public class UserInformationActivity extends AppCompatActivity implements Adapte
 
                 if(!oldPassword.equals(newUser_password)){
                     Toast.makeText(this, "Vui lòng đăng nhập lại!", Toast.LENGTH_SHORT).show();
+                    // Make notify
+                    dao.addNotify(new Notify(1, "Mật khẩu đã thay đổi!",
+                            "Vui lòng đăng nhập lại ứng dụng để cập nhật thông tin cá nhân mới!",
+                            dao.getDate()));
+                    dao.addNotifyToUser(new NotifyToUser(dao.getNewestNotifyId(), dao.getNewestUserId()));
                 } else {
                     Toast.makeText(this, "Thay đổi thông tin thành công!", Toast.LENGTH_SHORT).show();
                 }

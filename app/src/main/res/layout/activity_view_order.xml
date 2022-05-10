@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    tools:context=".ViewOrderActivity">
+    <LinearLayout
+        android:paddingStart="10dp"
+        android:paddingEnd="0dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/sub_color"
+        android:layout_weight="2">
+        <TextView
+            android:id="@+id/tvDateMakeOrderView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/example_date"
+            android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/tvOrderPriceView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/money_text" />
+        <TextView
+            android:id="@+id/tvOrderAddressView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address" />
+        <TextView
+            android:id="@+id/tvOrderStatusView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="6">
+        <LinearLayout
+            android:id="@+id/layout_container_order_detail"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:gravity="center"
+        android:layout_weight="2">
+        <Button
+            android:id="@+id/btnDeleteOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_box_rounded_red"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:textColor="@color/white"
+            android:text="@string/delete_order"/>
+        <Button
+            android:id="@+id/btnCancelOrderView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_box_rounded_red"
+            android:layout_margin="5dp"
+            android:textColor="@color/white"
+            android:text="@string/exit"/>
+    </LinearLayout>
+</LinearLayout>

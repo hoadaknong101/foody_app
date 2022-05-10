@@ -73,7 +73,6 @@ public class ProfileFragment extends Fragment {
     }
 
     private void referenceComponent(){
-        // Components
         LinearLayout user_information = mainView.findViewById(R.id.layout_user_information);
         user_information.setOnClickListener(view -> startActivity(new Intent(getActivity(), UserInformationActivity.class)));
 

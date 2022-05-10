@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.*;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.dbcontext.DatabaseHandler;
@@ -28,6 +29,12 @@ public class DAO {
     // endregion
 
     // region Order
+    public Integer quantityOfOrder(){
+        String query = "SELECT COUNT(*) FROM tblOrder WHERE status='Delivered'";
+        Cursor cursor = dbHelper.getDataRow(query);
+        return cursor.getInt(0);
+    }
+
     public void addOrder(Order order) {
         String query = "INSERT INTO tblOrder VALUES(null," +
                 order.getUserId() + ",'" +
@@ -38,9 +45,26 @@ public class DAO {
         dbHelper.queryData(query);
     }
 
-    public ArrayList<Order> findAllOrderOfUser(Integer userId){
+    public void updateOrder(Order order){
+        String query = "UPDATE tblOrder SET address='" + order.getAddress() +
+                "', date_order='" + order.getDateOfOrder() +
+                "', total_value=" + order.getTotalValue() +
+                ", status='" + order.getStatus() +
+                "' WHERE id=" + order.getId();
+        dbHelper.queryData(query);
+    }
+
+    public void deleteOrder(Integer orderId){
+        String query = "DELETE FROM tblOrder WHERE id=" + orderId;
+        dbHelper.queryData(query);
+    }
+
+    public ArrayList<Order> getOrderOfUser(Integer userId, String status){
         ArrayList<Order> orderList = new ArrayList<>();
-        String query = "SELECT * FROM tblOrder WHERE user_id=" + userId;
+        String query = "SELECT * FROM tblOrder WHERE user_id=" + userId + " AND status='" + status + "'";
+        if(status.equals("Delivered")){
+            query += " OR status='Canceled'";
+        }
         Cursor cursor = dbHelper.getData(query);
         while (cursor.moveToNext()){
             orderList.add(new Order(cursor.getInt(0),
@@ -98,7 +122,7 @@ public class DAO {
 
     // region Notify
     public void addNotify(Notify n) {
-        String query = "INSERT INTO tblNofity VALUES(null,'" +
+        String query = "INSERT INTO tblNotify VALUES(null,'" +
                 n.getTitle() + "', '" +
                 n.getContent() + "', '" +
                 n.getDateMake() + "')";
@@ -110,6 +134,13 @@ public class DAO {
                 notifyToUser.getNotifyId() + "," +
                 notifyToUser.getUserId() + ")";
         dbHelper.queryData(query);
+    }
+
+    public Integer getNewestNotifyId(){
+        String query = "SELECT * FROM tblNotify";
+        Cursor cursor = dbHelper.getData(query);
+        cursor.moveToLast();
+        return cursor.getInt(0);
     }
 
     public ArrayList<Notify> getSystemNotify(){
@@ -155,6 +186,13 @@ public class DAO {
                 "password='" + user.getPassword() + "' " +
                 "WHERE id=" + user.getId();
         dbHelper.queryData(query);
+    }
+
+    public Integer getNewestUserId(){
+        String query = "SELECT * FROM tblUser";
+        Cursor cursor = dbHelper.getData(query);
+        cursor.moveToLast();
+        return cursor.getInt(0);
     }
 
     public User getUserById(Integer id){
@@ -216,6 +254,14 @@ public class DAO {
         return new FoodSize(cursor.getInt(0), cursor.getInt(1), cursor.getDouble(2));
     }
 
+    public FoodSize getFoodSize(Integer foodId, Integer size){
+        String sql = "SELECT * FROM tblFoodSize WHERE food_id=" + foodId + " AND size=" + size;
+        Cursor cursor = dbHelper.getDataRow(sql);
+        if (cursor == null)
+            return null;
+        return new FoodSize(cursor.getInt(0), cursor.getInt(1), cursor.getDouble(2));
+    }
+
     public ArrayList<FoodSize> getAllFoodSize(Integer foodId){
         ArrayList<FoodSize> foodSizeList = new ArrayList<>();
         String sql = "SELECT * FROM tblFoodSize WHERE food_id=" + foodId;
@@ -264,4 +310,37 @@ public class DAO {
         return listFood;
     }
     // endregion
+
+    // region Food Saved
+    public ArrayList<FoodSaved> getFoodSaveList(Integer userId){
+        ArrayList<FoodSaved> foodSavedArrayList = new ArrayList<>();
+        String query = "SELECT * FROM tblFoodSaved WHERE user_id=" + userId;
+        Cursor cursor = dbHelper.getData(query);
+        while (cursor.moveToNext()){
+            foodSavedArrayList.add(new FoodSaved(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2)));
+        }
+        return foodSavedArrayList;
+    }
+
+    public void addFoodSaved(FoodSaved foodSaved){
+        String query = "INSERT INTO tblFoodSaved VALUES(" + foodSaved.getFoodId() + ", "
+                + foodSaved.getSize() + ", "
+                + foodSaved.getUserId() + ")";
+        dbHelper.queryData(query);
+    }
+
+    public void deleteFoodSavedByFoodIdAndSize(Integer foodId, Integer size) {
+        String query = "DELETE FROM tblFoodSaved WHERE food_id=" +
+                foodId + " and size=" + size;
+        dbHelper.queryData(query);
+    }
+    // endregion
+
+    public String getDate(){
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        return day + "/" + month + "/" + year;
+    }
 }

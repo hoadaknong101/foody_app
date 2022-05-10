@@ -17,7 +17,7 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments.*;
 public class HomeActivity extends AppCompatActivity {
 
     private static int clickToLogout;
-    private static boolean singleStatus;
+    private static int stackLayout = 0;
     public static DAO dao;
     public static User user;
     private Fragment homeFragment, savedFragment, chatFragment, notifyFragment, profileFragment;
@@ -39,8 +39,9 @@ public class HomeActivity extends AppCompatActivity {
 
         CategoryActivity.user = HomeActivity.user;
         FoodDetailsActivity.user = HomeActivity.user;
+        ViewOrderActivity.user = HomeActivity.user;
 
-        singleStatus = true;
+        stackLayout++;
         clickToLogout = 0;
         referenceFragment();
 
@@ -51,11 +52,10 @@ public class HomeActivity extends AppCompatActivity {
 
         String request = intent.getStringExtra("request");
         if(request != null) {
-            singleStatus = false;
             switch (request) {
-                case "payment":
                 case "history":
                 case "check":
+                case "payment":
                 case "cart":
                     loadFragment(chatFragment, 2);
                     break;
@@ -73,12 +73,14 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(singleStatus){
+        System.out.println(stackLayout);
+        if(stackLayout < 2){
             clickToLogout++;
 
-            if(clickToLogout > 1)
+            if(clickToLogout > 1){
                 finish();
-            else {
+                stackLayout--;
+            } else {
                 Toast.makeText(this, "Click thêm lần nữa để đăng xuất!", Toast.LENGTH_SHORT).show();
             }
 
@@ -94,7 +96,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }.start();
         } else {
-            singleStatus = true;
+            stackLayout--;
             super.onBackPressed();
         }
     }

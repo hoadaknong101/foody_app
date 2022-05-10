@@ -23,8 +23,6 @@ public class FoodDetailsActivity extends AppCompatActivity {
             tvPriceSizeS,tvPriceSizeM, tvPriceSizeL;
 
     public static User user;
-    private Food food;
-    private Restaurant restaurant;
     private FoodSize foodSize;
     private DAO dao;
 
@@ -64,24 +62,25 @@ public class FoodDetailsActivity extends AppCompatActivity {
 
         Button btnAddToCart = findViewById(R.id.btnAddToCart);
         btnAddToCart.setOnClickListener(view -> {
-            System.out.println(user);
+            // Make cart if don't have
             Cursor cursor = dao.getCart(user.getId());
             if (!cursor.moveToFirst()){
                 dao.addOrder(new Order(1, user.getId(), "", "", 0d, "Craft"));
                 cursor = dao.getCart(user.getId());
             }
 
+            // add order detail
             cursor.moveToFirst();
-            System.out.println(cursor.getInt(0));
             dao.addOrderDetail(new OrderDetail(cursor.getInt(0),
                     foodSize.getFoodId(), foodSize.getSize(), foodSize.getPrice()));
 
-            Toast.makeText(this, "Thêm sản phẩm vào giỏ hàng thành công!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Thêm món ăn vào giỏ hàng thành công!", Toast.LENGTH_SHORT).show();
         });
 
         Button btnSavedFood = findViewById(R.id.btnSavedFood);
         btnSavedFood.setOnClickListener(view -> {
-
+            dao.addFoodSaved(new FoodSaved(foodSize.getFoodId(), foodSize.getSize(), user.getId()));
+            Toast.makeText(this, "Đã lưu thông tin món ăn!", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -90,13 +89,13 @@ public class FoodDetailsActivity extends AppCompatActivity {
         if(intent != null){
             Bundle bundle = intent.getBundleExtra("foodDetail");
 
-            food = (Food) bundle.getSerializable("food");
-            restaurant = (Restaurant) bundle.getSerializable("restaurant");
+            Food food = (Food) bundle.getSerializable("food");
+            Restaurant restaurant = (Restaurant) bundle.getSerializable("restaurant");
             FoodSize foodSizeS = (FoodSize) bundle.getSerializable("foodSizeS");
             FoodSize foodSizeM = (FoodSize) bundle.getSerializable("foodSizeM");
             FoodSize foodSizeL = (FoodSize) bundle.getSerializable("foodSizeL");
 
-            if(food!= null){
+            if(food != null){
                 tvName.setText(food.getName());
                 tvDescription.setText(food.getDescription());
                 image.setImageBitmap(DatabaseHandler.convertByteArrayToBitmap(food.getImage()));

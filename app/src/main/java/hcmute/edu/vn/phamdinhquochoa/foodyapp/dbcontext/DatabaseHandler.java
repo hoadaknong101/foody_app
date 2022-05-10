@@ -409,10 +409,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     orderDetail.getPrice() + ")");
         }
 
-        Random random = new Random();
-        for (int i = 1; i <= 3; i++) {
-            db.execSQL("DELETE FROM tblFoodSize WHERE food_id=" + random.nextInt(45) + " AND size=3");
-        }
+//        // Delete random three food size L
+//        Random random = new Random();
+//        for (int i = 1; i <= 3; i++) {
+//            db.execSQL("DELETE FROM tblFoodSize WHERE food_id=" + random.nextInt(45) + " AND size=3");
+//        }
     }
 
     @Override

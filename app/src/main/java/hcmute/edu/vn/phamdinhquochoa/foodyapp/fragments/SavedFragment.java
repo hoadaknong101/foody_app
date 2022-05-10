@@ -1,5 +1,6 @@
 package hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,13 +8,19 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.HomeActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Food;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.FoodSaved;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.FoodSize;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Restaurant;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.SavedCard;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,7 +29,8 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
  */
 public class SavedFragment extends Fragment {
 
-    private LinearLayout layout_saved;
+    @SuppressLint("StaticFieldLeak")
+    public static LinearLayout saved_container;
     private LinearLayout btn_saved_food, btn_saved_restaurant;
     private TextView tv_saved_food, tv_saved_restaurant;
 
@@ -69,7 +77,7 @@ public class SavedFragment extends Fragment {
         // Inflate the layout for this fragment
         View mainView = inflater.inflate(R.layout.fragment_saved, container, false);
 
-        layout_saved = mainView.findViewById(R.id.layout_saved);
+        saved_container = mainView.findViewById(R.id.layout_saved);
 
         btn_saved_food = mainView.findViewById(R.id.btn_saved_food);
         tv_saved_food = mainView.findViewById(R.id.tv_saved_food);
@@ -94,15 +102,28 @@ public class SavedFragment extends Fragment {
             LoadSavedCard("restaurant");
         });
 
+        LoadSavedCard("food");
+
         return mainView;
     }
 
     private void LoadSavedCard(String type){
-        layout_saved.removeAllViews();
+        saved_container.removeAllViews();
 
         if(type.equals("food")){
-
-        } else{
+            ArrayList<FoodSaved> foodSavedArrayList = HomeActivity.dao.getFoodSaveList(HomeActivity.user.getId());
+            if(foodSavedArrayList.size() > 0){
+                Food food;
+                FoodSize foodSize;
+                Restaurant restaurant;
+                for(FoodSaved foodSaved : foodSavedArrayList){
+                    food = HomeActivity.dao.getFoodById(foodSaved.getFoodId());
+                    restaurant = HomeActivity.dao.getRestaurantInformation(food.getRestaurantId());
+                    foodSize = HomeActivity.dao.getFoodSize(foodSaved.getFoodId(), foodSaved.getSize());
+                    saved_container.addView(new SavedCard(getContext(), food, restaurant.getAddress(), foodSize));
+                }
+            }
+        } else {
 
         }
     }
