@@ -17,15 +17,15 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.dbcontext.DatabaseHandler;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.fragments.SavedFragment;
 
 @SuppressLint("ViewConstructor")
-public class SavedCard extends LinearLayout {
+public class FoodSavedCard extends LinearLayout {
     private final Food food;
-    private final String address;
+    private final String restaurantName;
     private final FoodSize foodSize;
 
-    public SavedCard(Context context, Food food, String address, FoodSize foodSize) {
+    public FoodSavedCard(Context context, Food food, String restaurantName, FoodSize foodSize) {
         super(context);
         this.food = food;
-        this.address = address;
+        this.restaurantName = restaurantName;
         this.foodSize = foodSize;
         initControl(context);
     }
@@ -33,12 +33,12 @@ public class SavedCard extends LinearLayout {
     @SuppressLint("SetTextI18n")
     private void initControl(Context context){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.saved_card, this);
+        inflater.inflate(R.layout.food_saved_card, this);
 
         ImageView image = findViewById(R.id.imageSavedFood);
         TextView tvName = findViewById(R.id.tvFoodNameSaved);
         TextView tvSize = findViewById(R.id.tvFoodSavedSize);
-        TextView tvAddress = findViewById(R.id.tvFoodSavedRestaurantAddress);
+        TextView tvrestaurantName = findViewById(R.id.tvFoodSavedRestaurantName);
         TextView tvPrice = findViewById(R.id.tvFoodSavedPrice);
 
         Button btnDelete = findViewById(R.id.btnDeleteSaveCardItem);
@@ -67,7 +67,7 @@ public class SavedCard extends LinearLayout {
                 tvSize.setText("Size L");
                 break;
         }
-        tvAddress.setText(address);
+        tvrestaurantName.setText(restaurantName);
         tvPrice.setText(getRoundPrice(foodSize.getPrice()));
     }
 

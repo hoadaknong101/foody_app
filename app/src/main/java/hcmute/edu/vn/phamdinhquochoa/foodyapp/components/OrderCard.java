@@ -1,6 +1,5 @@
 package hcmute.edu.vn.phamdinhquochoa.foodyapp.components;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.Button;
@@ -14,9 +13,12 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Notify;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.NotifyToUser;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Order;
 
-@SuppressLint("ViewConstructor")
 public class OrderCard extends LinearLayout {
-    private final Order order;
+    private Order order;
+
+    public OrderCard(Context context){
+        super(context);
+    }
 
     public OrderCard(Context context, Order order) {
         super(context);

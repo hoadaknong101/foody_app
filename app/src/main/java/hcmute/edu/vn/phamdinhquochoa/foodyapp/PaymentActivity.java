@@ -49,7 +49,7 @@ public class PaymentActivity extends AppCompatActivity {
         ArrayList<OrderDetail> orderDetailArrayList = dao.getCartDetailList(orderId);
         sum = 0;
         for(OrderDetail orderDetail : orderDetailArrayList){
-            sum += orderDetail.getPrice();
+            sum += orderDetail.getPrice() * orderDetail.getQuantity();
         }
         tvTotalValue.setText(String.format("%s VNĐ", sum));
 

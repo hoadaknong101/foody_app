@@ -10,7 +10,7 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Notify;
 
 public class NotifyCard extends LinearLayout {
 
-    TextView tvTitle, tvContent, tvDatemake;
+    TextView tvTitle, tvContent, tvDateMake;
     Notify notify;
 
     public NotifyCard(Context context) {
@@ -28,12 +28,12 @@ public class NotifyCard extends LinearLayout {
 
         tvTitle = findViewById(R.id.tvTitleNotify);
         tvContent = findViewById(R.id.tvContentNotify);
-        tvDatemake = findViewById(R.id.tvDateMakeNotify);
+        tvDateMake = findViewById(R.id.tvDateMakeNotify);
 
         //Set text
         tvTitle.setText(notify.getTitle());
         tvContent.setText(notify.getContent());
-        tvDatemake.setText(notify.getDateMake());
+        tvDateMake.setText(notify.getDateMake());
 
     }
 }

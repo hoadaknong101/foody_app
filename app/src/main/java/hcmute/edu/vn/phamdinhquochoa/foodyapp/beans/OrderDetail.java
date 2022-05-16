@@ -5,15 +5,22 @@ public class OrderDetail {
     private Integer foodId;
     private Integer size;
     private Double price;
-
-    public OrderDetail() {
-    }
+    private Integer quantity;
 
     public OrderDetail(Integer orderId, Integer foodId, Integer size, Double price) {
         this.orderId = orderId;
         this.foodId = foodId;
         this.size = size;
         this.price = price;
+        this.quantity = 1;
+    }
+
+    public OrderDetail(Integer orderId, Integer foodId, Integer size, Double price, Integer quantity) {
+        this.orderId = orderId;
+        this.foodId = foodId;
+        this.size = size;
+        this.price = price;
+        this.quantity = quantity;
     }
 
     public Integer getOrderId() {
@@ -48,13 +55,11 @@ public class OrderDetail {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "OrderDetail{" +
-                "orderId=" + orderId +
-                ", foodId=" + foodId +
-                ", size=" + size +
-                ", price=" + price +
-                '}';
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

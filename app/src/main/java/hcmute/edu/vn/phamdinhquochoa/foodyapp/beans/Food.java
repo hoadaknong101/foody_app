@@ -63,17 +63,6 @@ public class Food implements Serializable {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Food{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", image=" + Arrays.toString(image) +
-                ", description='" + description + '\'' +
-                '}';
-    }
-
     public Integer getRestaurantId() {
         return restaurantId;
     }

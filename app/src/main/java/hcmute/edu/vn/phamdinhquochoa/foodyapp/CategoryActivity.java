@@ -71,12 +71,12 @@ public class CategoryActivity extends AppCompatActivity {
             foodArrayList = dao.getFoodByKeyWord(nameFood);
         }
         else {
-            String getFoodList = intent_get_data.getStringExtra("typeFood");
-            if (getFoodList == null){
-                getFoodList = intent_get_data.getStringExtra("nameFood");
-                foodArrayList = dao.getFoodByKeyWord(getFoodList);
+            int getRestaurantId = intent_get_data.getIntExtra("restaurantId", -1);
+            if (getRestaurantId == -1){
+                String foodKeyword = intent_get_data.getStringExtra("nameFood");
+                foodArrayList = dao.getFoodByKeyWord(foodKeyword);
             } else {
-                foodArrayList = dao.getFoodByType(getFoodList);
+                foodArrayList = dao.getFoodByRestaurant(getRestaurantId);
             }
         }
 
@@ -88,23 +88,7 @@ public class CategoryActivity extends AppCompatActivity {
 
             foodCard.setOnClickListener(view -> {
                 Intent intent = new Intent(this, FoodDetailsActivity.class);
-                ArrayList<FoodSize> foodSizeArrayList = dao.getAllFoodSize(food.getId());
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("food", food);
-                bundle.putSerializable("restaurant", restaurant);
-                bundle.putSerializable("foodSizeS", foodSizeArrayList.get(0));
-
-                if(foodSizeArrayList.size() < 3){
-                    bundle.putSerializable("foodSizeM", foodSizeArrayList.get(1));
-                }
-                if(foodSizeArrayList.size() == 3) {
-                    bundle.putSerializable("foodSizeM", foodSizeArrayList.get(1));
-                    bundle.putSerializable("foodSizeL", foodSizeArrayList.get(2));
-                }
-
-                bundle.putSerializable("defaultFoodSize", foodSize);
-
-                intent.putExtra("foodDetail", bundle);
+                intent.putExtra("food", food);
                 try {
                     startActivity(intent);
                 } catch (Exception e){

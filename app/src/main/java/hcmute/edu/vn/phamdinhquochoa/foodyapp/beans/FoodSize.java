@@ -39,13 +39,4 @@ public class FoodSize implements Serializable {
     public void setPrice(Double price) {
         this.price = price;
     }
-
-    @Override
-    public String toString() {
-        return "FoodSize{" +
-                "foodId=" + foodId +
-                ", size=" + size +
-                ", price=" + price +
-                "}";
-    }
 }

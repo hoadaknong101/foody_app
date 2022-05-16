@@ -68,16 +68,4 @@ public class Order implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", address='" + address + '\'' +
-                ", dateOfOrder='" + dateOfOrder + '\'' +
-                ", totalValue=" + totalValue +
-                ", status='" + status + '\'' +
-                '}';
-    }
 }

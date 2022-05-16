@@ -145,7 +145,7 @@ public class ChatFragment extends Fragment {
                     for (OrderDetail orderDetail : orderDetailArrayList) {
                         food = HomeActivity.dao.getFoodById(orderDetail.getFoodId());
                         restaurant = HomeActivity.dao.getRestaurantInformation(food.getRestaurantId());
-                        CartCard card = new CartCard(getContext(), food, restaurant.getAddress(), orderDetail);
+                        CartCard card = new CartCard(getContext(), food, restaurant.getName(), orderDetail);
                         cartContainer.addView(card);
                     }
                 }

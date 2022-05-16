@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.CategoryActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.FoodDetailsActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.HomeActivity;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.R;
@@ -23,7 +24,9 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Food;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.FoodSaved;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.FoodSize;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Restaurant;
-import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.SavedCard;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.RestaurantSaved;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.FoodSavedCard;
+import hcmute.edu.vn.phamdinhquochoa.foodyapp.components.RestaurantCard;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -122,26 +125,11 @@ public class SavedFragment extends Fragment {
                     Restaurant restaurant = HomeActivity.dao.getRestaurantInformation(food.getRestaurantId());
                     FoodSize foodSize = HomeActivity.dao.getFoodSize(foodSaved.getFoodId(), foodSaved.getSize());
 
-                    SavedCard savedCard = new SavedCard(getContext(), food, restaurant.getAddress(), foodSize);
+                    FoodSavedCard savedCard = new FoodSavedCard(getContext(), food, restaurant.getName(), foodSize);
                     savedCard.setOnClickListener(view -> {
+                        FoodDetailsActivity.foodSize = foodSize;
                         Intent intent = new Intent(getContext(), FoodDetailsActivity.class);
-                        ArrayList<FoodSize> foodSizeArrayList = HomeActivity.dao.getAllFoodSize(food.getId());
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("food", food);
-                        bundle.putSerializable("restaurant", restaurant);
-                        bundle.putSerializable("foodSizeS", foodSizeArrayList.get(0));
-
-                        if(foodSizeArrayList.size() < 3){
-                            bundle.putSerializable("foodSizeM", foodSizeArrayList.get(1));
-                        }
-                        if(foodSizeArrayList.size() == 3) {
-                            bundle.putSerializable("foodSizeM", foodSizeArrayList.get(1));
-                            bundle.putSerializable("foodSizeL", foodSizeArrayList.get(2));
-                        }
-
-                        bundle.putSerializable("defaultFoodSize", foodSize);
-
-                        intent.putExtra("foodDetail", bundle);
+                        intent.putExtra("food", food);
                         try {
                             startActivity(intent);
                         } catch (Exception e){
@@ -151,6 +139,18 @@ public class SavedFragment extends Fragment {
 
                     saved_container.addView(savedCard);
                 }
+            }
+        } else {
+            ArrayList<RestaurantSaved> restaurantSavedArrayList = HomeActivity.dao.getRestaurantSavedList(HomeActivity.user.getId());
+            for(RestaurantSaved restaurantSaved : restaurantSavedArrayList){
+                Restaurant restaurant = HomeActivity.dao.getRestaurantInformation(restaurantSaved.getRestaurantId());
+                RestaurantCard card = new RestaurantCard(getContext(), restaurant, true);
+                card.setOnClickListener(view -> {
+                    Intent intent = new Intent(getActivity(), CategoryActivity.class);
+                    intent.putExtra("restaurantId", restaurant.getId());
+                    startActivity(intent);
+                });
+                saved_container.addView(card);
             }
         }
     }

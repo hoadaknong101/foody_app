@@ -3,64 +3,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:weightSum="10"
     android:orientation="vertical"
     tools:context=".FoodDetailsActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_marginBottom="11sp"
-        android:layout_marginTop="5sp"
-        tools:ignore="UseCompoundDrawables">
+        tools:ignore="UseCompoundDrawables"
+        android:layout_weight="1">
         <ImageView
             android:id="@+id/btnBack"
             android:contentDescription="@string/back"
+            android:layout_gravity="center_vertical"
             android:layout_width="50dp"
             android:layout_height="40dp"
             android:src="@drawable/back_icon"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tvFoodName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/food_type"
             android:textStyle="bold"
             android:textSize="30sp"
             android:textColor="#FF4646"
-            android:gravity="center_vertical"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="75sp"/>
+            android:gravity="center"
+            android:layout_gravity="center_vertical" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/image"
         android:contentDescription="@string/content_description_image"
         android:scaleType="fitXY"
-        android:paddingStart="5sp"
-        android:paddingEnd="5sp"
+        android:padding="10sp"
         android:layout_width="match_parent"
-        android:layout_height="237dp"
+        android:layout_height="0dp"
+        android:layout_weight="4"
         android:src="@drawable/slider_1"/>
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/meat_banh_mi"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:textColor="#FF4646"
-        android:gravity="center_vertical"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="11sp"
-        android:layout_marginEnd="0dp"/>
     <LinearLayout
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
         android:orientation="horizontal">
         <LinearLayout
             android:id="@+id/layout_size_S"
-            android:layout_marginStart="11sp"
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/size_box_red"
             android:backgroundTint="#FF4646"
             android:orientation="vertical">
@@ -69,19 +59,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:text="@string/size_s"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginTop="0dp"
                 android:text="@string/size_s_describe"
                 android:textColor="@color/white"
-                android:textSize="11sp"/>
+                android:textSize="14sp"/>
             <LinearLayout
                 android:layout_marginTop="3dp"
                 android:layout_gravity="center"
@@ -93,32 +74,25 @@
                     android:id="@+id/tvPriceSizeS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
-                    android:text="@string/money_text"
-                    android:layout_gravity="center_horizontal"
+                    android:textSize="14sp"
+                    android:text="@string/money_text_short"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:textColor="@color/white"/>
             </LinearLayout>
         </LinearLayout>
+
+        <android.support.v4.widget.Space
+            android:layout_width="30dp"
+            android:layout_height="match_parent" />
         <LinearLayout
             android:id="@+id/layout_size_M"
-            android:layout_marginStart="35dp"
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/size_box_red"
             android:backgroundTint="#FF4646"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:text="@string/size_m"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -126,7 +100,7 @@
                 android:layout_marginTop="0dp"
                 android:text="@string/size_m_describe"
                 android:textColor="@color/white"
-                android:textSize="11sp"/>
+                android:textSize="14sp"/>
             <LinearLayout
                 android:layout_marginTop="3dp"
                 android:layout_gravity="center"
@@ -138,32 +112,24 @@
                     android:id="@+id/tvPriceSizeM"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
-                    android:text="@string/money_text"
-                    android:layout_gravity="center_horizontal"
+                    android:textSize="14sp"
+                    android:text="@string/money_text_short"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:textColor="@color/white"/>
             </LinearLayout>
         </LinearLayout>
+        <android.support.v4.widget.Space
+            android:layout_width="30dp"
+            android:layout_height="match_parent" />
         <LinearLayout
             android:id="@+id/layout_size_L"
-            android:layout_marginStart="35dp"
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/size_box_red"
             android:backgroundTint="#FF4646"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:text="@string/size_l"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -171,7 +137,7 @@
                 android:layout_marginTop="0dp"
                 android:text="@string/size_l_describe"
                 android:textColor="@color/white"
-                android:textSize="11sp"/>
+                android:textSize="14sp"/>
             <LinearLayout
                 android:layout_marginTop="3dp"
                 android:layout_gravity="center"
@@ -183,21 +149,22 @@
                     android:id="@+id/tvPriceSizeL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
-                    android:text="@string/money_text"
-                    android:layout_gravity="center_horizontal"
+                    android:textSize="14sp"
+                    android:text="@string/money_text_short"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:textColor="@color/white"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="170sp">
+        android:layout_height="0dp"
+        android:layout_weight="3">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="170sp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
@@ -249,64 +216,87 @@
     </ScrollView>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="2"
+        android:layout_gravity="bottom"
         android:orientation="horizontal"
         android:background="@color/main_color"
         android:baselineAligned="false">
         <LinearLayout
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="NestedWeights">
             <TextView
                 android:id="@+id/tvPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="@string/money_text"
                 android:textColor="@color/white"
                 android:textSize="26sp"
                 android:textStyle="bold" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="20dp"
-                android:text="@string/total"
-                android:textColor="@color/white"
-                android:textSize="20sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btnSubQuantity_Food"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="40sp"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:backgroundTint="@color/sub_color"
+                    android:text="@string/sub"/>
+                <TextView
+                    android:id="@+id/tvFoodQuantity_Food"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:text="@string/default_quantity"/>
+                <Button
+                    android:id="@+id/btnAddQuantity_Food"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="40sp"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:backgroundTint="@color/sub_color"
+                    android:text="@string/add"/>
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
             <Button
-                android:id="@+id/btnSavedFood"
-                android:layout_width="match_parent"
-                android:layout_height="40sp"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:text="@string/add_to_saved"
-                android:textSize="13sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_rounded_add_to_cart" />
+                android:id="@+id/btnSavedFood"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:padding="5dp"
+                android:background="@drawable/saved_icon"
+                android:backgroundTint="@color/yellow"/>
+            <android.support.v4.widget.Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent"/>
             <Button
                 android:id="@+id/btnAddToCart"
-                android:layout_width="match_parent"
-                android:layout_height="40sp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/add_to_cart"
-                android:textSize="13sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_rounded_add_to_cart" />
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:padding="5dp"
+                android:background="@drawable/add_shopping_cart"
+                android:backgroundTint="@color/yellow"/>
         </LinearLayout>
     </LinearLayout>
 

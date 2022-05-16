@@ -2,6 +2,7 @@ package hcmute.edu.vn.phamdinhquochoa.foodyapp.dbcontext;
 
 import static java.lang.String.format;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -30,8 +31,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final SQLiteDatabase.CursorFactory DATABASE_FACTORY = null;
     private final Context context;
 
+    // region List Sample Data
     private List<User> userList;
     private List<Restaurant> restaurantList;
+    private List<RestaurantSaved> restaurantSavedList;
     private List<Food> foodList;
     private List<FoodSize> foodSizeList;
     private List<Notify> notifyList;
@@ -39,6 +42,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private List<Order> orderList;
     private List<OrderDetail> orderDetailList;
     private List<FoodSaved> foodSavedList;
+    // endregion
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, DATABASE_FACTORY, DATABASE_VERSION);
@@ -62,6 +66,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return c;
     }
 
+    // region Convert Image
     public byte[] convertDrawableToByteArray(Drawable drawable){
         // Convert khi đúng cấu trúc bitmap
         if (drawable instanceof BitmapDrawable) {
@@ -95,8 +100,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static Bitmap convertByteArrayToBitmap(byte[] image){
         return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
+    // endregion
 
-    public void SampleData(){
+    private void SampleData(){
         // region User
         userList = new ArrayList<>();
         userList.add(new User(1,"Phạm Đinh Quốc Hòa", "Male", "25-06-2001", "0388891635", "hoadaknong101", "123456"));
@@ -107,12 +113,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // region Restaurant
         restaurantList = new ArrayList<>();
-        restaurantList.add(new Restaurant(1, "Quán bánh mì cô Ba", "hẻm 68 Bùi Thị Xuân, quận Tân Bình, Thành phố Hồ Chí Minh"));
-        restaurantList.add(new Restaurant(2, "Quán trà sữa Coffee House", "số 11 Võ Văn Ngân, Thành phố Thủ Đức"));
-        restaurantList.add(new Restaurant(3, "Quán cơm tấm Phúc Mạp", "khu phố 6, quận 5, Thành phố Hồ Chí Minh"));
-        restaurantList.add(new Restaurant(4, "Quán bánh ngọt Lê Văn Việt", "ngã ba Tiền Đô"));
-        restaurantList.add(new Restaurant(5, "Quán kem cô Hai", "Dưới chân cầu vượt Linh Xuân, Thủ Đức"));
-        restaurantList.add(new Restaurant(6, "Quán phở gia truyền", "Bên hông viện Sư phạm kỹ thuật, Quận 9"));
+        restaurantList.add(new Restaurant(1, "Quán bánh mì cô Ba", "hẻm 68 Bùi Thị Xuân, quận Tân Bình, Thành phố Hồ Chí Minh",
+                "0631335935", convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.quan_banh_mi_co_ba, null))));
+        restaurantList.add(new Restaurant(2, "Quán trà sữa Coffee House", "số 11 Võ Văn Ngân, Thành phố Thủ Đức",
+                "0885438847", convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.quan_tra_sua_coffee_house, null))));
+        restaurantList.add(new Restaurant(3, "Quán cơm tấm Phúc Mạp", "khu phố 6, quận 5, Thành phố Hồ Chí Minh",
+                "0559996574", convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.quan_com_tam_phuc_map, null))));
+        restaurantList.add(new Restaurant(4, "Quán bánh ngọt Lê Văn Việt", "ngã ba Tiền Đô",
+                "0141670738", convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.quan_banh_ngot_le_van_viet, null))));
+        restaurantList.add(new Restaurant(5, "Quán kem cô Hai", "Dưới chân cầu vượt Linh Xuân, Thủ Đức",
+                "0627724695", convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.quan_kem_co_hai, null))));
+        restaurantList.add(new Restaurant(6, "Quán phở gia truyền", "Bên hông viện Sư phạm kỹ thuật, Quận 9",
+                "0925063881", convertDrawableToByteArray(ResourcesCompat.getDrawable(context.getResources(), R.drawable.quan_pho_gia_truyen, null))));
+        // endregion
+
+        // region Restaurant saved
+        restaurantSavedList = new ArrayList<>();
+        restaurantSavedList.add(new RestaurantSaved(1, 3));
+        restaurantSavedList.add(new RestaurantSaved(4, 3));
+        restaurantSavedList.add(new RestaurantSaved(1, 1));
+        restaurantSavedList.add(new RestaurantSaved(1, 2));
+        restaurantSavedList.add(new RestaurantSaved(2, 2));
+        restaurantSavedList.add(new RestaurantSaved(6, 3));
         // endregion
 
         // region Food
@@ -341,39 +363,55 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // region Order
         orderList = new ArrayList<>();
-        orderList.add(new Order(1, 1, "Thủ Đức", "4/3/2022", 27000d, "Delivered"));
-        orderList.add(new Order(2, 1, "Thủ Đức", "5/3/2022", 18000d, "Craft"));
-        orderList.add(new Order(3, 3, "Quận 9", "4/3/2022", 68000d, "Coming"));
+        orderList.add(new Order(1, 1, "Thủ Đức", "4/3/2022", 0d, "Delivered"));
+        orderList.add(new Order(2, 1, "Thủ Đức", "5/3/2022", 0d, "Craft"));
+        orderList.add(new Order(3, 3, "Quận 9", "4/3/2022", 0d, "Coming"));
+        orderList.add(new Order(4, 4, "Thủ Đức", "5/4/2022", 0d, "Craft"));
+        orderList.add(new Order(5, 1, "Quận 2", "4/5/2022", 0d, "Coming"));
         // endregion
 
-        // region Order list
+        // region Order detail
         orderDetailList = new ArrayList<>();
-        orderDetailList.add(new OrderDetail(1, 1, 2, 12000d));
-        orderDetailList.add(new OrderDetail(1, 2, 3, 15000d));
-        orderDetailList.add(new OrderDetail(2, 3, 2, 18000d));
-        orderDetailList.add(new OrderDetail(3, 3, 3, 25000d));
-        orderDetailList.add(new OrderDetail(3, 4, 3, 25000d));
-        orderDetailList.add(new OrderDetail(3, 5, 2, 18000d));
+        orderDetailList.add(new OrderDetail(1, 1, 2, 12000d, 1));
+        orderDetailList.add(new OrderDetail(1, 2, 3, 15000d, 2));
+        orderDetailList.add(new OrderDetail(2, 31, 2, 18000d, 1));
+        orderDetailList.add(new OrderDetail(3, 3, 3, 25000d, 3));
+        orderDetailList.add(new OrderDetail(3, 4, 3, 25000d, 1));
+        orderDetailList.add(new OrderDetail(3, 25, 2, 18000d, 1));
+        orderDetailList.add(new OrderDetail(4, 23, 2, 18000d, 2));
+        orderDetailList.add(new OrderDetail(4, 32, 3, 25000d, 3));
+        orderDetailList.add(new OrderDetail(5, 11, 2, 12000d, 1));
+        orderDetailList.add(new OrderDetail(5, 17, 3, 15000d, 2));
+        orderDetailList.add(new OrderDetail(5, 31, 2, 18000d, 1));
+        orderDetailList.add(new OrderDetail(5, 33, 3, 25000d, 3));
+        orderDetailList.add(new OrderDetail(5, 41, 3, 25000d, 1));
         // endregion
     }
 
-    public void addSampleData(SQLiteDatabase db) {
+    private void addSampleData(SQLiteDatabase db) {
         SampleData();
-
-        // Add restaurant
-        for (Restaurant restaurant : restaurantList) {
-            String sql = "INSERT INTO tblRestaurant VALUES(null, ?, ?)";
-            SQLiteStatement statement = db.compileStatement(sql);
-            statement.clearBindings();
-            statement.bindString(1, restaurant.getName());
-            statement.bindString(2, restaurant.getAddress());
-            statement.executeInsert();
-        }
 
         // Add user
         for (User user : userList) {
             db.execSQL(format("INSERT INTO tblUser VALUES(null, '%s','%s', '%s', '%s', '%s', '%s')",
                     user.getName(), user.getGender(), user.getDateOfBirth(), user.getPhone(), user.getUsername(), user.getPassword()));
+        }
+
+        // Add restaurant
+        for (Restaurant restaurant : restaurantList) {
+            String sql = "INSERT INTO tblRestaurant VALUES(null, ?, ?, ?, ?)";
+            SQLiteStatement statement = db.compileStatement(sql);
+            statement.clearBindings();
+            statement.bindString(1, restaurant.getName());
+            statement.bindString(2, restaurant.getAddress());
+            statement.bindString(3, restaurant.getPhone());
+            statement.bindBlob(4, restaurant.getImage());
+            statement.executeInsert();
+        }
+
+        // Add restaurant saved
+        for(RestaurantSaved restaurantSaved: restaurantSavedList){
+            db.execSQL("INSERT INTO tblRestaurantSaved VALUES(" + restaurantSaved.getRestaurantId() + ", " + restaurantSaved.getUserId() + ")");
         }
 
         // Add food
@@ -442,18 +480,51 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.execSQL("INSERT INTO tblOrderDetail VALUES(" + orderDetail.getOrderId() + ", " +
                     orderDetail.getFoodId() + ", " +
                     orderDetail.getSize() + ", " +
-                    orderDetail.getPrice() + ")");
+                    orderDetail.getPrice() + ", " +
+                    orderDetail.getQuantity() + ")");
         }
 
-//        // Delete random three food size L
-//        Random random = new Random();
-//        for (int i = 1; i <= 3; i++) {
-//            db.execSQL("DELETE FROM tblFoodSize WHERE food_id=" + random.nextInt(45) + " AND size=3");
-//        }
+        // Update order price
+        String queryGetTotal;
+        for (Order order : orderList) {
+            queryGetTotal = "SELECT SUM(price * quantity) FROM tblOrderDetail WHERE order_id=" + order.getId();
+            @SuppressLint("Recycle")
+            Cursor cursor = db.rawQuery(queryGetTotal, null);
+            cursor.moveToFirst();
+
+            String sql = "UPDATE tblOrder SET total_value=" + cursor.getDouble(0) + " WHERE id=" + order.getId();
+            db.execSQL(sql);
+        }
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        //Create table "User"
+        String queryCreateUser = "CREATE TABLE IF NOT EXISTS tblUser(" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "name NVARCHAR(200)," +
+                "gender VARCHAR(10)," +
+                "date_of_birth VARCHAR(20)," +
+                "phone VARCHAR(15)," +
+                "username VARCHAR(30)," +
+                "password VARCHAR(100))";
+        sqLiteDatabase.execSQL(queryCreateUser);
+
+        //Create table "Restaurant"
+        String queryCreateRestaurant = "CREATE TABLE IF NOT EXISTS tblRestaurant(" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "name NVARCHAR(200), " +
+                "address NVARCHAR(200)," +
+                "phone CHAR(10)," +
+                "image BLOB)";
+        sqLiteDatabase.execSQL(queryCreateRestaurant);
+
+        //Create table "RestaurantSaved"
+        String queryCreateRestaurantSaved = "CREATE TABLE IF NOT EXISTS tblRestaurantSaved(" +
+                "restaurant_id INTEGER, user_id INTEGER," +
+                "PRIMARY KEY(restaurant_id, user_id))";
+        sqLiteDatabase.execSQL(queryCreateRestaurantSaved);
+
         //Create table "Food"
         String queryCreateFood = "CREATE TABLE IF NOT EXISTS tblFood(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -471,26 +542,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 "price DOUBLE," +
                 "PRIMARY KEY (food_id, size))";
         sqLiteDatabase.execSQL(queryCreateFoodSize);
-
-        //Create table "OrderDetail"
-        String queryCreateOrderDetail = "CREATE TABLE IF NOT EXISTS tblOrderDetail(" +
-                "order_id INTEGER," +
-                "food_id INTEGER," +
-                "size INTEGER," +
-                "price DOUBLE," +
-                "PRIMARY KEY (order_id, food_id, size))";
-        sqLiteDatabase.execSQL(queryCreateOrderDetail);
-
-        //Create table "User"
-        String queryCreateUser = "CREATE TABLE IF NOT EXISTS tblUser(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "name NVARCHAR(200)," +
-                "gender VARCHAR(10)," +
-                "date_of_birth VARCHAR(20)," +
-                "phone VARCHAR(15)," +
-                "username VARCHAR(30)," +
-                "password VARCHAR(100))";
-        sqLiteDatabase.execSQL(queryCreateUser);
 
         //Create table "FoodSaved"
         String queryCreateFoodSaved = "CREATE TABLE IF NOT EXISTS tblFoodSaved(" +
@@ -510,6 +561,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 "status VARCHAR(200))";
         sqLiteDatabase.execSQL(queryCreateOrder);
 
+        //Create table "OrderDetail"
+        String queryCreateOrderDetail = "CREATE TABLE IF NOT EXISTS tblOrderDetail(" +
+                "order_id INTEGER," +
+                "food_id INTEGER," +
+                "size INTEGER," +
+                "price DOUBLE," +
+                "quantity INTEGER," +
+                "PRIMARY KEY (order_id, food_id, size))";
+        sqLiteDatabase.execSQL(queryCreateOrderDetail);
+
         //Create table "Notify"
         String queryCreateNotify = "CREATE TABLE IF NOT EXISTS tblNotify(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -524,13 +585,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 "user_id INTEGER," +
                 "PRIMARY KEY (notify_id, user_id))";
         sqLiteDatabase.execSQL(queryCreateNotifyToUser);
-        
-        //Create table "Restaurant"
-        String queryCreateRestaurant = "CREATE TABLE IF NOT EXISTS tblRestaurant(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "name NVARCHAR(200), " +
-                "address NVARCHAR(200))";
-        sqLiteDatabase.execSQL(queryCreateRestaurant);
 
         Log.i("SQLite", "DATABASE CREATED");
         addSampleData(sqLiteDatabase);
@@ -541,13 +595,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         Log.i("SQLite","Upgrade SQLite");
 
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblUser");
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblFood");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblNotifyToUser");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblNotify");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblFoodSaved");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblFoodSize");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblFood");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblOrderDetail");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblOrder");
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblNotify");
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblNotifyToUser");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblRestaurantSaved");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblRestaurant");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tblUser");
 
         onCreate(sqLiteDatabase);
     }

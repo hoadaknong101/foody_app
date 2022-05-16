@@ -11,7 +11,6 @@ import hcmute.edu.vn.phamdinhquochoa.foodyapp.beans.Food;
 import hcmute.edu.vn.phamdinhquochoa.foodyapp.dbcontext.DatabaseHandler;
 
 public class FoodCard extends LinearLayout {
-
     private Food food;
     private Double defaultPrice;
     private String restaurantName;

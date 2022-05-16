@@ -29,12 +29,4 @@ public class NotifyToUser implements Serializable {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
-    @Override
-    public String toString() {
-        return "NotifyToUser{" +
-                "notifyId=" + notifyId +
-                ", userId=" + userId +
-                '}';
-    }
 }

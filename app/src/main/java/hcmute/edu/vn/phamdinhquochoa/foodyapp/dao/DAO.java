@@ -24,13 +24,15 @@ public class DAO {
     public Restaurant getRestaurantInformation(Integer restaurantId){
         String query = "SELECT * FROM tblRestaurant WHERE id=" + restaurantId;
         Cursor cursor = dbHelper.getDataRow(query);
-        return new Restaurant(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+        return new Restaurant(cursor.getInt(0), cursor.getString(1), cursor.getString(2),
+                cursor.getString(3), cursor.getBlob(4));
     }
 
     public Restaurant getRestaurantByName(String restaurantName){
         String query = "SELECT * FROM tblRestaurant WHERE name='" + restaurantName + "'";
         Cursor cursor = dbHelper.getDataRow(query);
-        return new Restaurant(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+        return new Restaurant(cursor.getInt(0), cursor.getString(1), cursor.getString(2),
+                cursor.getString(3), cursor.getBlob(4));
     }
 
     public ArrayList<Restaurant> getRestaurantList(){
@@ -38,9 +40,44 @@ public class DAO {
         String query = "SELECT * FROM tblRestaurant";
         Cursor cursor = dbHelper.getData(query);
         while (cursor.moveToNext()){
-            restaurantArrayList.add(new Restaurant(cursor.getInt(0), cursor.getString(1), cursor.getString(2)));
+            restaurantArrayList.add(new Restaurant(cursor.getInt(0), cursor.getString(1), cursor.getString(2),
+                    cursor.getString(3), cursor.getBlob(4)));
         }
         return restaurantArrayList;
+    }
+    // endregion
+
+    // region RestaurantSaved
+    public boolean addRestaurantSaved(RestaurantSaved restaurantSaved){
+        String query = "INSERT INTO tblRestaurantSaved VALUES(" + restaurantSaved.getRestaurantId() +
+                ", " + restaurantSaved.getUserId() + ")";
+        try{
+            dbHelper.queryData(query);
+            return true;
+        } catch (Exception err) {
+            return false;
+        }
+    }
+
+    public boolean deleteRestaurantSaved(RestaurantSaved restaurantSaved){
+        String query = "DELETE FROM tblRestaurantSaved WHERE restaurant_id=" + restaurantSaved.getRestaurantId() +
+                " AND user_id=" + restaurantSaved.getUserId();
+        try{
+            dbHelper.queryData(query);
+            return true;
+        } catch (Exception err) {
+            return false;
+        }
+    }
+
+    public ArrayList<RestaurantSaved> getRestaurantSavedList(Integer userId){
+        ArrayList<RestaurantSaved> restaurantSavedArrayList = new ArrayList<>();
+        String query = "SELECT * FROM tblRestaurantSaved WHERE user_id=" + userId;
+        Cursor cursor = dbHelper.getData(query);
+        while (cursor.moveToNext()){
+            restaurantSavedArrayList.add(new RestaurantSaved(cursor.getInt(0), cursor.getInt(1)));
+        }
+        return restaurantSavedArrayList;
     }
     // endregion
 
@@ -91,12 +128,27 @@ public class DAO {
     // endregion
 
     // region OrderDetail
+    public OrderDetail getExistOrderDetail(Integer orderId, FoodSize foodSize){
+        String query = "SELECT * FROM tblOrderDetail WHERE order_id=" + orderId +
+                " AND food_id=" + foodSize.getFoodId() +
+                " AND size=" + foodSize.getSize();
+        Cursor cursor = dbHelper.getDataRow(query);
+        if(cursor.moveToFirst()) {
+            OrderDetail orderDetail = new OrderDetail(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2),
+                    cursor.getDouble(3), cursor.getInt(4));
+            System.out.println(orderDetail);
+            return orderDetail;
+        }
+        return null;
+    }
+
     public boolean addOrderDetail(OrderDetail od) {
         String query = "INSERT INTO tblOrderDetail VALUES(" +
-                od.getOrderId() + "," +
-                od.getFoodId() + "," +
-                od.getSize() + "," +
-                od.getPrice() + ")";
+                od.getOrderId() + ", " +
+                od.getFoodId() + ", " +
+                od.getSize() + ", " +
+                od.getPrice() + ", " +
+                od.getQuantity() + ")";
         try {
             dbHelper.queryData(query);
             return true;
@@ -105,10 +157,25 @@ public class DAO {
         }
     }
 
-    public void deleteOrderDetailByOrderIdAndFoodId(Integer orderId, Integer foodId) {
+    public boolean updateOrderDetail(OrderDetail od) {
+        String query = "";
+        try {
+            dbHelper.queryData(query);
+            return true;
+        } catch (Exception err){
+            return false;
+        }
+    }
+
+    public boolean deleteOrderDetailByOrderIdAndFoodId(Integer orderId, Integer foodId) {
         String query = "DELETE FROM tblOrderDetail WHERE food_id=" +
                 foodId + " and order_id=" + orderId;
-        dbHelper.queryData(query);
+        try {
+            dbHelper.queryData(query);
+            return true;
+        } catch (Exception err){
+            return false;
+        }
     }
 
     public Cursor getCart(Integer userId){
@@ -120,9 +187,23 @@ public class DAO {
         String query = "SELECT * FROM tblOrderDetail WHERE order_id=" + orderId;
         Cursor cursor = dbHelper.getData(query);
         while(cursor.moveToNext()){
-            orderDetailArrayList.add(new OrderDetail(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getDouble(3)));
+            orderDetailArrayList.add(new OrderDetail(cursor.getInt(0), cursor.getInt(1),
+                    cursor.getInt(2), cursor.getDouble(3), cursor.getInt(4)));
         }
         return orderDetailArrayList;
+    }
+
+    public boolean updateQuantity(OrderDetail orderDetail){
+        String query = "UPDATE tblOrderDetail SET quantity=" + orderDetail.getQuantity() +
+                " WHERE order_id=" + orderDetail.getOrderId() +
+                " AND food_id=" + orderDetail.getFoodId() +
+                " AND size=" + orderDetail.getSize();
+        try {
+            dbHelper.queryData(query);
+            return true;
+        } catch (Exception err){
+            return false;
+        }
     }
     // endregion
 
@@ -208,19 +289,13 @@ public class DAO {
     }
 
     public User getUserByUsernameAndPassword(String username, String password) {
-        User user = new User();
         String query = "SELECT * FROM tblUser WHERE username='" + username + "' and password='" + password + "'";
         Cursor cursor = dbHelper.getDataRow(query);
 
         if (cursor.getCount() > 0) {
-            user.setId(cursor.getInt(0));
-            user.setName(cursor.getString(1));
-            user.setGender(cursor.getString(2));
-            user.setDateOfBirth(cursor.getString(3));
-            user.setPhone(cursor.getString(4));
-            user.setUsername(cursor.getString(5));
-            user.setPassword(cursor.getString(6));
-            return user;
+            return new User(cursor.getInt(0), cursor.getString(1), cursor.getString(2),
+                    cursor.getString(3), cursor.getString(4), cursor.getString(5),
+                    cursor.getString(6));
         }
         return null;
     }
@@ -346,7 +421,7 @@ public class DAO {
     public String getDate(){
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int month = calendar.get(Calendar.MONTH);
+        int month = calendar.get(Calendar.MONTH) + 1;
         int year = calendar.get(Calendar.YEAR);
         return day + "/" + month + "/" + year;
     }

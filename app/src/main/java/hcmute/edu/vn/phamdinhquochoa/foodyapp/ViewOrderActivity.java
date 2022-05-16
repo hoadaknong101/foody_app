@@ -2,6 +2,7 @@ package hcmute.edu.vn.phamdinhquochoa.foodyapp;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -54,6 +55,7 @@ public class ViewOrderActivity extends AppCompatActivity {
         Button btnDeleteOrder = findViewById(R.id.btnDeleteOrder);
         if(order.getStatus().equals("Delivered") || order.getStatus().equals("Canceled")){
             btnDeleteOrder.setEnabled(false);
+            btnDeleteOrder.setBackgroundColor(Color.GRAY);
         }
         btnDeleteOrder.setOnClickListener(view -> {
             AlertDialog.Builder dialog = new AlertDialog.Builder(this);
@@ -92,7 +94,7 @@ public class ViewOrderActivity extends AppCompatActivity {
                 Restaurant restaurant = dao.getRestaurantInformation(food.getRestaurantId());
                 FoodSize foodSize = dao.getFoodSize(orderDetail.getFoodId(), orderDetail.getSize());
 
-                CartCard card = new CartCard(this, food, restaurant.getAddress(), orderDetail, false);
+                CartCard card = new CartCard(this, food, restaurant.getName(), orderDetail, false);
                 card.setOnClickListener(view -> {
                     Intent intent = new Intent(this, FoodDetailsActivity.class);
                     ArrayList<FoodSize> foodSizeArrayList = HomeActivity.dao.getAllFoodSize(food.getId());

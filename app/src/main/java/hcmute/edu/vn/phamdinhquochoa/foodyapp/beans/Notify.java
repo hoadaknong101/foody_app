@@ -8,9 +8,6 @@ public class Notify implements Serializable {
     private String content;
     private String dateMake;
 
-    public Notify() {
-    }
-
     public Notify(Integer id, String title, String content, String dateMake) {
         this.id = id;
         this.title = title;
@@ -48,15 +45,5 @@ public class Notify implements Serializable {
 
     public void setDateMake(String dateMake) {
         this.dateMake = dateMake;
-    }
-
-    @Override
-    public String toString() {
-        return "Notify{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", dateMake='" + dateMake + '\'' +
-                '}';
     }
 }
