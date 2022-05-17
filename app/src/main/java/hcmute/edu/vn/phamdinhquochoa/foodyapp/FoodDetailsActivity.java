@@ -25,7 +25,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
             tvPriceSizeS,tvPriceSizeM, tvPriceSizeL,
             tvQuantity;
 
-    public static User user;
+    public static Integer userID;
     private static int quantity;
     public static FoodSize foodSize;
     private DAO dao;
@@ -72,10 +72,10 @@ public class FoodDetailsActivity extends AppCompatActivity {
         Button btnAddToCart = findViewById(R.id.btnAddToCart);
         btnAddToCart.setOnClickListener(view -> {
             // Make cart if don't have
-            Cursor cursor = dao.getCart(user.getId());
+            Cursor cursor = dao.getCart(userID);
             if (!cursor.moveToFirst()){
-                dao.addOrder(new Order(1, user.getId(), "", "", 0d, "Craft"));
-                cursor = dao.getCart(user.getId());
+                dao.addOrder(new Order(1, userID, "", "", 0d, "Craft"));
+                cursor = dao.getCart(userID);
             }
 
             // add order detail
@@ -104,7 +104,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
 
         Button btnSavedFood = findViewById(R.id.btnSavedFood);
         btnSavedFood.setOnClickListener(view -> {
-            boolean addFoodSaved = dao.addFoodSaved(new FoodSaved(foodSize.getFoodId(), foodSize.getSize(), user.getId()));
+            boolean addFoodSaved = dao.addFoodSaved(new FoodSaved(foodSize.getFoodId(), foodSize.getSize(), userID));
             if(addFoodSaved){
                 Toast.makeText(this, "Đã lưu thông tin món ăn!", Toast.LENGTH_SHORT).show();
             } else {

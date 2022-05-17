@@ -90,7 +90,7 @@ public class HomeFragment extends Fragment {
             }
 
             ImageView imageCart = mainView.findViewById(R.id.imageCart);
-            imageCart.setOnClickListener(view1 -> {
+            imageCart.setOnClickListener(view -> {
                 Intent intent = new Intent(getActivity(), HomeActivity.class);
                 intent.putExtra("request", "cart");
                 startActivity(intent);

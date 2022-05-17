@@ -157,16 +157,6 @@ public class DAO {
         }
     }
 
-    public boolean updateOrderDetail(OrderDetail od) {
-        String query = "";
-        try {
-            dbHelper.queryData(query);
-            return true;
-        } catch (Exception err){
-            return false;
-        }
-    }
-
     public boolean deleteOrderDetailByOrderIdAndFoodId(Integer orderId, Integer foodId) {
         String query = "DELETE FROM tblOrderDetail WHERE food_id=" +
                 foodId + " and order_id=" + orderId;
@@ -339,9 +329,13 @@ public class DAO {
         return new Food(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getBlob(3), cursor.getString(4), cursor.getInt(5));
     }
 
-    public ArrayList<Food> getFoodByKeyWord(String keyword){
+    public ArrayList<Food> getFoodByKeyWord(String keyword, Integer restaurantId){
         ArrayList<Food> listFood = new ArrayList<>();
         String query = "SELECT * FROM tblFood WHERE name LIKE '%" + keyword + "%'";
+        if(restaurantId != null){
+            query += " AND restaurant_id=" + restaurantId;
+        }
+
         Cursor cursor = dbHelper.getData(query);
         while(cursor.moveToNext()){
             listFood.add(new Food(cursor.getInt(0),

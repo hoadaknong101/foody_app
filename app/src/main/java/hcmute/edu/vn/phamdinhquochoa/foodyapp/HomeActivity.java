@@ -37,9 +37,10 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         dao = new DAO(this);
 
-        CategoryActivity.user = HomeActivity.user;
-        FoodDetailsActivity.user = HomeActivity.user;
-        ViewOrderActivity.user = HomeActivity.user;
+        Integer userID = user.getId();
+
+        FoodDetailsActivity.userID = userID;
+        ViewOrderActivity.userID = userID;
 
         stackLayout++;
         clickToLogout = 0;

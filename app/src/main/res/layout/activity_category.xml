@@ -15,46 +15,86 @@
             android:layout_width="50dp"
             android:layout_height="40dp"
             android:src="@drawable/cart_icon"
-            android:layout_marginTop="23sp"
+            android:layout_marginTop="20sp"
             android:layout_marginStart="28sp"/>
         <ImageView
             android:contentDescription="@string/app_name"
             android:layout_width="140sp"
-            android:layout_height="80sp"
+            android:layout_height="40sp"
             android:src="@drawable/logo"
-            android:layout_marginTop="5sp"
-            android:layout_marginStart="70sp"/>
+            android:layout_marginTop="20sp"
+            android:layout_marginStart="60sp"/>
+
+        <ImageView
+            android:id="@+id/imageSync"
+            android:contentDescription="@string/app_name"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:src="@drawable/sync"
+            android:layout_marginTop="20sp"
+            android:layout_marginStart="45sp"/>
+
     </LinearLayout>
     <SearchView
         android:id="@+id/search_bar"
         android:layout_width="360sp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10sp"
+        android:layout_margin="10dp"
         android:background="@drawable/bg_search_view"
         android:elevation="5dp"/>
-    <HorizontalScrollView
-        android:layout_marginTop="15dp"
-        android:id="@+id/flexBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="6sp">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/categoryCartContainer">
-        </LinearLayout>
-    </HorizontalScrollView>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10sp">
+        android:padding="5sp">
         <LinearLayout
-            android:id="@+id/foodCartContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/layout_restaurantInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/imageRestaurant_category"
+                    android:layout_width="300dp"
+                    android:layout_height="225dp"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:src="@drawable/quan_banh_mi_co_ba"
+                    android:contentDescription="@string/content_description_image" />
+                <TextView
+                    android:id="@+id/tvRestaurantName_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/notop_sans_regular"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="@string/quan_pho_gia_truyen" />
+                <TextView
+                    android:id="@+id/tvRestaurantAddress_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notop_sans_regular"
+                    android:textStyle="italic"
+                    android:text="@string/example_address" />
+                <TextView
+                    android:id="@+id/tvRestaurantPhone_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notop_sans_regular"
+                    android:text="@string/number_phone" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/foodCartContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

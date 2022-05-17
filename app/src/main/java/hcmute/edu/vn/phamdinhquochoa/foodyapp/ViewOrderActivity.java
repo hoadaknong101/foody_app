@@ -29,7 +29,7 @@ public class ViewOrderActivity extends AppCompatActivity {
     private TextView tvDate, tvPrice, tvAddress, tvStatus;
     private DAO dao;
     private Order order;
-    public static User user;
+    public static Integer userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,7 @@ public class ViewOrderActivity extends AppCompatActivity {
                         + " VNĐ \nBạn có thể góp ý hỗ trợ qua số điện thoại 0947679570!";
                 dao.addNotify(new Notify(1, "Thông báo về đơn hàng!",
                         content, dao.getDate()));
-                dao.addNotifyToUser(new NotifyToUser(dao.getNewestNotifyId(), user.getId()));
+                dao.addNotifyToUser(new NotifyToUser(dao.getNewestNotifyId(), userID));
                 finish();
             });
             dialog.setNegativeButton("Không", (dialogInterface, i) -> {});
@@ -96,24 +96,9 @@ public class ViewOrderActivity extends AppCompatActivity {
 
                 CartCard card = new CartCard(this, food, restaurant.getName(), orderDetail, false);
                 card.setOnClickListener(view -> {
+                    FoodDetailsActivity.foodSize = foodSize;
                     Intent intent = new Intent(this, FoodDetailsActivity.class);
-                    ArrayList<FoodSize> foodSizeArrayList = HomeActivity.dao.getAllFoodSize(food.getId());
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("food", food);
-                    bundle.putSerializable("restaurant", restaurant);
-                    bundle.putSerializable("foodSizeS", foodSizeArrayList.get(0));
-
-                    if(foodSizeArrayList.size() < 3){
-                        bundle.putSerializable("foodSizeM", foodSizeArrayList.get(1));
-                    }
-                    if(foodSizeArrayList.size() == 3) {
-                        bundle.putSerializable("foodSizeM", foodSizeArrayList.get(1));
-                        bundle.putSerializable("foodSizeL", foodSizeArrayList.get(2));
-                    }
-
-                    bundle.putSerializable("defaultFoodSize", foodSize);
-
-                    intent.putExtra("foodDetail", bundle);
+                    intent.putExtra("food", food);
                     try {
                         startActivity(intent);
                     } catch (Exception e){

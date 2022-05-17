@@ -1,7 +1,6 @@
 package hcmute.edu.vn.phamdinhquochoa.foodyapp.beans;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 public class Food implements Serializable {
 

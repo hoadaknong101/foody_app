@@ -47,8 +47,7 @@
             android:paddingTop="15dp"
             android:paddingEnd="0sp"
             android:paddingBottom="15dp"
-            android:textSize="18sp"
-            tools:ignore="TextContrastCheck" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/editText_password_login"
